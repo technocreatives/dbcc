@@ -1,4 +1,4 @@
-# dbcc [![Build Status](https://travis-ci.org/marcelbuesing/dbcc.svg?branch=dev)](https://travis-ci.org/marcelbuesing/dbcc) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmarcelbuesing%2Fdbcc.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmarcelbuesing%2Fdbcc?ref=badge_shield)
+# dbcc [![Build Status](https://travis-ci.org/marcelbuesing/dbcc.svg?branch=dev)](https://travis-ci.org/marcelbuesing/dbcc)
 =============
 
 dbcc can translate `data base CAN` files into Rust code.
