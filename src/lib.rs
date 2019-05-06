@@ -1,4 +1,3 @@
-#![feature(no_panic_pow)]
 #![feature(test)]
 
 extern crate test;

@@ -1,96 +1,168 @@
-# can-dbc
-[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![VERSION](https://img.shields.io/crates/v/can-dbc.svg)](https://crates.io/crates/can-dbc)
-[![Build Status](https://travis-ci.org/marcelbuesing/can-dbc.svg?branch=dev)](https://travis-ci.org/marcelbuesing/can-dbc)
-[![codecov](https://codecov.io/gh/marcelbuesing/can-dbc/branch/dev/graph/badge.svg)](https://codecov.io/gh/marcelbuesing/can-dbc)
-[![docs](https://docs.rs/can-dbc/badge.svg)](https://docs.rs/can-dbc)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmarcelbuesing%2Fcan-dbc.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmarcelbuesing%2Fcan-dbc?ref=badge_shield)
+# dbcc [![Build Status](https://travis-ci.org/marcelbuesing/dbcc.svg?branch=dev)](https://travis-ci.org/marcelbuesing/dbcc) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmarcelbuesing%2Fdbcc.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmarcelbuesing%2Fdbcc?ref=badge_shield)
+=============
 
-A CAN-dbc format parser written with Rust's [nom](https://github.com/Geal/nom) parser combinator library.
+dbcc can translate `data base CAN` files into Rust code.
+The generated code allows interacting with CAN signals in a type safe manner by e.g. matching against signal value enum types.
+Furthermore it provides a convenient way to use [SocketCAN BCM Sockets](https://crates.io/crates/tokio-socketcan-bcm), via [tokio](https://crates.io/crates/tokio) streams, to filter for a specified message by can identifier.
 
-# 1. Example
+## Features
+- [x] Generate message, signal decoder code
+- [x] Generate message id constants
+- [x] Generate enums for matching against signal values
+- [x] Generate tokio streams for CAN messages
+- [ ] Generate message, signal encoders
 
-Read dbc file and generate Rust structs based on the messages/signals defined in the dbc.
+## Option 1 - Run CLI
 
-```rust
-use can_dbc::DBC;
-use codegen::Scope;
+Install
+```
+cargo install dbcc
+```
+
+Generate code using the CLI.
+```
+dbcc --input dbcc j1939.dbc > j1939.rs
+```
+
+For warnings during the generation run with:
+
+```
+RUST_LOG=info dbcc j1939.dbc > j1939.rs
+```
+
+## Option 2 - build.rs
+
+Generate code at build time. Add the following to your [build.rs](https://doc.rust-lang.org/cargo/reference/build-scripts.html).
+Adapt the dbc input path and target path according to your needs.
+
+
+```Rust
+use dbcc::{DbccOpt, can_code_gen};
+use can_dbc;
 
 use std::fs::File;
-use std::io;
 use std::io::prelude::*;
+use std::path::Path;
 
-fn main() -> io::Result<()> {
-    let mut f = File::open("./examples/sample.dbc")?;
-    let mut buffer = Vec::new();
-    f.read_to_end(&mut buffer)?;
+fn main() -> std::io::Result<()> {
+    let dbcs = &[
+        ("./dbcs/j1939.dbc", "./src/lib.rs"),
+    ];
+    generate_code_for_dbc(dbcs)?;
+    Ok(())
+}
 
-    let dbc = can_dbc::DBC::from_slice(&buffer).expect("Failed to parse dbc file");
+fn generate_code_for_dbc<P: AsRef<Path>>(input_output: &[(P, P)]) -> std::io::Result<()> {
 
-    let mut scope = Scope::new();
-    for message in dbc.messages() {
-        for signal in message.signals() {
+    for (input_path, output_path) in input_output {
+        let mut f = File::open(input_path).expect("Failed to open input file");
+        let mut buffer = Vec::new();
+        f.read_to_end(&mut buffer).expect("Failed to read file");
 
-            let mut scope = Scope::new();
-            let message_struct = scope.new_struct(message.message_name());
-            for signal in message.signals() {
-                message_struct.field(signal.name().to_lowercase().as_str(), "f64");
-            }
-        }
+        let opt = DbccOpt {
+            with_tokio: true,
+        };
+
+        let dbc_content = can_dbc::DBC::from_slice(&buffer).expect("Failed to read DBC file");
+        let code = can_code_gen(&opt, &dbc_content).expect("Failed to generate rust code");
+
+        let mut f = File::create(output_path)?;
+        f.write_all(&code.to_string().into_bytes())?;
     }
 
-    println!("{}", scope.to_string());
     Ok(())
 }
 ```
 
-# 2. Example
-
-The file parser simply parses a dbc input file and prints the parsed content.
-```
-cargo test && ./target/debug/examples/file_parser -i examples/sample.dbc
-```
-
-# Installation
-can-dbc is available on crates.io and can be included in your Cargo enabled project like this:
-
-```yml
+## Include
+- Move the generated rust file to your project's `src/` folder.
+- Add the following dependency to your project's `Cargo.toml`
+```YAML
 [dependencies]
-can-dbc = "1.0"
+byteorder = "1.2"
 ```
 
-# Implemented DBC parts
+## Use
+```Rust
+/// If you are using Rust 2018 no `external crate byteorder;` is necessary
+/// Generated module
+mod j1939;
 
-- [x] version
-- [x] new_symbols
-- [x] bit_timing *(deprecated but mandatory)*
-- [x] nodes
-- [x] value_tables
-- [x] messages
-- [x] message_transmitters
-- [x] environment_variables
-- [x] environment_variables_data
-- [x] signal_types
-- [x] comments
-- [x] attribute_definitions
-- [ ] sigtype_attr_list *(format missing documentation)*
-- [x] attribute_defaults
-- [x] attribute_values
-- [x] value_descriptions
-- [ ] category_definitions *(deprecated)*
-- [ ] categories *(deprecated)*
-- [ ] filter *(deprecated)*
-- [x] signal_type_refs
-- [x] signal_groups
-- [x] signal_extended_value_type_list
+fn main() {
+    // J1939 - Operators External Light Controls Message Id
+    let can_message_id = 2365443326u32;
+    // can frame data field (0-8 bytes)
+    let can_frame_data: Vec<u8> = vec![0x00, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
 
-# Deviating from standard
-- multispace between parsers instead of single space allowing e.g. (two spaces) `SIG_GROUP  13`.
-- `VAL_` suffix may be ` ;` or `;`
+    // CAN Message ID constant from generated code
+    if can_message_id == j1939::MESSAGE_ID_OEL {
+        // J1939 - Operators External Light Controls Message
+        let oel = j1939::Oel::new(can_frame_data);
 
-# Alternatives
-- [canparse](https://github.com/jmagnuson/canparse)
+        // Signal indicate the selected position of the operator's hazard light switch.
+        match oel.hazardlightswitch() {
+            j1939::HazardLightSwitch2365443326::HazardLampsToBeFlashing => println!("Hazard Lamps To Be Flashing"),
+            j1939::HazardLightSwitch2365443326::HazardLampsToBeOff => println!("Hazard Lamps To Be Off"),
+            j1939::HazardLightSwitch2365443326::NotAvailable => println!("Not available"),
+            j1939::HazardLightSwitch2365443326::Error => println!("Error"),
+            j1939::HazardLightSwitch2365443326::XValue(_) => unreachable!(),
+        }
+    }
+}
+```
 
+## Including SocketCAN Streams
+- Make sure you pass the `--with-tokio` flag when invoking dbcc.
+- Move the generated rust file to your project's `src/` folder.
+- Add the following dependencies to your project's `Cargo.toml`
+```YAML
+[dependencies]
+byteorder = "1.3"
+futures = "0.1"
+tokio = "0.1"
+tokio-socketcan-bcm = "0.3"
+```
 
-## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmarcelbuesing%2Fcan-dbc.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmarcelbuesing%2Fcan-dbc?ref=badge_large)
+```Rust
+mod j1939;
+
+use futures::future::Future;
+use futures::stream::Stream;
+use std::io;
+use std::time::Duration;
+use tokio;
+
+fn main() -> io::Result<()> {
+    let ival = Duration::from_secs(0);
+
+    let f = j1939::Oel::stream("vcan0", &ival, &ival)?
+        .for_each(|oel| {
+            // Signal indicates the selected position of the operator's hazard light switch.
+            match oel.hazardlightswitch() {
+                j1939::HazardLightSwitch2365443326::HazardLampsToBeFlashing => {
+                    println!("Hazard Lamps To Be Flashing")
+                }
+                j1939::HazardLightSwitch2365443326::HazardLampsToBeOff => {
+                    println!("Hazard Lamps To Be Off")
+                }
+                j1939::HazardLightSwitch2365443326::NotAvailable => println!("Not available"),
+                j1939::HazardLightSwitch2365443326::Error => println!("Error"),
+                j1939::HazardLightSwitch2365443326::XValue(_) => unreachable!(),
+            }
+            Ok(())
+        });
+
+    tokio::run(f.map_err(|_| ()));
+
+    Ok(())
+}
+```
+
+## Naming
+Recommendation: Value descriptions aka `VAL_ ...` should contain only
+alphanumeric characters or underscores and should start with an alphabetic character.
+E.g. `VAL_ 100 "111 Wunderschön Inc" 255` should be `VAL_ 100 " Wunderschoen Inc 111" 255`
+
+- Enums: Generated names are prefixed with an `X` if the name does not start with an alphabetic character.
+- Enums: Characters that are not alphanumeric or `_` are replaced with an `X`
+- Enums: An `XValue(f64)` variant is added to each enum since value descriptions often do not cover all possibilities.
