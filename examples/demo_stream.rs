@@ -26,7 +26,6 @@ use futures_util::stream::StreamExt;
 use std::io;
 use std::time::Duration;
 
-
 #[runtime::main]
 async fn main() -> io::Result<()> {
     let ival = Duration::from_secs(0);

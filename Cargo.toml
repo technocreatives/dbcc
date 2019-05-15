@@ -20,7 +20,7 @@ name = "dbcc"
 travis-ci = { repository = "marcelbuesing/dbcc", branch = "dev" }
 
 [dependencies]
-can-dbc = "2.0.0"
+can-dbc = "2.0.2"
 codegen = "0.1.1"
 heck = "0.3"
 log = "0.4"

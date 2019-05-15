@@ -2,11 +2,14 @@
 
 extern crate test;
 
-use can_dbc::{ByteOrder, Message, MessageId, Signal, ValueDescription, DBC, MultiplexIndicator};
+use can_dbc::{
+    ByteOrder, Message, MessageId, MultiplexIndicator, Signal, SignalExtendedValueType,
+    ValueDescription, ValueType, DBC,
+};
 use codegen::{Enum, Function, Impl, Scope, Struct};
 use heck::{CamelCase, ShoutySnakeCase};
 use log::warn;
-use socketcan::{SFF_MASK, EFF_MASK};
+use socketcan::{EFF_MASK, SFF_MASK};
 
 use std::fmt::Write;
 
@@ -166,7 +169,7 @@ pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Resu
     signal_fn.vis("pub");
     signal_fn.arg_ref_self();
 
-    let signal_return_type = signal_return_type(signal);
+    let signal_return_type = signal_return_type(dbc, message_id, signal);
     signal_fn.ret(codegen::Type::new(&signal_return_type));
 
     let default_signal_comment = format!("Read {} signal from can frame", signal.name());
@@ -229,40 +232,54 @@ fn calc_raw(
 
     // No shift required if start_bit == 0
     let shift = if signal_shift != 0 {
-        format!("(frame_payload >> {})", signal_shift)
+        format!("((frame_payload >> {})", signal_shift)
     } else {
-        format!("frame_payload")
+        format!("(frame_payload")
     };
 
     write!(&mut calc, "({} & {:#X})", shift, bit_msk_const)?;
 
-    if *signal.signal_size() != 1 {
-        write!(&mut calc, " as {}", signal_return_type)?;
+    if *signal.signal_size() != 1 && *signal.factor() != 1.0 {
+        write!(&mut calc, " as f64")?;
     }
 
     if *signal.factor() != 1.0 {
         write!(&mut calc, " * {:.6}", signal.factor())?;
     }
 
-    if *signal.offset() != 0.0 && *signal.signal_size() <= 32 {
-        write!(&mut calc, " + {}f32", signal.offset())?;
-    } else if *signal.offset() != 0.0 {
-        write!(&mut calc, " + {}f64", signal.offset())?;
+    if *signal.signal_size() != 1 {
+        write!(&mut calc, ") as {}", signal_return_type)?;
     }
 
     // boolean signal
     if *signal.signal_size() == 1 {
-        write!(&mut calc, " == 1")?;
+        write!(&mut calc, " == 1)")?;
     }
 
     Ok(calc)
 }
 
-fn signal_return_type(signal: &Signal) -> String {
+fn signal_return_type(dbc: &DBC, message_id: &MessageId, signal: &Signal) -> String {
+    if let Some(extended_value_type) = dbc.extended_value_type_for_signal(message_id, signal.name())
+    {
+        match extended_value_type {
+            SignalExtendedValueType::IEEEfloat32Bit => return "f32".to_string(),
+            SignalExtendedValueType::IEEEdouble64bit => return "f64".to_string(),
+            SignalExtendedValueType::SignedOrUnsignedInteger => (), // Handled below, also part of the Signal itself
+        }
+    }
+
+    let prefix_int_sign = match *signal.value_type() {
+        ValueType::Signed => "i",
+        ValueType::Unsigned => "u",
+    };
+
     match signal.signal_size() {
         _ if *signal.signal_size() == 1 => "bool".to_string(),
-        _ if *signal.signal_size() > 1 && *signal.signal_size() <= 32 => "f32".to_string(),
-        _ => "f64".to_string(),
+        _ if *signal.signal_size() > 1 && *signal.signal_size() <= 32 => {
+            format!("{}32", prefix_int_sign).to_string()
+        }
+        _ => format!("{}64", prefix_int_sign).to_string(),
     }
 }
 
@@ -312,7 +329,6 @@ fn message_impl(opt: &DbccOpt, dbc: &DBC, message: &Message) -> Result<Impl> {
     }
 
     for signal in message.signals() {
-
         if *signal.multiplexer_indicator() != MultiplexIndicator::Plain {
             warn!("Multiplexed signals are currently not supported, the message `{}` signal `{}` will be skipped", message.message_name(), signal.name());
             continue;
@@ -351,9 +367,15 @@ fn message_stream(message: &Message) -> Function {
     stream_fn.line("let socket = BCMSocket::open_nb(&can_interface)?;");
 
     let message_id = match message.message_id().0 & EFF_MASK {
-            0...SFF_MASK => format!("let message_id = CANMessageId::SFF({} as u16);", (message.message_id().0 & SFF_MASK).to_string()),
-            SFF_MASK...EFF_MASK => format!("let message_id = CANMessageId::EFF({});", (message.message_id().0 & EFF_MASK).to_string()),
-            _ => unreachable!(),
+        0...SFF_MASK => format!(
+            "let message_id = CANMessageId::SFF({} as u16);",
+            (message.message_id().0 & SFF_MASK).to_string()
+        ),
+        SFF_MASK...EFF_MASK => format!(
+            "let message_id = CANMessageId::EFF({});",
+            (message.message_id().0 & EFF_MASK).to_string()
+        ),
+        _ => unreachable!(),
     };
     stream_fn.line(message_id);
 
