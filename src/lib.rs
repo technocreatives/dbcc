@@ -7,7 +7,7 @@ use can_dbc::{
     ValueDescription, ValueType, DBC,
 };
 use codegen::{Enum, Function, Impl, Scope, Struct};
-use heck::{CamelCase, ShoutySnakeCase};
+use heck::{CamelCase, ShoutySnakeCase, SnakeCase};
 use log::warn;
 use socketcan::{EFF_MASK, SFF_MASK};
 
@@ -162,7 +162,7 @@ pub fn signal_enum_impl_from(val_desc: &ValueDescription) -> Option<Impl> {
 }
 
 pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Result<Function> {
-    let raw_fn_name = format!("{}_{}", signal.name().to_lowercase(), RAW_FN_SUFFIX);
+    let raw_fn_name = format!("{}_{}", signal.name().to_snake_case(), RAW_FN_SUFFIX);
 
     let mut signal_fn = codegen::Function::new(&raw_fn_name);
     signal_fn.allow("dead_code");
@@ -205,14 +205,14 @@ pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Resu
 }
 
 pub fn signal_fn_enum(signal: &Signal, enum_type: String) -> Result<Function> {
-    let mut signal_fn = codegen::Function::new(&signal.name().to_lowercase());
+    let mut signal_fn = codegen::Function::new(&signal.name().to_snake_case());
     signal_fn.allow("dead_code");
     signal_fn.vis("pub");
     signal_fn.arg_ref_self();
 
     signal_fn.ret(enum_type.clone());
 
-    let raw_fn_name = format!("{}_{}", signal.name().to_lowercase(), RAW_FN_SUFFIX);
+    let raw_fn_name = format!("{}_{}", signal.name().to_snake_case(), RAW_FN_SUFFIX);
 
     signal_fn.line(format!(
         "{}::from(self.{}() as u64)",
