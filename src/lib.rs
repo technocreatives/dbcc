@@ -276,9 +276,15 @@ fn signal_return_type(dbc: &DBC, message_id: &MessageId, signal: &Signal) -> Str
 
     match signal.signal_size() {
         _ if *signal.signal_size() == 1 => "bool".to_string(),
-        _ if *signal.signal_size() > 1 && *signal.signal_size() <= 32 => {
+        _ if *signal.signal_size() > 1 && *signal.signal_size() <= 8 => {
+            format!("{}8", prefix_int_sign).to_string()
+        },
+        _ if *signal.signal_size() > 8 && *signal.signal_size() <= 16 => {
+            format!("{}16", prefix_int_sign).to_string()
+        },
+        _ if *signal.signal_size() > 16 && *signal.signal_size() <= 32 => {
             format!("{}32", prefix_int_sign).to_string()
-        }
+        },
         _ => format!("{}64", prefix_int_sign).to_string(),
     }
 }
