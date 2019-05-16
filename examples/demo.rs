@@ -19,7 +19,7 @@ fn main() {
         // J1939 - Operators External Light Controls Message
         let oel = j1939::Oel::new(can_frame_data);
 
-        match oel.hazardlightswitch() {
+        match oel.hazard_light_switch() {
             j1939::HazardLightSwitch2365443326::HazardLampsToBeFlashing => {
                 println!("Hazard Lamps To Be Flashing")
             }

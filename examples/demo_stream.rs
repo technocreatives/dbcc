@@ -33,7 +33,7 @@ async fn main() -> io::Result<()> {
     let oel = await!(oel_stream.next()).expect("No next value")?;
 
     // Signal indicates the selected position of the operator's hazard light switch.
-    match oel.hazardlightswitch() {
+    match oel.hazard_light_switch() {
         j1939::HazardLightSwitch2365443326::HazardLampsToBeFlashing => {
             println!("Hazard Lamps To Be Flashing")
         }
