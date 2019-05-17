@@ -248,7 +248,11 @@ fn calc_raw(
     }
 
     if *signal.signal_size() != 1 {
-        write!(&mut calc, ") as {}", signal_return_type)?;
+        if signal_return_type != "f32" && signal_return_type != "f64" && *signal.factor() != 1.0 {
+            write!(&mut calc, ").round() as {}", signal_return_type)?;
+        } else {
+            write!(&mut calc, ") as {}", signal_return_type)?;
+        }
     }
 
     // boolean signal
