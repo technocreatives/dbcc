@@ -30619,7 +30619,7 @@ impl Eec7 {
     #[allow(dead_code)]
     pub fn eng_exhst_gs_rcirculation_valve2_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// The position of the exhaust gas recirculation valve expressed as a percentage of full travel.
@@ -30627,7 +30627,7 @@ impl Eec7 {
     #[allow(dead_code)]
     pub fn eng_exhst_gs_recirculation_valve_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.002500).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 }
 
@@ -30659,7 +30659,7 @@ impl Eec8 {
     #[allow(dead_code)]
     pub fn eng_exhst_gs_rcrculation_valve2_ctrl_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.002500).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 }
 
@@ -30691,7 +30691,7 @@ impl EflP5 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_actton_oil_press_for_cyl4_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #3.
@@ -30699,7 +30699,7 @@ impl EflP5 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_actton_oil_press_for_cyl3_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #2.
@@ -30707,7 +30707,7 @@ impl EflP5 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_actton_oil_press_for_cyl2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #1.
@@ -30715,7 +30715,7 @@ impl EflP5 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_actton_oil_press_for_cyl1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -30747,7 +30747,7 @@ impl EflP6 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_actton_oil_press_for_cyl8_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #7.
@@ -30755,7 +30755,7 @@ impl EflP6 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_actton_oil_press_for_cyl7_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #6.
@@ -30763,7 +30763,7 @@ impl EflP6 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_actton_oil_press_for_cyl6_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #5.
@@ -30771,7 +30771,7 @@ impl EflP6 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_actton_oil_press_for_cyl5_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -30803,7 +30803,7 @@ impl EflP7 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl12_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #11.
@@ -30811,7 +30811,7 @@ impl EflP7 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl11_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #10.
@@ -30819,7 +30819,7 @@ impl EflP7 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl10_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #9.
@@ -30827,7 +30827,7 @@ impl EflP7 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_actton_oil_press_for_cyl9_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -30859,7 +30859,7 @@ impl EflP8 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl16_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #15.
@@ -30867,7 +30867,7 @@ impl EflP8 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl15_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #14.
@@ -30875,7 +30875,7 @@ impl EflP8 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl14_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #13.
@@ -30883,7 +30883,7 @@ impl EflP8 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl13_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -30915,7 +30915,7 @@ impl EflP9 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl20_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #19.
@@ -30923,7 +30923,7 @@ impl EflP9 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl19_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #18.
@@ -30931,7 +30931,7 @@ impl EflP9 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl18_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The gage pressure of the oil in the hydraulic accumulator that powers the engine intake valve for cylinder #17.
@@ -30939,7 +30939,7 @@ impl EflP9 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttn_oil_press_for_cyl17_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -30971,7 +30971,7 @@ impl Egrbv {
     #[allow(dead_code)]
     pub fn egr_cooler_bypass_actuator_postion_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -31631,7 +31631,7 @@ impl Sas {
     #[allow(dead_code)]
     pub fn steer_wheel_angle_range_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.000977).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.000977 as f32 + -31.374f32).round() as u16
     }
 
     /// Read SteerWheelAngleRangeCounterType signal from can frame
@@ -31651,7 +31651,7 @@ impl Sas {
     #[allow(dead_code)]
     pub fn steer_wheel_angle_range_counter_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0x3F)) as u8
+        (((frame_payload >> 16) & 0x3F) as f32 + -32f32) as u8
     }
 
     /// The main operator`s steering wheel angle (on the steering column, not the actual wheel angle).
@@ -31659,7 +31659,7 @@ impl Sas {
     #[allow(dead_code)]
     pub fn steer_wheel_angle_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.000977).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.000977 as f32 + -31.374f32).round() as u16
     }
 }
 
@@ -31691,7 +31691,7 @@ impl Scr1 {
     #[allow(dead_code)]
     pub fn cmded_catalyst_reagent_consumption_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Read AvrgeCatalystReagentConsumption signal from can frame
@@ -31699,7 +31699,7 @@ impl Scr1 {
     #[allow(dead_code)]
     pub fn avrge_catalyst_reagent_consumption_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 }
 
@@ -31815,7 +31815,7 @@ impl Vds2 {
     #[allow(dead_code)]
     pub fn vehicle_roll_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 }
 
@@ -31847,7 +31847,7 @@ impl Lf {
     #[allow(dead_code)]
     pub fn total_eng_cruise_time_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 48) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Read TotalDriveAverageLoadFactor signal from can frame
@@ -31855,7 +31855,7 @@ impl Lf {
     #[allow(dead_code)]
     pub fn total_drive_average_load_factor_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read TripDriveAverageLoadFactor signal from can frame
@@ -31863,7 +31863,7 @@ impl Lf {
     #[allow(dead_code)]
     pub fn trip_drive_average_load_factor_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Average speed of the engine since the last trip reset.
@@ -31871,7 +31871,7 @@ impl Lf {
     #[allow(dead_code)]
     pub fn trip_average_eng_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Maximum engine speed achieved since the last trip reset.
@@ -31879,7 +31879,7 @@ impl Lf {
     #[allow(dead_code)]
     pub fn trip_max_eng_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.125000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 }
 
@@ -32727,7 +32727,7 @@ impl Lbc {
     #[allow(dead_code)]
     pub fn blade_duration_and_direction_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000 as f32 + -3276.8f32).round() as u16
     }
 }
 
@@ -32759,7 +32759,7 @@ impl It6 {
     #[allow(dead_code)]
     pub fn eng_actual_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// A programmable timing value specific to the engine�s application.
@@ -32767,7 +32767,7 @@ impl It6 {
     #[allow(dead_code)]
     pub fn eng_desired_ignt_timing3_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// A programmable timing value specific to the engine�s application.
@@ -32775,7 +32775,7 @@ impl It6 {
     #[allow(dead_code)]
     pub fn eng_desired_ignt_timing2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// A programmable timing value specific to the engine�s application.
@@ -32783,7 +32783,7 @@ impl It6 {
     #[allow(dead_code)]
     pub fn eng_desired_ignt_timing1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 }
 
@@ -32815,7 +32815,7 @@ impl It5 {
     #[allow(dead_code)]
     pub fn eng_cyl20_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32823,7 +32823,7 @@ impl It5 {
     #[allow(dead_code)]
     pub fn eng_cyl19_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32831,7 +32831,7 @@ impl It5 {
     #[allow(dead_code)]
     pub fn eng_cyl18_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32839,7 +32839,7 @@ impl It5 {
     #[allow(dead_code)]
     pub fn eng_cyl17_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 }
 
@@ -32871,7 +32871,7 @@ impl It4 {
     #[allow(dead_code)]
     pub fn eng_cyl16_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32879,7 +32879,7 @@ impl It4 {
     #[allow(dead_code)]
     pub fn eng_cyl15_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32887,7 +32887,7 @@ impl It4 {
     #[allow(dead_code)]
     pub fn eng_cyl14_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32895,7 +32895,7 @@ impl It4 {
     #[allow(dead_code)]
     pub fn eng_cyl13_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 }
 
@@ -32927,7 +32927,7 @@ impl It3 {
     #[allow(dead_code)]
     pub fn eng_cyl12_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32935,7 +32935,7 @@ impl It3 {
     #[allow(dead_code)]
     pub fn eng_cyl11_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32943,7 +32943,7 @@ impl It3 {
     #[allow(dead_code)]
     pub fn eng_cyl10_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32951,7 +32951,7 @@ impl It3 {
     #[allow(dead_code)]
     pub fn eng_cyl9_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 }
 
@@ -32983,7 +32983,7 @@ impl It2 {
     #[allow(dead_code)]
     pub fn eng_cyl8_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32991,7 +32991,7 @@ impl It2 {
     #[allow(dead_code)]
     pub fn eng_cyl7_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -32999,7 +32999,7 @@ impl It2 {
     #[allow(dead_code)]
     pub fn eng_cyl6_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -33007,7 +33007,7 @@ impl It2 {
     #[allow(dead_code)]
     pub fn eng_cyl5_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 }
 
@@ -33039,7 +33039,7 @@ impl It1 {
     #[allow(dead_code)]
     pub fn eng_cyl4_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -33047,7 +33047,7 @@ impl It1 {
     #[allow(dead_code)]
     pub fn eng_cyl3_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -33055,7 +33055,7 @@ impl It1 {
     #[allow(dead_code)]
     pub fn eng_cyl2_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The ignition timing of the cylinder.
@@ -33063,7 +33063,7 @@ impl It1 {
     #[allow(dead_code)]
     pub fn eng_cyl1_ignt_timing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 }
 
@@ -33095,7 +33095,7 @@ impl Iso3 {
     #[allow(dead_code)]
     pub fn eng_cyl20_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33103,7 +33103,7 @@ impl Iso3 {
     #[allow(dead_code)]
     pub fn eng_cyl19_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33111,7 +33111,7 @@ impl Iso3 {
     #[allow(dead_code)]
     pub fn eng_cyl18_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33119,7 +33119,7 @@ impl Iso3 {
     #[allow(dead_code)]
     pub fn eng_cyl17_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -125f32) as u8
     }
 }
 
@@ -33151,7 +33151,7 @@ impl Iso2 {
     #[allow(dead_code)]
     pub fn eng_cyl16_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF)) as u8
+        (((frame_payload >> 56) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33159,7 +33159,7 @@ impl Iso2 {
     #[allow(dead_code)]
     pub fn eng_cyl15_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF)) as u8
+        (((frame_payload >> 48) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33167,7 +33167,7 @@ impl Iso2 {
     #[allow(dead_code)]
     pub fn eng_cyl14_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF)) as u8
+        (((frame_payload >> 40) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33175,7 +33175,7 @@ impl Iso2 {
     #[allow(dead_code)]
     pub fn eng_cyl13_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF)) as u8
+        (((frame_payload >> 32) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33183,7 +33183,7 @@ impl Iso2 {
     #[allow(dead_code)]
     pub fn eng_cyl12_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33191,7 +33191,7 @@ impl Iso2 {
     #[allow(dead_code)]
     pub fn eng_cyl11_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33199,7 +33199,7 @@ impl Iso2 {
     #[allow(dead_code)]
     pub fn eng_cyl10_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33207,7 +33207,7 @@ impl Iso2 {
     #[allow(dead_code)]
     pub fn eng_cyl9_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -125f32) as u8
     }
 }
 
@@ -33239,7 +33239,7 @@ impl Iso1 {
     #[allow(dead_code)]
     pub fn eng_cyl8_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF)) as u8
+        (((frame_payload >> 56) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33247,7 +33247,7 @@ impl Iso1 {
     #[allow(dead_code)]
     pub fn eng_cyl7_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF)) as u8
+        (((frame_payload >> 48) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33255,7 +33255,7 @@ impl Iso1 {
     #[allow(dead_code)]
     pub fn eng_cyl6_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF)) as u8
+        (((frame_payload >> 40) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33263,7 +33263,7 @@ impl Iso1 {
     #[allow(dead_code)]
     pub fn eng_cyl5_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF)) as u8
+        (((frame_payload >> 32) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33271,7 +33271,7 @@ impl Iso1 {
     #[allow(dead_code)]
     pub fn eng_cyl4_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33279,7 +33279,7 @@ impl Iso1 {
     #[allow(dead_code)]
     pub fn eng_cyl3_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33287,7 +33287,7 @@ impl Iso1 {
     #[allow(dead_code)]
     pub fn eng_cyl2_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter indicates the relative intensity of the secondary output voltage of the ignition transformer.
@@ -33295,7 +33295,7 @@ impl Iso1 {
     #[allow(dead_code)]
     pub fn eng_cyl1_ignt_trans_second_output_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -125f32) as u8
     }
 }
 
@@ -33399,7 +33399,7 @@ impl Io {
     #[allow(dead_code)]
     pub fn eng_total_idle_hours_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Accumulated amount of fuel used during vehicle operation while under idle conditions.
@@ -33407,7 +33407,7 @@ impl Io {
     #[allow(dead_code)]
     pub fn eng_total_idle_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 }
 
@@ -33439,7 +33439,7 @@ impl Imt2 {
     #[allow(dead_code)]
     pub fn eng_intake_manifold6_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF)) as u8
+        (((frame_payload >> 32) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of pre-combustion air found in intake manifold number 5 of engine air supply system.
@@ -33447,7 +33447,7 @@ impl Imt2 {
     #[allow(dead_code)]
     pub fn eng_intake_manifold5_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of pre-combustion air found in intake manifold of engine air supply system.
@@ -33455,7 +33455,7 @@ impl Imt2 {
     #[allow(dead_code)]
     pub fn eng_intake_manifold4_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of pre-combustion air found in intake manifold of engine air supply system.
@@ -33463,7 +33463,7 @@ impl Imt2 {
     #[allow(dead_code)]
     pub fn eng_intake_manifold3_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of pre-combustion air found in intake manifold of engine air supply system.
@@ -33471,7 +33471,7 @@ impl Imt2 {
     #[allow(dead_code)]
     pub fn eng_intake_manifold2_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -40f32) as u8
     }
 }
 
@@ -33503,7 +33503,7 @@ impl Imt1 {
     #[allow(dead_code)]
     pub fn eng_turbo4_boost_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Gage pressure of air measured downstream of the compressor discharge side of the turbocharger.
@@ -33511,7 +33511,7 @@ impl Imt1 {
     #[allow(dead_code)]
     pub fn eng_turbo3_boost_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Gage pressure of air measured downstream of the compressor discharge side of the turbocharger.
@@ -33519,7 +33519,7 @@ impl Imt1 {
     #[allow(dead_code)]
     pub fn eng_turbo2_boost_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Gage pressure of air measured downstream of the compressor discharge side of the turbocharger.
@@ -33527,7 +33527,7 @@ impl Imt1 {
     #[allow(dead_code)]
     pub fn eng_turbo1_boost_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.125000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 }
 
@@ -33559,7 +33559,7 @@ impl Ic2 {
     #[allow(dead_code)]
     pub fn eng_air_filter4_diff_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.050000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.050000).round() as u8
     }
 
     /// Read EngAirFilter3DiffPress signal from can frame
@@ -33567,7 +33567,7 @@ impl Ic2 {
     #[allow(dead_code)]
     pub fn eng_air_filter3_diff_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.050000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.050000).round() as u8
     }
 
     /// Read EngAirFilter2DiffPress signal from can frame
@@ -33575,7 +33575,7 @@ impl Ic2 {
     #[allow(dead_code)]
     pub fn eng_air_filter2_diff_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.050000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.050000).round() as u8
     }
 
     /// The gage pressure measurement of the air intake manifold for bank #2 or the second air intake manifold.
@@ -33583,7 +33583,7 @@ impl Ic2 {
     #[allow(dead_code)]
     pub fn eng_intake_manifold2_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// The absolute pressure measurement of the air intake manifold.
@@ -33591,7 +33591,7 @@ impl Ic2 {
     #[allow(dead_code)]
     pub fn eng_intake_manifold1_abs_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 2.000000).round() as u8
     }
 }
 
@@ -33623,7 +33623,7 @@ impl Ic1 {
     #[allow(dead_code)]
     pub fn eng_coolant_filter_diff_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.500000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.500000).round() as u8
     }
 
     /// Temperature of combustion byproducts leaving the engine.
@@ -33631,7 +33631,7 @@ impl Ic1 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 40) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read EngAirFilter1DiffPress signal from can frame
@@ -33639,7 +33639,7 @@ impl Ic1 {
     #[allow(dead_code)]
     pub fn eng_air_filter1_diff_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.050000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.050000).round() as u8
     }
 
     /// Absolute air pressure at inlet to intake manifold or air box.
@@ -33647,7 +33647,7 @@ impl Ic1 {
     #[allow(dead_code)]
     pub fn eng_air_inlet_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Temperature of pre-combustion air found in intake manifold of engine air supply system.
@@ -33655,7 +33655,7 @@ impl Ic1 {
     #[allow(dead_code)]
     pub fn eng_intake_manifold1_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Gage pressure of air measured downstream on the compressor discharge side of the turbocharger.
@@ -33663,7 +33663,7 @@ impl Ic1 {
     #[allow(dead_code)]
     pub fn eng_turbo_boost_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Exhaust back pressure as a result of particle accumulation on filter media placed in the exhaust stream.
@@ -33671,7 +33671,7 @@ impl Ic1 {
     #[allow(dead_code)]
     pub fn eng_particulate_trap_inlet_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.500000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.500000).round() as u8
     }
 }
 
@@ -33763,7 +33763,7 @@ impl Htr {
     #[allow(dead_code)]
     pub fn aux_heater_output_power_percent_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Temperature of the input air in an auxiliary heater system.
@@ -33771,7 +33771,7 @@ impl Htr {
     #[allow(dead_code)]
     pub fn aux_heater_input_air_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of the auxiliary heater output coolant (I.
@@ -33779,7 +33779,7 @@ impl Htr {
     #[allow(dead_code)]
     pub fn aux_heater_output_coolant_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -40f32) as u8
     }
 }
 
@@ -33811,7 +33811,7 @@ impl Hrw {
     #[allow(dead_code)]
     pub fn rear_axle_right_wheel_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// High resolution measurement of the speed of the left wheel on the rear axle.
@@ -33819,7 +33819,7 @@ impl Hrw {
     #[allow(dead_code)]
     pub fn rear_axle_left_wheel_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// High resolution measurement of the speed of the right wheel on the front axle.
@@ -33827,7 +33827,7 @@ impl Hrw {
     #[allow(dead_code)]
     pub fn front_axle_right_wheel_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// High resolution measurement of the speed of the left wheel on the front axle.
@@ -33835,7 +33835,7 @@ impl Hrw {
     #[allow(dead_code)]
     pub fn front_axle_left_wheel_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.003906).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 }
 
@@ -33903,7 +33903,7 @@ impl Hpg {
     #[allow(dead_code)]
     pub fn hyd_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 2.000000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 2.000000).round() as u16
     }
 }
 
@@ -33935,7 +33935,7 @@ impl Hours {
     #[allow(dead_code)]
     pub fn eng_total_revolutions_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 1000.000000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 1000.000000).round() as u32
     }
 
     /// Accumulated time of operation of engine.
@@ -33943,7 +33943,7 @@ impl Hours {
     #[allow(dead_code)]
     pub fn eng_total_hours_of_operation_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 }
 
@@ -34047,7 +34047,7 @@ impl Hbs {
     #[allow(dead_code)]
     pub fn hyd_brake_press_circuit2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 100.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 100.000000).round() as u8
     }
 
     /// Read HydBrakePressCircuit1 signal from can frame
@@ -34055,7 +34055,7 @@ impl Hbs {
     #[allow(dead_code)]
     pub fn hyd_brake_press_circuit1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 100.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 100.000000).round() as u8
     }
 }
 
@@ -34087,7 +34087,7 @@ impl Gtfi {
     #[allow(dead_code)]
     pub fn trip_drive_fuel_economy_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 160) & 0xFFFF) as f64 * 0.001953).round() as u16
+        (((frame_payload >> 160) & 0xFFFF) as f32 * 0.001953).round() as u16
     }
 
     /// Total fuel consumed while the engine is in the cruise hold state since the last trip reset.
@@ -34095,7 +34095,7 @@ impl Gtfi {
     #[allow(dead_code)]
     pub fn trip_cruise_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 128) & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        (((frame_payload >> 128) & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Read TripVehicleIdleFuelUsed signal from can frame
@@ -34103,7 +34103,7 @@ impl Gtfi {
     #[allow(dead_code)]
     pub fn trip_vehicle_idle_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 96) & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        (((frame_payload >> 96) & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Read TripPTONonmovingFuelUsed signal from can frame
@@ -34111,7 +34111,7 @@ impl Gtfi {
     #[allow(dead_code)]
     pub fn trip_pto_nonmoving_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 64) & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        (((frame_payload >> 64) & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Read TripPTOMovingFuelUsed signal from can frame
@@ -34119,7 +34119,7 @@ impl Gtfi {
     #[allow(dead_code)]
     pub fn trip_pto_moving_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Read TripDriveFuelUsed signal from can frame
@@ -34127,7 +34127,7 @@ impl Gtfi {
     #[allow(dead_code)]
     pub fn trip_drive_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 }
 
@@ -34159,7 +34159,7 @@ impl Gfp {
     #[allow(dead_code)]
     pub fn eng_fuel_valve1_outlet_abs_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The differential pressure between the gaseous fuel and the air intake manifold.
@@ -34167,7 +34167,7 @@ impl Gfp {
     #[allow(dead_code)]
     pub fn eng_air_to_fuel_diff_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The differential pressure between the inlet and the outlet of a gaseous fuel valve.
@@ -34175,7 +34175,7 @@ impl Gfp {
     #[allow(dead_code)]
     pub fn eng_fuel_valve_diff_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The absolute pressure at the inlet of the gaseous fuel valve.
@@ -34183,7 +34183,7 @@ impl Gfp {
     #[allow(dead_code)]
     pub fn eng_fuel_valve_inlet_abs_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -34215,7 +34215,7 @@ impl Gfi2 {
     #[allow(dead_code)]
     pub fn eng_fuel_flow_rate2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The rate at which the fuel is flowing through a fuel valve.
@@ -34223,7 +34223,7 @@ impl Gfi2 {
     #[allow(dead_code)]
     pub fn eng_fuel_flow_rate1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Read EngRqedFuelValve2Pos signal from can frame
@@ -34231,7 +34231,7 @@ impl Gfi2 {
     #[allow(dead_code)]
     pub fn eng_rqed_fuel_valve2_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The requested position of a gaseous fuel valve 1 that is metering the fuel flow to the engine.
@@ -34239,7 +34239,7 @@ impl Gfi2 {
     #[allow(dead_code)]
     pub fn eng_rqed_fuel_valve1_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The position of a gaseous fuel valve that is metering the fuel flow to the engine.
@@ -34247,7 +34247,7 @@ impl Gfi2 {
     #[allow(dead_code)]
     pub fn eng_fuel_valve2_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The position of a gaseous fuel valve that is metering the fuel flow to the engine.
@@ -34255,7 +34255,7 @@ impl Gfi2 {
     #[allow(dead_code)]
     pub fn eng_fuel_valve1_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -34286,7 +34286,7 @@ impl Gfi1 {
     #[allow(dead_code)]
     pub fn eng_fuel_specific_gravity_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.000100).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.000100).round() as u16
     }
 
     /// Average fuel rate, equal to trip fuel divided by trip time while the engine speed is above zero, since the last trip reset.
@@ -34294,7 +34294,7 @@ impl Gfi1 {
     #[allow(dead_code)]
     pub fn trip_average_fuel_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Total fuel used while the PTO or remote PTO is in the hold state and engine speed is above zero, over the life of the engine.
@@ -34302,7 +34302,7 @@ impl Gfi1 {
     #[allow(dead_code)]
     pub fn total_eng_pto_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 }
 
@@ -34333,7 +34333,7 @@ impl Gfd {
     #[allow(dead_code)]
     pub fn specific_heat_ratio_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.001000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.001000).round() as u16
     }
 }
 
@@ -34365,7 +34365,7 @@ impl Gfc {
     #[allow(dead_code)]
     pub fn total_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Total fuel consumed (trip drive fuel + trip PTO moving fuel + trip PTO non-moving fuel + trip idle fuel) since the last trip reset.
@@ -34373,7 +34373,7 @@ impl Gfc {
     #[allow(dead_code)]
     pub fn trip_fuel_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 }
 
@@ -34405,7 +34405,7 @@ impl Sep2 {
     #[allow(dead_code)]
     pub fn sensor_supply_voltage6_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Read SensorSupplyVoltage5 signal from can frame
@@ -34413,7 +34413,7 @@ impl Sep2 {
     #[allow(dead_code)]
     pub fn sensor_supply_voltage5_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 }
 
@@ -34445,7 +34445,7 @@ impl Sep1 {
     #[allow(dead_code)]
     pub fn sensor_supply_voltage4_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Read SensorSupplyVoltage3 signal from can frame
@@ -34453,7 +34453,7 @@ impl Sep1 {
     #[allow(dead_code)]
     pub fn sensor_supply_voltage3_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Read SensorSupplyVoltage2 signal from can frame
@@ -34461,7 +34461,7 @@ impl Sep1 {
     #[allow(dead_code)]
     pub fn sensor_supply_voltage2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Read SensorSupplyVoltage1 signal from can frame
@@ -34469,7 +34469,7 @@ impl Sep1 {
     #[allow(dead_code)]
     pub fn sensor_supply_voltage1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 }
 
@@ -34669,7 +34669,7 @@ impl Gfi3 {
     #[allow(dead_code)]
     pub fn eng_fuel_valve2_outlet_abs_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Temperature 2 of fuel (or gas).
@@ -34677,7 +34677,7 @@ impl Gfi3 {
     #[allow(dead_code)]
     pub fn eng_fuel_temp2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF)) as u8
+        (((frame_payload >> 32) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Read EngGasMassFlowRate2 signal from can frame
@@ -34685,7 +34685,7 @@ impl Gfi3 {
     #[allow(dead_code)]
     pub fn eng_gas_mass_flow_rate2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Read EngFuelValve2InletAbsPress signal from can frame
@@ -34693,7 +34693,7 @@ impl Gfi3 {
     #[allow(dead_code)]
     pub fn eng_fuel_valve2_inlet_abs_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -34725,7 +34725,7 @@ impl EflP4 {
     #[allow(dead_code)]
     pub fn eng_centrifugal_oil_filter_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 4.000000).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 4.000000).round() as u16
     }
 
     /// The differential pressure measured across the input and output of the engine coolant pump.
@@ -34733,7 +34733,7 @@ impl EflP4 {
     #[allow(dead_code)]
     pub fn eng_coolant_pump_diff_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 1.640000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 1.640000 as f32 + -7f32).round() as u8
     }
 
     /// Read EngChargeAirCooler2InletPress signal from can frame
@@ -34741,7 +34741,7 @@ impl EflP4 {
     #[allow(dead_code)]
     pub fn eng_charge_air_cooler2_inlet_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Read EngChargeAirCooler1InletPress signal from can frame
@@ -34749,7 +34749,7 @@ impl EflP4 {
     #[allow(dead_code)]
     pub fn eng_charge_air_cooler1_inlet_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 2.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Ratio of volume of liquid found in an engine intercooler cooling system to total engine intercooler cooling system volume.
@@ -34757,7 +34757,7 @@ impl EflP4 {
     #[allow(dead_code)]
     pub fn eng_intercooler_coolant_level_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read EngChargeAirCoolerOutletPress signal from can frame
@@ -34765,7 +34765,7 @@ impl EflP4 {
     #[allow(dead_code)]
     pub fn eng_charge_air_cooler_outlet_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Ratio of aftercooler coolant system volume of liquid to total cooling system volume.
@@ -34773,7 +34773,7 @@ impl EflP4 {
     #[allow(dead_code)]
     pub fn eng_aftercooler_coolant_level_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -34805,7 +34805,7 @@ impl Eec6 {
     #[allow(dead_code)]
     pub fn eng_vrable_geometry_turbo_actuator1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read EngTrbCmprssorBypassActuatorPos signal from can frame
@@ -34813,7 +34813,7 @@ impl Eec6 {
     #[allow(dead_code)]
     pub fn eng_trb_cmprssor_bypass_actuator_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read EngTurboCompressorCtrl signal from can frame
@@ -34821,7 +34821,7 @@ impl Eec6 {
     #[allow(dead_code)]
     pub fn eng_turbo_compressor_ctrl_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.002500).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     #[allow(dead_code)]
@@ -35268,7 +35268,7 @@ impl Cri1 {
     #[allow(dead_code)]
     pub fn catalyst_reagent_conductivity_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 5.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 5.000000).round() as u8
     }
 
     /// A measure of the concentration of urea in water.
@@ -35276,7 +35276,7 @@ impl Cri1 {
     #[allow(dead_code)]
     pub fn catalyst_reagent_concentration_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.250000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.250000).round() as u8
     }
 
     /// Read CatalystReagentTemp2 signal from can frame
@@ -35284,7 +35284,7 @@ impl Cri1 {
     #[allow(dead_code)]
     pub fn catalyst_reagent_temp2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -40f32) as u8
     }
 }
 
@@ -35372,7 +35372,7 @@ impl Ahi2 {
     #[allow(dead_code)]
     pub fn after_treatment2_total_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 }
 
@@ -35440,7 +35440,7 @@ impl Afc2 {
     #[allow(dead_code)]
     pub fn aftertreatment2_fuel_press_ctrl_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// Read Aftertreatment2FuelRate signal from can frame
@@ -35448,7 +35448,7 @@ impl Afc2 {
     #[allow(dead_code)]
     pub fn aftertreatment2_fuel_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Pressure of the fuel for Aftertreatment #2.
@@ -35456,7 +35456,7 @@ impl Afc2 {
     #[allow(dead_code)]
     pub fn aftertreatment2_fuel_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -35524,7 +35524,7 @@ impl Afc1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_fuel_press_ctrl_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// Read Aftertreatment1FuelRate signal from can frame
@@ -35532,7 +35532,7 @@ impl Afc1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_fuel_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Pressure of the fuel for Aftertreatment #1.
@@ -35540,7 +35540,7 @@ impl Afc1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_fuel_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -35620,7 +35620,7 @@ impl Aac2 {
     #[allow(dead_code)]
     pub fn aftrtrtment2_air_press_actuator_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Position that the controller is commanding the aftertreatment #2 air pressure control to maintain.
@@ -35628,7 +35628,7 @@ impl Aac2 {
     #[allow(dead_code)]
     pub fn aftertreatment2_air_press_ctrl_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// Read Aftertreatment2PurgeAirPress signal from can frame
@@ -35636,7 +35636,7 @@ impl Aac2 {
     #[allow(dead_code)]
     pub fn aftertreatment2_purge_air_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Aftertreatment2SupplyAirPress signal from can frame
@@ -35644,7 +35644,7 @@ impl Aac2 {
     #[allow(dead_code)]
     pub fn aftertreatment2_supply_air_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -35724,7 +35724,7 @@ impl Aac1 {
     #[allow(dead_code)]
     pub fn aftrtrtment1_air_press_actuator_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Position that the controller is commanding the aftertreatment #1 air pressure control to maintain.
@@ -35732,7 +35732,7 @@ impl Aac1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_air_press_ctrl_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// Read Aftertreatment1PurgeAirPress signal from can frame
@@ -35740,7 +35740,7 @@ impl Aac1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_purge_air_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Aftertreatment1SupplyAirPress signal from can frame
@@ -35748,7 +35748,7 @@ impl Aac1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_supply_air_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -35804,7 +35804,7 @@ impl Ahi1 {
     #[allow(dead_code)]
     pub fn after_treatment1_total_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 }
 
@@ -35836,7 +35836,7 @@ impl Rgaaq {
     #[allow(dead_code)]
     pub fn rqd_gnrtr_avrg_lne_line_acrms_voltage_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.007812).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.007812).round() as u32
     }
 }
 
@@ -35868,7 +35868,7 @@ impl Tfac {
     #[allow(dead_code)]
     pub fn eng_throttle_actuator2_ctrl_cmd_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// Read EngThrottleActuator1CtrlCmd signal from can frame
@@ -35876,7 +35876,7 @@ impl Tfac {
     #[allow(dead_code)]
     pub fn eng_throttle_actuator1_ctrl_cmd_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.002500).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// Read EngFuelActuator2CtrlCmd signal from can frame
@@ -35884,7 +35884,7 @@ impl Tfac {
     #[allow(dead_code)]
     pub fn eng_fuel_actuator2_ctrl_cmd_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// Read EngFuelActuator1CtrlCmd signal from can frame
@@ -35892,7 +35892,7 @@ impl Tfac {
     #[allow(dead_code)]
     pub fn eng_fuel_actuator1_ctrl_cmd_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 }
 
@@ -36511,7 +36511,7 @@ impl Rgtarp {
     #[allow(dead_code)]
     pub fn rq_generator_overall_power_factor_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.000061).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.000061 as f32 + -1f32).round() as u16
     }
 
     /// The total reactive power requested to be delivered by the generator
@@ -36519,7 +36519,7 @@ impl Rgtarp {
     #[allow(dead_code)]
     pub fn rq_generator_total_ac_reactive_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -36575,7 +36575,7 @@ impl Bi {
     #[allow(dead_code)]
     pub fn rel_blade_measurement_latency_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.500000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.500000).round() as u8
     }
 
     /// The blade rotation angle measurement around the yaw (z-axis).
@@ -36583,7 +36583,7 @@ impl Bi {
     #[allow(dead_code)]
     pub fn blade_rotation_angle_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// The measured vertical distance from a fixed location on the machine blade to a ground-based reference.
@@ -36591,7 +36591,7 @@ impl Bi {
     #[allow(dead_code)]
     pub fn relative_blade_height_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 }
 
@@ -36623,7 +36623,7 @@ impl Ebs11 {
     #[allow(dead_code)]
     pub fn retarder_demand_value_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF)) as u8
+        (((frame_payload >> 40) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The requested brake pressure value of the parking brake as a percentage of maximum.
@@ -36631,7 +36631,7 @@ impl Ebs11 {
     #[allow(dead_code)]
     pub fn park_brake_demand_value_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The requested brake pressure value of the service brake demanded by the driver.
@@ -36639,7 +36639,7 @@ impl Ebs11 {
     #[allow(dead_code)]
     pub fn service_brake_demand_value_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.019531).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.019531).round() as u16
     }
 
     /// Information to identify a dolly axle within the road train.
@@ -36743,7 +36743,7 @@ impl Ebs12 {
     #[allow(dead_code)]
     pub fn road_curvature_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 
     /// Signal which indicates that the towing vehicle has a pneumatic control line for the towed vehicle service braking system
@@ -36823,7 +36823,7 @@ impl Ebs21 {
     #[allow(dead_code)]
     pub fn wheel_speed_diff_main_axle_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 40) & 0xFFFF) as f32 * 0.003906 as f32 + -125f32).round() as u16
     }
 
     /// Actual torque of the retarder as negative percentage of maximum.
@@ -36831,7 +36831,7 @@ impl Ebs21 {
     #[allow(dead_code)]
     pub fn actual_retarder_perc_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF)) as u8
+        (((frame_payload >> 32) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Actual speed of the vehicle (positive value for forward and backward speed) calculated as the average of the wheel speeds of one axle influenced by slip and filtered by a frequency range of 5 Hz to 20 Hz.
@@ -36839,7 +36839,7 @@ impl Ebs21 {
     #[allow(dead_code)]
     pub fn wheel_based_vehicle_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// Signal indicating the trailer is requesting to be braked by the commercial vehicle by means of bleeding the pneumatic supply line.
@@ -36951,7 +36951,7 @@ impl Ebs22 {
     #[allow(dead_code)]
     pub fn axle_load_sum_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 2.000000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 2.000000).round() as u16
     }
 
     /// Signal indicating the trailer is requesting to be braked by the commercial vehicle by means of bleeding the pneumatic supply line.
@@ -37151,7 +37151,7 @@ impl Ebs23 {
     #[allow(dead_code)]
     pub fn pneumatic_supply_pressure_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 5.000000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 5.000000).round() as u8
     }
 
     /// Actual brake temperature.
@@ -37159,7 +37159,7 @@ impl Ebs23 {
     #[allow(dead_code)]
     pub fn brake_temperature_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 10.000000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 10.000000).round() as u8
     }
 
     /// Actual relative value of brake lining of a specific brake.
@@ -37167,7 +37167,7 @@ impl Ebs23 {
     #[allow(dead_code)]
     pub fn brake_lining_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Actual tyre pressure without corrections.
@@ -37175,7 +37175,7 @@ impl Ebs23 {
     #[allow(dead_code)]
     pub fn tyre_pressure_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 10.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 10.000000).round() as u8
     }
 
     /// Second part of identification number of the tyre or wheel (the number of axles).
@@ -37397,7 +37397,7 @@ impl Gpm12 {
     #[allow(dead_code)]
     pub fn engine_speed_upper_limit_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.125000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// The minimum engine speed which the engine is allowed to reach.
@@ -37405,7 +37405,7 @@ impl Gpm12 {
     #[allow(dead_code)]
     pub fn engine_speed_lower_limit_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 }
 
@@ -37449,7 +37449,7 @@ impl Gpm13 {
     #[allow(dead_code)]
     pub fn vehicle_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// The ratio of actual engine percent torque to maximum indicated torque available at the current engine speed, clipped to zero torque during engine braking.
@@ -37466,7 +37466,7 @@ impl Gpm13 {
     #[allow(dead_code)]
     pub fn engine_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// The calculated output torque of the engine.
@@ -37474,7 +37474,7 @@ impl Gpm13 {
     #[allow(dead_code)]
     pub fn actual_engine_perc_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The torque output of the engine requested by the driver.
@@ -37482,7 +37482,7 @@ impl Gpm13 {
     #[allow(dead_code)]
     pub fn drivers_demand_engine_perc_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Signal which indicates whether the engine is running.
@@ -37550,7 +37550,7 @@ impl Gpm14 {
     #[allow(dead_code)]
     pub fn accel_pedal_position_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Switch signal which indicates whether the accelerator pedal low idle switch is opened or closed.
@@ -37582,7 +37582,7 @@ impl Gpm14 {
     #[allow(dead_code)]
     pub fn torque_conv_oil_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Signal which indicates that the torque converter oil temperature has reached its warning level.
@@ -37661,7 +37661,7 @@ impl Gpm14 {
     #[allow(dead_code)]
     pub fn current_gear_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Parameter which represents the ratio of input shaft speed to current engine speed (in percent).
@@ -37669,7 +37669,7 @@ impl Gpm14 {
     #[allow(dead_code)]
     pub fn percent_clutch_slip_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -37745,7 +37745,7 @@ impl Gpm15 {
     #[allow(dead_code)]
     pub fn engine_oil_pressure_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 4.000000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 4.000000).round() as u8
     }
 
     /// Read EngineCoolantTemperature signal from can frame
@@ -37753,7 +37753,7 @@ impl Gpm15 {
     #[allow(dead_code)]
     pub fn engine_coolant_temperature_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of the engine lubricant.
@@ -37761,7 +37761,7 @@ impl Gpm15 {
     #[allow(dead_code)]
     pub fn engine_oil_temperature_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -37793,7 +37793,7 @@ impl Gpm16 {
     #[allow(dead_code)]
     pub fn ambient_air_temperature_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -37865,7 +37865,7 @@ impl Gpm22 {
     #[allow(dead_code)]
     pub fn body_pressure_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.100000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.100000).round() as u8
     }
 
     /// The actual fluid level in a body on the towed vehicle.
@@ -37873,7 +37873,7 @@ impl Gpm22 {
     #[allow(dead_code)]
     pub fn body_fluid_level_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 2.000000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 2.000000).round() as u16
     }
 
     /// The actual temperature in a thermal body on the towed vehicle.
@@ -37881,7 +37881,7 @@ impl Gpm22 {
     #[allow(dead_code)]
     pub fn thermal_body_temperature_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The actual distance between the back of the towed vehicle and any obstacle.
@@ -37889,7 +37889,7 @@ impl Gpm22 {
     #[allow(dead_code)]
     pub fn rear_obstacle_distance_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Signal which indicates that the anti-theft device is switched on or off.
@@ -37945,7 +37945,7 @@ impl Gpm23 {
     #[allow(dead_code)]
     pub fn req_engine_speed_upper_lim_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// The requested minimum engine speed which the engine is to allow.
@@ -37953,7 +37953,7 @@ impl Gpm23 {
     #[allow(dead_code)]
     pub fn req_engine_speed_lower_lim_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// The requested engine torque that the engine is not allowed to exceed, indicated as a ratio of the reference engine torque.
@@ -37961,7 +37961,7 @@ impl Gpm23 {
     #[allow(dead_code)]
     pub fn req_engine_torque_limit_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF)) as u8
+        (((frame_payload >> 48) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The requested vehicle speed which the vehicle is not allowed to exceed.
@@ -37977,7 +37977,7 @@ impl Gpm23 {
     #[allow(dead_code)]
     pub fn req_engine_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.125000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 }
 
@@ -38105,7 +38105,7 @@ impl Gpm24 {
     #[allow(dead_code)]
     pub fn rqsted_percent_clutch_slip_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Signal which indicates the state of the first engine mounted power take off switch.
@@ -38561,7 +38561,7 @@ impl Rge11 {
     #[allow(dead_code)]
     pub fn parking_and_trailer_air_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// Actual static vertical load on driven axle of the commercial vehicle. In case of more than one driven axle the value of the axle with the highest vertical load is transmitted.
@@ -38569,7 +38569,7 @@ impl Rge11 {
     #[allow(dead_code)]
     pub fn driven_axle_load_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 2.000000).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 2.000000).round() as u16
     }
 
     /// The pneumatic pressure in the auxiliary circuit.
@@ -38577,7 +38577,7 @@ impl Rge11 {
     #[allow(dead_code)]
     pub fn aux_equip_supply_pressure_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// Command signal to stop immediately any change of the actual body height level.
@@ -38947,7 +38947,7 @@ impl Rge22 {
     #[allow(dead_code)]
     pub fn rel_veh_body_level_front_axle_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF)) as u16
+        ((frame_payload & 0xFFFF) as f32 + -32000f32) as u16
     }
 }
 
@@ -39003,7 +39003,7 @@ impl Rge23 {
     #[allow(dead_code)]
     pub fn tyre_temperature_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// The pressure loss of a tyre.
@@ -39011,7 +39011,7 @@ impl Rge23 {
     #[allow(dead_code)]
     pub fn air_leakage_detection_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// First part of the identification number of the tyre or whee (number of axles).
@@ -39496,7 +39496,7 @@ impl Xbr {
     #[allow(dead_code)]
     pub fn extl_acceleration_demand_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.000488).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.000488 as f32 + -15.687f32).round() as u16
     }
 }
 
@@ -39564,7 +39564,7 @@ impl Vw {
     #[allow(dead_code)]
     pub fn cargo_weight_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFFFF) as f64 * 2.000000).round() as u16
+        (((frame_payload >> 40) & 0xFFFF) as f32 * 2.000000).round() as u16
     }
 
     /// Total mass of freight-carrying vehicle designed to be pulled by truck, including the weight of the contents.
@@ -39572,7 +39572,7 @@ impl Vw {
     #[allow(dead_code)]
     pub fn trailer_weight_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 2.000000).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 2.000000).round() as u16
     }
 
     /// Total mass imposed by the tires on the road surface at the specified axle.
@@ -39580,7 +39580,7 @@ impl Vw {
     #[allow(dead_code)]
     pub fn axle_weight_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.500000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 
     /// To identify to which of several similar devices (such as tires or fuel tanks) the information applies.
@@ -39619,7 +39619,7 @@ impl Vep3 {
     #[allow(dead_code)]
     pub fn net_battery_current_hi_res_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000 as f32 + -1600f32).round() as u16
     }
 
     /// This parameter indicates the amount of electrical current output from the alternator of the main vehicle.
@@ -39627,7 +39627,7 @@ impl Vep3 {
     #[allow(dead_code)]
     pub fn alt_current_hi_res_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000 as f32 + -1600f32).round() as u16
     }
 }
 
@@ -39659,7 +39659,7 @@ impl Vep2 {
     #[allow(dead_code)]
     pub fn battery2_potential_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// The third power output from an ECM.
@@ -39667,7 +39667,7 @@ impl Vep2 {
     #[allow(dead_code)]
     pub fn ecu_power_output_supply_voltage3_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// The second power output from an ECM.
@@ -39675,7 +39675,7 @@ impl Vep2 {
     #[allow(dead_code)]
     pub fn ecu_power_output_supply_voltage2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Read ECUPowerOutputSupplyVoltage1 signal from can frame
@@ -39683,7 +39683,7 @@ impl Vep2 {
     #[allow(dead_code)]
     pub fn ecu_power_output_supply_voltage1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// This parameter measures the second source of battery potential as measured at the input of the ECM/actuator etc.
@@ -39691,7 +39691,7 @@ impl Vep2 {
     #[allow(dead_code)]
     pub fn battery_potential_power_input2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 }
 
@@ -39723,7 +39723,7 @@ impl Vp {
     #[allow(dead_code)]
     pub fn longitude_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.000000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.000000 as f32 + -210f32).round() as u32
     }
 
     /// Latitude position of the vehicle.
@@ -39731,7 +39731,7 @@ impl Vp {
     #[allow(dead_code)]
     pub fn latitude_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.000000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.000000 as f32 + -210f32).round() as u32
     }
 }
 
@@ -39787,7 +39787,7 @@ impl Vh {
     #[allow(dead_code)]
     pub fn total_power_takeoff_hours_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Accumulated time of operation of vehicle.
@@ -39795,7 +39795,7 @@ impl Vh {
     #[allow(dead_code)]
     pub fn total_vehicle_hours_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 }
 
@@ -39839,7 +39839,7 @@ impl Vf {
     #[allow(dead_code)]
     pub fn hyd_oil_level_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// This switch indicates whether hydraulic oil filter is clogged.
@@ -39859,7 +39859,7 @@ impl Vf {
     #[allow(dead_code)]
     pub fn hyd_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -40f32) as u8
     }
 }
 
@@ -39891,7 +39891,7 @@ impl Vds {
     #[allow(dead_code)]
     pub fn altitude_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.125000 as f32 + -2500f32).round() as u16
     }
 
     /// Pitch of the vehicle as calculated by the navigation device(s).
@@ -39899,7 +39899,7 @@ impl Vds {
     #[allow(dead_code)]
     pub fn pitch_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -200f32).round() as u16
     }
 
     /// Speed of the vehicle as calculated from a device such as a Global Positioning System (GPS).
@@ -39907,7 +39907,7 @@ impl Vds {
     #[allow(dead_code)]
     pub fn navigation_based_vehicle_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// Present compass bearing of vehicle.
@@ -39915,7 +39915,7 @@ impl Vds {
     #[allow(dead_code)]
     pub fn compass_bearing_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812).round() as u16
     }
 }
 
@@ -39947,7 +39947,7 @@ impl Vdhr {
     #[allow(dead_code)]
     pub fn high_resolution_trip_distance_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.005000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.005000).round() as u32
     }
 
     /// Accumulated distance traveled by the vehicle during its operation.
@@ -39955,7 +39955,7 @@ impl Vdhr {
     #[allow(dead_code)]
     pub fn hgh_rslution_total_vehicle_distance_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.005000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.005000).round() as u32
     }
 }
 
@@ -39987,7 +39987,7 @@ impl Vdc2 {
     #[allow(dead_code)]
     pub fn longitudinal_acceleration_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.100000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.100000 as f32 + -12.5f32).round() as u8
     }
 
     /// Indicates a lateral acceleration of the vehicle.
@@ -39995,7 +39995,7 @@ impl Vdc2 {
     #[allow(dead_code)]
     pub fn lateral_acceleration_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFFFF) as f64 * 0.000488).round() as u16
+        (((frame_payload >> 40) & 0xFFFF) as f32 * 0.000488 as f32 + -15.687f32).round() as u16
     }
 
     /// Indicates the rotation about the vertical axis.
@@ -40003,7 +40003,7 @@ impl Vdc2 {
     #[allow(dead_code)]
     pub fn yaw_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 0.000122).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 0.000122 as f32 + -3.92f32).round() as u16
     }
 
     /// Read SteerWheelAngleSensorType signal from can frame
@@ -40023,7 +40023,7 @@ impl Vdc2 {
     #[allow(dead_code)]
     pub fn steer_wheel_turn_counter_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0x3F)) as u8
+        (((frame_payload >> 16) & 0x3F) as f32 + -32f32) as u8
     }
 
     /// The main operator`s steering wheel angle (on the steering column, not the actual wheel angle).
@@ -40031,7 +40031,7 @@ impl Vdc2 {
     #[allow(dead_code)]
     pub fn steer_wheel_angle_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.000977).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.000977 as f32 + -31.374f32).round() as u16
     }
 }
 
@@ -40171,7 +40171,7 @@ impl Vd {
     #[allow(dead_code)]
     pub fn total_vehicle_distance_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.125000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.125000).round() as u32
     }
 
     /// Distance traveled during all or part of a journey.
@@ -40179,7 +40179,7 @@ impl Vd {
     #[allow(dead_code)]
     pub fn trip_distance_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.125000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.125000).round() as u32
     }
 }
 
@@ -40211,7 +40211,7 @@ impl Tvi {
     #[allow(dead_code)]
     pub fn trip_cruise_distance_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFFFFFF) as f64 * 0.125000).round() as u32
+        (((frame_payload >> 16) & 0xFFFFFFFF) as f32 * 0.125000).round() as u32
     }
 
     /// Read TripMaxVehicleSpeed signal from can frame
@@ -40219,7 +40219,7 @@ impl Tvi {
     #[allow(dead_code)]
     pub fn trip_max_vehicle_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.003906).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 }
 
@@ -40251,7 +40251,7 @@ impl Tti2 {
     #[allow(dead_code)]
     pub fn trip_air_compressor_on_time_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 128) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 128) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Read TripIdleTime signal from can frame
@@ -40259,7 +40259,7 @@ impl Tti2 {
     #[allow(dead_code)]
     pub fn trip_idle_time_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 96) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 96) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Total time accumulated while the engine speed is greater than zero since the last trip reset.
@@ -40267,7 +40267,7 @@ impl Tti2 {
     #[allow(dead_code)]
     pub fn trip_eng_running_time_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 64) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 64) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Total time accumulated while the engine is in the PTO or remote PTO hold state since the last trip reset.
@@ -40275,7 +40275,7 @@ impl Tti2 {
     #[allow(dead_code)]
     pub fn trip_pto_time_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Total time accumulated while the engine is in the cruise hold state, excluding time in accelerator override, since the last trip reset.
@@ -40283,7 +40283,7 @@ impl Tti2 {
     #[allow(dead_code)]
     pub fn trip_cruise_time_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 }
 
@@ -40315,7 +40315,7 @@ impl Tti1 {
     #[allow(dead_code)]
     pub fn trip_time_in_derate_by_eng_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 96) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 96) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Read TripTimeInGearDown signal from can frame
@@ -40323,7 +40323,7 @@ impl Tti1 {
     #[allow(dead_code)]
     pub fn trip_time_in_gear_down_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 64) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 64) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Total time accumulated when the vehicle has operated in top gear for a calibrated minimum time, since the last trip reset.
@@ -40331,7 +40331,7 @@ impl Tti1 {
     #[allow(dead_code)]
     pub fn trip_time_in_top_gear_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Read TripTimeInVSL signal from can frame
@@ -40339,7 +40339,7 @@ impl Tti1 {
     #[allow(dead_code)]
     pub fn trip_time_in_vsl_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 }
 
@@ -40451,7 +40451,7 @@ impl Tsc1 {
     #[allow(dead_code)]
     pub fn eng_rqed_torque_torque_limit_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Parameter provided to the engine from external sources in the torque/speed control message.
@@ -40459,7 +40459,7 @@ impl Tsc1 {
     #[allow(dead_code)]
     pub fn eng_rqed_speed_speed_limit_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Read OverrideCtrlModePriority signal from can frame
@@ -41087,7 +41087,7 @@ impl Tprs {
     #[allow(dead_code)]
     pub fn reference_tire_press_setting_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// Identifies which tire is associated with the parametric data in this PGN.
@@ -41126,7 +41126,7 @@ impl Tpri {
     #[allow(dead_code)]
     pub fn reference_tire_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// Identifies which tire is associated with the parametric data in this PGN.
@@ -41165,7 +41165,7 @@ impl Tp3 {
     #[allow(dead_code)]
     pub fn steer_channel_tire_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.500000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 
     /// The latest gage pressure reading of the drive group of tires, as opposed to the pressure in each tire.
@@ -41173,7 +41173,7 @@ impl Tp3 {
     #[allow(dead_code)]
     pub fn drive_channel_tire_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.500000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 
     /// The latest gage pressure reading of the trailer, tag, or push group of tires, as opposed to the pressure in each tire.
@@ -41181,7 +41181,7 @@ impl Tp3 {
     #[allow(dead_code)]
     pub fn trailer_tag_push_channel_tire_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.500000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 }
 
@@ -41213,7 +41213,7 @@ impl Tp2 {
     #[allow(dead_code)]
     pub fn steer_channel_tire_press_target_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.500000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 
     /// The tire pressure control system�s target gage pressure for the drive group of tires.
@@ -41221,7 +41221,7 @@ impl Tp2 {
     #[allow(dead_code)]
     pub fn drive_channel_tire_press_target_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.500000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 
     /// The tire pressure control system�s target gage pressure for the trailer, tag, or push group of tires.
@@ -41229,7 +41229,7 @@ impl Tp2 {
     #[allow(dead_code)]
     pub fn trlr_tg_psh_channel_tire_press_target_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.500000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 }
 
@@ -41425,7 +41425,7 @@ impl Tire {
     #[allow(dead_code)]
     pub fn tire_air_leakage_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 40) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Indicates the status of electrical fault on CTI wheel interface.
@@ -41469,7 +41469,7 @@ impl Tire {
     #[allow(dead_code)]
     pub fn tire_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Pressure at which air is contained in cavity formed by tire and rim.
@@ -41477,7 +41477,7 @@ impl Tire {
     #[allow(dead_code)]
     pub fn tire_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 4.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 4.000000).round() as u8
     }
 
     /// Identifies which tire is associated with the parametric data in this PGN.
@@ -41516,7 +41516,7 @@ impl Ti1 {
     #[allow(dead_code)]
     pub fn catalyst_tank_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// A special catalyst uses chemical substance to reach legal requirement for NOX emissions.
@@ -41524,7 +41524,7 @@ impl Ti1 {
     #[allow(dead_code)]
     pub fn catalyst_tank_level_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Used to identify the applicable J1939-73 FMI that applies to the most significant failure of the catalyst tank level sensor.
@@ -41539,7 +41539,7 @@ impl Ti1 {
     #[allow(dead_code)]
     pub fn catalyst_tank_level2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -41571,7 +41571,7 @@ impl Tfi {
     #[allow(dead_code)]
     pub fn trip_fan_on_time_due_to_a_manual_switch_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 64) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 64) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Total time the fan has been on (due to an automatic trigger or manual trigger) since the last trip reset.
@@ -41579,7 +41579,7 @@ impl Tfi {
     #[allow(dead_code)]
     pub fn trip_fan_on_time_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Total time the fan has been on due to the A/C system since the last trip reset.
@@ -41587,7 +41587,7 @@ impl Tfi {
     #[allow(dead_code)]
     pub fn trip_fan_on_time_due_to_a_c_system_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 96) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 96) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Total time the fan has been on due to engine triggers (i.
@@ -41595,7 +41595,7 @@ impl Tfi {
     #[allow(dead_code)]
     pub fn trip_fan_on_time_due_to_eng_system_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 }
 
@@ -41627,7 +41627,7 @@ impl Tdi {
     #[allow(dead_code)]
     pub fn trip_distance_in_top_gear_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 64) & 0xFFFFFFFF) as f64 * 0.125000).round() as u32
+        (((frame_payload >> 64) & 0xFFFFFFFF) as f32 * 0.125000).round() as u32
     }
 
     /// Read TripGearDownDistance signal from can frame
@@ -41635,7 +41635,7 @@ impl Tdi {
     #[allow(dead_code)]
     pub fn trip_gear_down_distance_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.125000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.125000).round() as u32
     }
 
     /// Total distance accumulated while the engine torque mode is road speed governing since the last trip reset.
@@ -41643,7 +41643,7 @@ impl Tdi {
     #[allow(dead_code)]
     pub fn trip_distance_on_vsl_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.125000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.125000).round() as u32
     }
 }
 
@@ -41675,7 +41675,7 @@ impl Tda {
     #[allow(dead_code)]
     pub fn adjust_local_hour_offset_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF)) as u8
+        (((frame_payload >> 56) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Used to set the local offset in minutes from a reference time.
@@ -41683,7 +41683,7 @@ impl Tda {
     #[allow(dead_code)]
     pub fn adjust_local_minute_offset_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF)) as u8
+        (((frame_payload >> 48) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Part of a parameter used to set a calendar date.
@@ -41691,7 +41691,7 @@ impl Tda {
     #[allow(dead_code)]
     pub fn adjust_year_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF)) as u8
+        (((frame_payload >> 40) & 0xFF) as f32 + 1985f32) as u8
     }
 
     /// Part of a parameter used to set a calendar date.
@@ -41699,7 +41699,7 @@ impl Tda {
     #[allow(dead_code)]
     pub fn adjust_day_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.250000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.250000).round() as u8
     }
 
     /// Part of a parameter used to set a calendar date.
@@ -41731,7 +41731,7 @@ impl Tda {
     #[allow(dead_code)]
     pub fn adjust_seconds_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.250000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.250000).round() as u8
     }
 }
 
@@ -41763,7 +41763,7 @@ impl Td {
     #[allow(dead_code)]
     pub fn local_hour_offset_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF)) as u8
+        (((frame_payload >> 56) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Local offset in minutes from a reference time.
@@ -41771,7 +41771,7 @@ impl Td {
     #[allow(dead_code)]
     pub fn local_minute_offset_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF)) as u8
+        (((frame_payload >> 48) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Part of a parameter used to represent a calendar date.
@@ -41779,7 +41779,7 @@ impl Td {
     #[allow(dead_code)]
     pub fn year_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF)) as u8
+        (((frame_payload >> 40) & 0xFF) as f32 + 1985f32) as u8
     }
 
     /// Part of a parameter used to represent a calendar date.
@@ -41787,7 +41787,7 @@ impl Td {
     #[allow(dead_code)]
     pub fn day_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.250000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.250000).round() as u8
     }
 
     /// Part of a parameter used to represent a calendar date.
@@ -41819,7 +41819,7 @@ impl Td {
     #[allow(dead_code)]
     pub fn seconds_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.250000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.250000).round() as u8
     }
 }
 
@@ -41851,7 +41851,7 @@ impl Tcw {
     #[allow(dead_code)]
     pub fn eng_trb_wstgt_actuator_ctrl_air_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 4.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 4.000000).round() as u8
     }
 
     /// Position of the wastegate drive.
@@ -41859,7 +41859,7 @@ impl Tcw {
     #[allow(dead_code)]
     pub fn eng_turbo4_wastegate_drive_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Position of the wastegate drive.
@@ -41867,7 +41867,7 @@ impl Tcw {
     #[allow(dead_code)]
     pub fn eng_turbo3_wastegate_drive_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Position of the wastegate drive.
@@ -41875,7 +41875,7 @@ impl Tcw {
     #[allow(dead_code)]
     pub fn eng_turbo2_wastegate_drive_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Position of the wastegate drive.
@@ -41883,7 +41883,7 @@ impl Tcw {
     #[allow(dead_code)]
     pub fn eng_turbo1_wastegate_drive_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -41915,7 +41915,7 @@ impl Tco1 {
     #[allow(dead_code)]
     pub fn tachograph_vehicle_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// Calculated speed of the transmission output shaft.
@@ -41923,7 +41923,7 @@ impl Tco1 {
     #[allow(dead_code)]
     pub fn tachograph_output_shaft_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Indicates the direction of the vehicle.
@@ -42099,7 +42099,7 @@ impl Tci6 {
     #[allow(dead_code)]
     pub fn eng_turbo4_compressor_outlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read EngTurbo3CompressorOutletTemp signal from can frame
@@ -42107,7 +42107,7 @@ impl Tci6 {
     #[allow(dead_code)]
     pub fn eng_turbo3_compressor_outlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read EngTurbo2CompressorOutletTemp signal from can frame
@@ -42115,7 +42115,7 @@ impl Tci6 {
     #[allow(dead_code)]
     pub fn eng_turbo2_compressor_outlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read EngTurbo1CompressorOutletTemp signal from can frame
@@ -42123,7 +42123,7 @@ impl Tci6 {
     #[allow(dead_code)]
     pub fn eng_turbo1_compressor_outlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -42155,7 +42155,7 @@ impl Tci5 {
     #[allow(dead_code)]
     pub fn eng_turbo4_turbine_outlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the combustion by-products exiting the turbine side of the turbocharger.
@@ -42163,7 +42163,7 @@ impl Tci5 {
     #[allow(dead_code)]
     pub fn eng_turbo3_turbine_outlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the combustion by-products exiting the turbine side of the turbocharger.
@@ -42171,7 +42171,7 @@ impl Tci5 {
     #[allow(dead_code)]
     pub fn eng_turbo2_turbine_outlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the combustion by-products exiting the turbine side of the turbocharger.
@@ -42179,7 +42179,7 @@ impl Tci5 {
     #[allow(dead_code)]
     pub fn eng_turbo1_turbine_outlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -42211,7 +42211,7 @@ impl Tci4 {
     #[allow(dead_code)]
     pub fn eng_turbo4_turbine_inlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the combustion by-products entering the turbine side of the turbocharger.
@@ -42219,7 +42219,7 @@ impl Tci4 {
     #[allow(dead_code)]
     pub fn eng_turbo3_turbine_inlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the combustion by-products entering the turbine side of the turbocharger.
@@ -42227,7 +42227,7 @@ impl Tci4 {
     #[allow(dead_code)]
     pub fn eng_turbo2_turbine_inlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the combustion by-products entering the turbine side of the turbocharger.
@@ -42235,7 +42235,7 @@ impl Tci4 {
     #[allow(dead_code)]
     pub fn eng_turbo1_turbine_inlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -42267,7 +42267,7 @@ impl Tci3 {
     #[allow(dead_code)]
     pub fn eng_turbo4_compressor_inlet_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 
     /// Gage pressure of the air entering the compressor side of the turbocharger.
@@ -42275,7 +42275,7 @@ impl Tci3 {
     #[allow(dead_code)]
     pub fn eng_turbo3_compressor_inlet_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 
     /// Gage pressure of the air entering the compressor side of the turbocharger.
@@ -42283,7 +42283,7 @@ impl Tci3 {
     #[allow(dead_code)]
     pub fn eng_turbo2_compressor_inlet_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 
     /// Gage pressure of the air entering the compressor side of the turbocharger.
@@ -42291,7 +42291,7 @@ impl Tci3 {
     #[allow(dead_code)]
     pub fn eng_turbo1_compressor_inlet_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 }
 
@@ -42323,7 +42323,7 @@ impl Tci2 {
     #[allow(dead_code)]
     pub fn eng_turbo4_compressor_inlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the air entering the compressor side of the turbocharger.
@@ -42331,7 +42331,7 @@ impl Tci2 {
     #[allow(dead_code)]
     pub fn eng_turbo3_compressor_inlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the air entering the compressor side of the turbocharger.
@@ -42339,7 +42339,7 @@ impl Tci2 {
     #[allow(dead_code)]
     pub fn eng_turbo2_compressor_inlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the air entering the compressor side of the turbocharger.
@@ -42347,7 +42347,7 @@ impl Tci2 {
     #[allow(dead_code)]
     pub fn eng_turbo1_compressor_inlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -42379,7 +42379,7 @@ impl Tci1 {
     #[allow(dead_code)]
     pub fn eng_turbo4_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFFFF) as f64 * 4.000000).round() as u16
+        (((frame_payload >> 40) & 0xFFFF) as f32 * 4.000000).round() as u16
     }
 
     /// Rotational velocity of rotor in the turbocharger.
@@ -42387,7 +42387,7 @@ impl Tci1 {
     #[allow(dead_code)]
     pub fn eng_turbo3_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 4.000000).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 4.000000).round() as u16
     }
 
     /// Rotational velocity of rotor in the turbocharger.
@@ -42395,7 +42395,7 @@ impl Tci1 {
     #[allow(dead_code)]
     pub fn eng_turbo2_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 4.000000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 4.000000).round() as u16
     }
 
     /// Gage pressure of oil in turbocharger lubrication system.
@@ -42403,7 +42403,7 @@ impl Tci1 {
     #[allow(dead_code)]
     pub fn eng_turbo_lube_oil_press2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 4.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 4.000000).round() as u8
     }
 }
 
@@ -42466,7 +42466,7 @@ impl Tcfg {
     #[allow(dead_code)]
     pub fn trans_gear_ratio_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.001000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.001000).round() as u16
     }
 
     /// Number of forward gear ratios in the transmission, provided as part of the configuration.
@@ -42655,7 +42655,7 @@ impl Tc1 {
     #[allow(dead_code)]
     pub fn trans_rqed_gear_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     #[allow(dead_code)]
@@ -42668,7 +42668,7 @@ impl Tc1 {
     #[allow(dead_code)]
     pub fn rqed_percent_clutch_slip_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Command signal used to simply disengage the driveline, e.
@@ -42743,7 +42743,7 @@ impl Tc {
     #[allow(dead_code)]
     pub fn eng_turbo1_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 4.000000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 4.000000).round() as u16
     }
 
     /// Gage pressure of oil in turbocharger lubrication system.
@@ -42751,7 +42751,7 @@ impl Tc {
     #[allow(dead_code)]
     pub fn eng_turbo_lube_oil_press1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 4.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 4.000000).round() as u8
     }
 }
 
@@ -42783,7 +42783,7 @@ impl Tavg {
     #[allow(dead_code)]
     pub fn eng_total_average_fuel_economy_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.001953).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.001953).round() as u16
     }
 
     /// Read EngTotalAverageFuelRate signal from can frame
@@ -42791,7 +42791,7 @@ impl Tavg {
     #[allow(dead_code)]
     pub fn eng_total_average_fuel_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 }
 
@@ -42823,7 +42823,7 @@ impl Spr {
     #[allow(dead_code)]
     pub fn air_suspension_supply_press_rq_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// Command signal to influence the pneumatic pressure in the auxiliary circuit.
@@ -42831,7 +42831,7 @@ impl Spr {
     #[allow(dead_code)]
     pub fn aux_equipment_supply_press_rq_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// Command signal to influence the pneumatic pressure in the service brake circuit or reservoir #2.
@@ -42839,7 +42839,7 @@ impl Spr {
     #[allow(dead_code)]
     pub fn service_brake_air_press_rq_circuit2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// Command signal to influence the pneumatic pressure in the service brake circuit or reservoir #1.
@@ -42847,7 +42847,7 @@ impl Spr {
     #[allow(dead_code)]
     pub fn service_brake_air_press_rq_circuit1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// Command signal to influence the pneumatic pressure in the circuit or reservoir for the parking brake and/or the trailer supply.
@@ -42855,7 +42855,7 @@ impl Spr {
     #[allow(dead_code)]
     pub fn parking_and_or_trailer_air_press_rq_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// Command signal to influence the pneumatic pressure in the main reservoir.
@@ -42863,7 +42863,7 @@ impl Spr {
     #[allow(dead_code)]
     pub fn pneumatic_supply_press_rq_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 8.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 8.000000).round() as u8
     }
 }
 
@@ -42895,7 +42895,7 @@ impl Sp2 {
     #[allow(dead_code)]
     pub fn eng_extl_shutdown_air_supply_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.500000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 }
 
@@ -43215,7 +43215,7 @@ impl Serv {
     #[allow(dead_code)]
     pub fn srvce_delay_operational_time_based_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF)) as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 + -31873f32) as u16
     }
 
     /// The time in weeks until the next vehicle service inspection is required.
@@ -43223,7 +43223,7 @@ impl Serv {
     #[allow(dead_code)]
     pub fn service_delay_calendar_time_based_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF)) as u8
+        (((frame_payload >> 32) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The distance which can be traveled by the vehicle before the next service inspection is required.
@@ -43231,7 +43231,7 @@ impl Serv {
     #[allow(dead_code)]
     pub fn service_distance_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 5.000000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 5.000000 as f32 + -159365f32).round() as u16
     }
 
     /// Identification of component needing service.
@@ -43271,7 +43271,7 @@ impl S2 {
     #[allow(dead_code)]
     pub fn time_since_last_service_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF)) as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 + -32127f32) as u16
     }
 
     /// Identification of component needing service.
@@ -43311,7 +43311,7 @@ impl Rtc1 {
     #[allow(dead_code)]
     pub fn max_continuous_retarder_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF)) as u8
+        (((frame_payload >> 48) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read MinContinuousRetarderSpeed signal from can frame
@@ -43319,7 +43319,7 @@ impl Rtc1 {
     #[allow(dead_code)]
     pub fn min_continuous_retarder_speed_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 32.000000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 32.000000).round() as u8
     }
 
     /// Read MaxContinuousRetarderSpeed signal from can frame
@@ -43327,7 +43327,7 @@ impl Rtc1 {
     #[allow(dead_code)]
     pub fn max_continuous_retarder_speed_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 32.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 32.000000).round() as u8
     }
 
     /// Maximum allowable value for minimum continuous retarder torque.
@@ -43335,7 +43335,7 @@ impl Rtc1 {
     #[allow(dead_code)]
     pub fn hgh_lmt_thrshhld_fr_mn_cntns_trq_frm_rtr_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Minimum allowable value for maximum continuous retarder torque.
@@ -43343,7 +43343,7 @@ impl Rtc1 {
     #[allow(dead_code)]
     pub fn lw_lmt_thrshhld_fr_mx_trq_frm_retarder_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read HghLmtThrshhldFrMnCntnsRPMFrmRtr signal from can frame
@@ -43351,7 +43351,7 @@ impl Rtc1 {
     #[allow(dead_code)]
     pub fn hgh_lmt_thrshhld_fr_mn_cntns_rpm_frm_rtr_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 32.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 32.000000).round() as u8
     }
 
     /// Read LwLmtThrshhldFrMxRPMFrmRetarder signal from can frame
@@ -43359,7 +43359,7 @@ impl Rtc1 {
     #[allow(dead_code)]
     pub fn lw_lmt_thrshhld_fr_mx_rpm_frm_retarder_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 32.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 32.000000).round() as u8
     }
 
     /// Read MinContinuousRetarderTorque signal from can frame
@@ -43367,7 +43367,7 @@ impl Rtc1 {
     #[allow(dead_code)]
     pub fn min_continuous_retarder_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF)) as u8
+        (((frame_payload >> 56) & 0xFF) as f32 + -125f32) as u8
     }
 }
 
@@ -43399,7 +43399,7 @@ impl Rf {
     #[allow(dead_code)]
     pub fn hyd_retarder_oil_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Gage pressure of oil in hydraulic retarder system.
@@ -43407,7 +43407,7 @@ impl Rf {
     #[allow(dead_code)]
     pub fn hyd_retarder_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 16.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 16.000000).round() as u8
     }
 }
 
@@ -43507,7 +43507,7 @@ impl Rc {
     #[allow(dead_code)]
     pub fn percent_torque_at_peak_torque_point5_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 144) & 0xFF)) as u8
+        (((frame_payload >> 144) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// This parameter is the 100% reference value for all defined indicated retarder torque parameters.
@@ -43523,7 +43523,7 @@ impl Rc {
     #[allow(dead_code)]
     pub fn retarder_speed_at_peak_torque_point5_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 112) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 112) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Read PercentTorqueAtPoint4 signal from can frame
@@ -43531,7 +43531,7 @@ impl Rc {
     #[allow(dead_code)]
     pub fn percent_torque_at_point4_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 104) & 0xFF)) as u8
+        (((frame_payload >> 104) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Retarder speed of point 4 of the engine retarder torque map.
@@ -43539,7 +43539,7 @@ impl Rc {
     #[allow(dead_code)]
     pub fn retarder_speed_at_point4_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 88) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 88) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Read PercentTorqueAtPoint3 signal from can frame
@@ -43547,7 +43547,7 @@ impl Rc {
     #[allow(dead_code)]
     pub fn percent_torque_at_point3_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 80) & 0xFF)) as u8
+        (((frame_payload >> 80) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Retarder speed of point 3 of the engine retarder torque map.
@@ -43555,7 +43555,7 @@ impl Rc {
     #[allow(dead_code)]
     pub fn retarder_speed_at_point3_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 64) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 64) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// The torque limit that indicates the available retarder torque which can be provided by the retarder at its maximum speed.
@@ -43563,7 +43563,7 @@ impl Rc {
     #[allow(dead_code)]
     pub fn percent_torque_at_max_speed_point2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF)) as u8
+        (((frame_payload >> 56) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Maximum speed of retarder (Please reference PGN 65249).
@@ -43571,7 +43571,7 @@ impl Rc {
     #[allow(dead_code)]
     pub fn max_retarder_speed_point2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 40) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// The torque limit that indicates the available retarder torque which can be provided by the retarder at idle speed.
@@ -43579,7 +43579,7 @@ impl Rc {
     #[allow(dead_code)]
     pub fn percent_torque_at_idle_point1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF)) as u8
+        (((frame_payload >> 32) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read RetarderSpeedAtIdlePoint1 signal from can frame
@@ -43587,7 +43587,7 @@ impl Rc {
     #[allow(dead_code)]
     pub fn retarder_speed_at_idle_point1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// This parameter identifies the number of steps used by the retarder.
@@ -43779,7 +43779,7 @@ impl Pto {
     #[allow(dead_code)]
     pub fn power_takeoff_set_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Rotational velocity of device used to transmit engine power to auxiliary equipment.
@@ -43787,7 +43787,7 @@ impl Pto {
     #[allow(dead_code)]
     pub fn power_takeoff_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Temperature of lubricant in device used to transmit engine power to auxiliary equipment.
@@ -43795,7 +43795,7 @@ impl Pto {
     #[allow(dead_code)]
     pub fn power_takeoff_oil_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Switch signal which indicates that the remote PTO toggle switch #2 is in the enabled (ON) position.
@@ -43887,7 +43887,7 @@ impl Oww {
     #[allow(dead_code)]
     pub fn rear_wiper_delay_ctrl_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Time between cycles of the front non-operator side wiper (i.
@@ -43895,7 +43895,7 @@ impl Oww {
     #[allow(dead_code)]
     pub fn front_nonoperator_wiper_delay_ctrl_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Time between cycles of the front operator side wiper (i.
@@ -43903,7 +43903,7 @@ impl Oww {
     #[allow(dead_code)]
     pub fn front_operator_wiper_delay_ctrl_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// State of operation selected by operator switch for the rear wiper.
@@ -44219,7 +44219,7 @@ impl Oel {
     #[allow(dead_code)]
     pub fn operators_desired_backlight_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// A 2 bit parameter to indicate the selected position of the operator's high/low beam select switch.
@@ -44399,7 +44399,7 @@ impl Ml {
     #[allow(dead_code)]
     pub fn oprtrs_blck_out_intensity_selection_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read BlackOutWorkLampSelect signal from can frame
@@ -44575,7 +44575,7 @@ impl Mbt3 {
     #[allow(dead_code)]
     pub fn eng_main_bearing11_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the main bearing which supports the crankshaft of the engine.
@@ -44583,7 +44583,7 @@ impl Mbt3 {
     #[allow(dead_code)]
     pub fn eng_main_bearing10_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the main bearing which supports the crankshaft of the engine.
@@ -44591,7 +44591,7 @@ impl Mbt3 {
     #[allow(dead_code)]
     pub fn eng_main_bearing9_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -44623,7 +44623,7 @@ impl Mbt2 {
     #[allow(dead_code)]
     pub fn eng_main_bearing8_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the main bearing which supports the crankshaft of the engine.
@@ -44631,7 +44631,7 @@ impl Mbt2 {
     #[allow(dead_code)]
     pub fn eng_main_bearing7_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the main bearing which supports the crankshaft of the engine.
@@ -44639,7 +44639,7 @@ impl Mbt2 {
     #[allow(dead_code)]
     pub fn eng_main_bearing6_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the main bearing which supports the crankshaft of the engine.
@@ -44647,7 +44647,7 @@ impl Mbt2 {
     #[allow(dead_code)]
     pub fn eng_main_bearing5_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -44679,7 +44679,7 @@ impl Mbt1 {
     #[allow(dead_code)]
     pub fn eng_main_bearing4_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the main bearing which supports the crankshaft of the engine.
@@ -44687,7 +44687,7 @@ impl Mbt1 {
     #[allow(dead_code)]
     pub fn eng_main_bearing3_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the main bearing which supports the crankshaft of the engine.
@@ -44695,7 +44695,7 @@ impl Mbt1 {
     #[allow(dead_code)]
     pub fn eng_main_bearing2_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the main bearing which supports the crankshaft of the engine.
@@ -44703,7 +44703,7 @@ impl Mbt1 {
     #[allow(dead_code)]
     pub fn eng_main_bearing1_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -44819,7 +44819,7 @@ impl Lvd {
     #[allow(dead_code)]
     pub fn abs_laser_strike_position_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 40) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Time from laser strike to CAN message transmission.
@@ -44827,7 +44827,7 @@ impl Lvd {
     #[allow(dead_code)]
     pub fn laser_strike_data_latency_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 51.200000).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 51.200000).round() as u16
     }
 
     /// Identifies which type of Laser Receiver transmitted the message.
@@ -44847,7 +44847,7 @@ impl Lvd {
     #[allow(dead_code)]
     pub fn laser_strike_vertical_deviation_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 }
 
@@ -44911,7 +44911,7 @@ impl Ltp {
     #[allow(dead_code)]
     pub fn laser_tracer_vertical_distance_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// The calculated distance for the laser target to the current laser tracer reference point.
@@ -44919,7 +44919,7 @@ impl Ltp {
     #[allow(dead_code)]
     pub fn laser_tracer_target_deviation_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 }
 
@@ -44951,7 +44951,7 @@ impl Ltfi {
     #[allow(dead_code)]
     pub fn trip_drive_fuel_economy_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 160) & 0xFFFF) as f64 * 0.001953).round() as u16
+        (((frame_payload >> 160) & 0xFFFF) as f32 * 0.001953).round() as u16
     }
 
     /// Total fuel consumed while the engine is in the cruise hold state since the last trip reset.
@@ -44959,7 +44959,7 @@ impl Ltfi {
     #[allow(dead_code)]
     pub fn trip_cruise_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 128) & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        (((frame_payload >> 128) & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Read TripVehicleIdleFuelUsed signal from can frame
@@ -44967,7 +44967,7 @@ impl Ltfi {
     #[allow(dead_code)]
     pub fn trip_vehicle_idle_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 96) & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        (((frame_payload >> 96) & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Read TripPTONonmovingFuelUsed signal from can frame
@@ -44975,7 +44975,7 @@ impl Ltfi {
     #[allow(dead_code)]
     pub fn trip_pto_nonmoving_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 64) & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        (((frame_payload >> 64) & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Read TripPTOMovingFuelUsed signal from can frame
@@ -44983,7 +44983,7 @@ impl Ltfi {
     #[allow(dead_code)]
     pub fn trip_pto_moving_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Read TripDriveFuelUsed signal from can frame
@@ -44991,7 +44991,7 @@ impl Ltfi {
     #[allow(dead_code)]
     pub fn trip_drive_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 }
 
@@ -45023,7 +45023,7 @@ impl Lsp {
     #[allow(dead_code)]
     pub fn bld_height_set_point_high_resolution_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFFFFFF) as f64 * 0.100000).round() as u32
+        (((frame_payload >> 16) & 0xFFFFFFFF) as f32 * 0.100000 as f32 + -209.7152f32).round() as u32
     }
 
     /// Used to control and coordinate the set point for the leveling system.
@@ -45031,7 +45031,7 @@ impl Lsp {
     #[allow(dead_code)]
     pub fn modify_set_point_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000 as f32 + -2800f32).round() as u16
     }
 }
 
@@ -45195,7 +45195,7 @@ impl Lmp {
     #[allow(dead_code)]
     pub fn mast_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 }
 
@@ -45227,7 +45227,7 @@ impl Lfi {
     #[allow(dead_code)]
     pub fn trip_average_fuel_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Total fuel used while the PTO or remote PTO is in the hold state and engine speed is above zero, over the life of the engine.
@@ -45235,7 +45235,7 @@ impl Lfi {
     #[allow(dead_code)]
     pub fn total_eng_pto_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 }
 
@@ -45267,7 +45267,7 @@ impl Lfe {
     #[allow(dead_code)]
     pub fn eng_average_fuel_economy_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.001953).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.001953).round() as u16
     }
 
     /// Current fuel economy at current vehicle velocity.
@@ -45275,7 +45275,7 @@ impl Lfe {
     #[allow(dead_code)]
     pub fn eng_instantaneous_fuel_economy_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.001953).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.001953).round() as u16
     }
 
     /// Amount of fuel consumed by engine per unit of time.
@@ -45283,7 +45283,7 @@ impl Lfe {
     #[allow(dead_code)]
     pub fn eng_fuel_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Read EngThrottle2Pos signal from can frame
@@ -45291,7 +45291,7 @@ impl Lfe {
     #[allow(dead_code)]
     pub fn eng_throttle2_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The position of the valve used to regulate the supply of a fluid, usually air or fuel/air mixture, to an engine.
@@ -45299,7 +45299,7 @@ impl Lfe {
     #[allow(dead_code)]
     pub fn eng_throttle_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -45331,7 +45331,7 @@ impl Lfc {
     #[allow(dead_code)]
     pub fn eng_total_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Fuel consumed during all or part of a journey.
@@ -45339,7 +45339,7 @@ impl Lfc {
     #[allow(dead_code)]
     pub fn eng_trip_fuel_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 }
 
@@ -45618,7 +45618,7 @@ impl Fd {
     #[allow(dead_code)]
     pub fn fan_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// This parameter is used to indicate the current state or mode of operation by the fan drive.
@@ -45638,7 +45638,7 @@ impl Fd {
     #[allow(dead_code)]
     pub fn est_percent_fan_speed_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -45670,7 +45670,7 @@ impl Eth {
     #[allow(dead_code)]
     pub fn eng_torque_limit6_axle_input_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 248) & 0xFFFF) as f64 * 2.000000).round() as u16
+        (((frame_payload >> 248) & 0xFFFF) as f32 * 2.000000).round() as u16
     }
 
     /// Limit applied to the engine output torque based on activation of an ECU switch input.
@@ -45701,7 +45701,7 @@ impl Eth {
     #[allow(dead_code)]
     pub fn trans_gear_ratio3_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 184) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 184) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// Read EngTorqueLimit2Trans signal from can frame
@@ -45716,7 +45716,7 @@ impl Eth {
     #[allow(dead_code)]
     pub fn trans_gear_ratio2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 152) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 152) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// Read EngTorqueLimit1Trans signal from can frame
@@ -45731,7 +45731,7 @@ impl Eth {
     #[allow(dead_code)]
     pub fn trans_gear_ratio1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 120) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 120) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// Torque limit rating described in the current record.
@@ -45763,7 +45763,7 @@ impl Eth {
     #[allow(dead_code)]
     pub fn calib_record_duration_time_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 80) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 80) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Calendar year timestamp when an ECU record was established.
@@ -45771,7 +45771,7 @@ impl Eth {
     #[allow(dead_code)]
     pub fn calib_record_start_year_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 72) & 0xFF)) as u8
+        (((frame_payload >> 72) & 0xFF) as f32 + 1985f32) as u8
     }
 
     /// Calendar day timestamp when an ECU record was established.
@@ -45779,7 +45779,7 @@ impl Eth {
     #[allow(dead_code)]
     pub fn calib_record_start_day_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 64) & 0xFF) as f64 * 0.250000).round() as u8
+        (((frame_payload >> 64) & 0xFF) as f32 * 0.250000).round() as u8
     }
 
     /// Calendar month timestamp when an ECU record was established.
@@ -45811,7 +45811,7 @@ impl Eth {
     #[allow(dead_code)]
     pub fn eng_power_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.500000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 
     /// Number of torque history records contained in the engine torque history PGN.
@@ -45850,7 +45850,7 @@ impl Etc8 {
     #[allow(dead_code)]
     pub fn trans_torque_converter_ratio_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.001000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.001000).round() as u16
     }
 }
 
@@ -45881,7 +45881,7 @@ impl Etc7 {
     #[allow(dead_code)]
     pub fn trans_rqed_gear_feedback_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read TransMode1Indicator signal from can frame
@@ -46033,28 +46033,28 @@ impl Etc6 {
     #[allow(dead_code)]
     pub fn clutch_life_remaining_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The transmission calculates this gear continuously.
     #[allow(dead_code)]
     pub fn lowest_possible_gear_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The transmission calculates this gear continuously.
     #[allow(dead_code)]
     pub fn highest_possible_gear_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The transmission calculates this gear continuously.
     #[allow(dead_code)]
     pub fn recommended_gear_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -125f32) as u8
     }
 }
 
@@ -46170,7 +46170,7 @@ impl Etc4 {
     #[allow(dead_code)]
     pub fn trans_synchronizer_brake_value_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The current modulated value for the air supply to the synchronizer clutch.
@@ -46178,7 +46178,7 @@ impl Etc4 {
     #[allow(dead_code)]
     pub fn trans_synchronizer_clutch_value_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -46390,7 +46390,7 @@ impl Etc3 {
     #[allow(dead_code)]
     pub fn trans_shift_finger_rail_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The current position of the shift finger in the gear direction.
@@ -46398,7 +46398,7 @@ impl Etc3 {
     #[allow(dead_code)]
     pub fn trans_shift_finger_gear_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -46443,21 +46443,21 @@ impl Etc2 {
     #[allow(dead_code)]
     pub fn trans_current_gear_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Actual ratio of input shaft speed to output shaft speed.
     #[allow(dead_code)]
     pub fn trans_actual_gear_ratio_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.001000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.001000).round() as u16
     }
 
     /// Read TransSelectedGear signal from can frame
     #[allow(dead_code)]
     pub fn trans_selected_gear_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -125f32) as u8
     }
 }
 
@@ -46496,7 +46496,7 @@ impl Etc1 {
     #[allow(dead_code)]
     pub fn trans_input_shaft_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 40) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Command signal used to indicate that progressive shifting by the engine should be disallowed.
@@ -46528,7 +46528,7 @@ impl Etc1 {
     #[allow(dead_code)]
     pub fn percent_clutch_slip_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Calculated speed of the transmission output shaft.
@@ -46536,7 +46536,7 @@ impl Etc1 {
     #[allow(dead_code)]
     pub fn trans_output_shaft_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Indicates that the transmission is in process of shifting from the current gear to the selected gear.
@@ -46604,7 +46604,7 @@ impl Et3 {
     #[allow(dead_code)]
     pub fn eng_charge_air_cooler_outlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of liquid found in engine cooling system.
@@ -46612,7 +46612,7 @@ impl Et3 {
     #[allow(dead_code)]
     pub fn eng_coolant_temp_hi_res_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// The temperature of the oil in the hydraulic system that powers the intake valve actuation system.
@@ -46620,7 +46620,7 @@ impl Et3 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_actation_system_oil_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of pre-combustion air found in intake manifold of engine air supply system.
@@ -46628,7 +46628,7 @@ impl Et3 {
     #[allow(dead_code)]
     pub fn eng_intake_manifold1_air_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -46660,7 +46660,7 @@ impl Et2 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_recirculation_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read EngExhstGsRcirculationDiffPress signal from can frame
@@ -46668,7 +46668,7 @@ impl Et2 {
     #[allow(dead_code)]
     pub fn eng_exhst_gs_rcirculation_diff_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 
     /// Temperature of the engine electronic control unit.
@@ -46676,7 +46676,7 @@ impl Et2 {
     #[allow(dead_code)]
     pub fn eng_ecu_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the engine lubricant.
@@ -46684,7 +46684,7 @@ impl Et2 {
     #[allow(dead_code)]
     pub fn eng_oil_temp2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -46716,7 +46716,7 @@ impl Et1 {
     #[allow(dead_code)]
     pub fn eng_intercooler_thermostat_opening_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Temperature of liquid found in the intercooler located after the turbocharger.
@@ -46724,7 +46724,7 @@ impl Et1 {
     #[allow(dead_code)]
     pub fn eng_intercooler_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF)) as u8
+        (((frame_payload >> 48) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of the turbocharger lubricant.
@@ -46732,7 +46732,7 @@ impl Et1 {
     #[allow(dead_code)]
     pub fn eng_turbo_oil_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of the engine lubricant.
@@ -46740,7 +46740,7 @@ impl Et1 {
     #[allow(dead_code)]
     pub fn eng_oil_temp1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of fuel entering injectors.
@@ -46748,7 +46748,7 @@ impl Et1 {
     #[allow(dead_code)]
     pub fn eng_fuel_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of liquid found in engine cooling system.
@@ -46756,7 +46756,7 @@ impl Et1 {
     #[allow(dead_code)]
     pub fn eng_coolant_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -40f32) as u8
     }
 }
 
@@ -46788,7 +46788,7 @@ impl Et {
     #[allow(dead_code)]
     pub fn eng_exhst_exhst_gs_temp_left_manifold_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of combustion byproducts within the right engine exhaust manifold.
@@ -46796,7 +46796,7 @@ impl Et {
     #[allow(dead_code)]
     pub fn eng_exhst_exhst_gs_tmp_right_manifold_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -46895,7 +46895,7 @@ impl Esc1 {
     #[allow(dead_code)]
     pub fn actual_inner_wheel_steer_angle_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.003906).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.003906 as f32 + -125f32).round() as u16
     }
 }
 
@@ -46963,7 +46963,7 @@ impl Erc1 {
     #[allow(dead_code)]
     pub fn retarder_selection_non_eng_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// This is the maximum amount of torque that the retarder can immediately deliver.
@@ -46971,7 +46971,7 @@ impl Erc1 {
     #[allow(dead_code)]
     pub fn actl_mx_avlbl_rtarder_percent_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF)) as u8
+        (((frame_payload >> 56) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read DrvrsDmandRetarderPercentTorque signal from can frame
@@ -46979,7 +46979,7 @@ impl Erc1 {
     #[allow(dead_code)]
     pub fn drvrs_dmand_retarder_percent_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF)) as u8
+        (((frame_payload >> 40) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The source address of the SAE J1939 device currently controlling the retarder.
@@ -47013,7 +47013,7 @@ impl Erc1 {
     #[allow(dead_code)]
     pub fn intended_retarder_percent_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Actual braking torque of the retarder as a percent of retarder configuration reference torque SPN 556.
@@ -47021,7 +47021,7 @@ impl Erc1 {
     #[allow(dead_code)]
     pub fn actual_retarder_percent_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Switch signal which indicates whether the operator wishes the retarder to be enabled for transmission shift assist.
@@ -47084,7 +47084,7 @@ impl Ept5 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port20_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47092,7 +47092,7 @@ impl Ept5 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port19_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47100,7 +47100,7 @@ impl Ept5 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port18_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47108,7 +47108,7 @@ impl Ept5 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port17_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -47140,7 +47140,7 @@ impl Ept4 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port16_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47148,7 +47148,7 @@ impl Ept4 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port15_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47156,7 +47156,7 @@ impl Ept4 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port14_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47164,7 +47164,7 @@ impl Ept4 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port13_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -47196,7 +47196,7 @@ impl Ept3 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port12_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47204,7 +47204,7 @@ impl Ept3 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port11_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47212,7 +47212,7 @@ impl Ept3 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port10_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47220,7 +47220,7 @@ impl Ept3 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port9_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -47252,7 +47252,7 @@ impl Ept2 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port8_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47260,7 +47260,7 @@ impl Ept2 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port7_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47268,7 +47268,7 @@ impl Ept2 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port6_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47276,7 +47276,7 @@ impl Ept2 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port5_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -47308,7 +47308,7 @@ impl Ept1 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port4_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47316,7 +47316,7 @@ impl Ept1 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port3_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47324,7 +47324,7 @@ impl Ept1 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port2_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature at the cylinder exhaust port of the engine.
@@ -47332,7 +47332,7 @@ impl Ept1 {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_port1_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -47396,7 +47396,7 @@ impl Ep {
     #[allow(dead_code)]
     pub fn data_memory_usage_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The capacity consumed from the direct battery connection since the key was last turned off.
@@ -47436,7 +47436,7 @@ impl Eoac {
     #[allow(dead_code)]
     pub fn travel_velocity_ctrl_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -125f32) as u8
     }
 }
 
@@ -47480,7 +47480,7 @@ impl Eo1 {
     #[allow(dead_code)]
     pub fn eng_exhst_gs_oxygn_snsr_flng_crrction_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF)) as u8
+        (((frame_payload >> 48) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read EngActualExhaustOxygen signal from can frame
@@ -47488,7 +47488,7 @@ impl Eo1 {
     #[allow(dead_code)]
     pub fn eng_actual_exhaust_oxygen_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// Read EngDesiredExhaustOxygen signal from can frame
@@ -47496,7 +47496,7 @@ impl Eo1 {
     #[allow(dead_code)]
     pub fn eng_desired_exhaust_oxygen_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// Read EngDesiredRatedExhaustOxygen signal from can frame
@@ -47504,7 +47504,7 @@ impl Eo1 {
     #[allow(dead_code)]
     pub fn eng_desired_rated_exhaust_oxygen_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.002500).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 }
 
@@ -47572,7 +47572,7 @@ impl Ejm3 {
     #[allow(dead_code)]
     pub fn joystick3_theta_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 38) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 38) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck3ThtAxsClckwsPstvPsStatus signal from can frame
@@ -47616,7 +47616,7 @@ impl Ejm3 {
     #[allow(dead_code)]
     pub fn joystick3_grip_y_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 22) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 22) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck3GrpYAxsLvrFrwrdPstvPsStts signal from can frame
@@ -47660,7 +47660,7 @@ impl Ejm3 {
     #[allow(dead_code)]
     pub fn joystick3_grip_x_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 6) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 6) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck3GrpXAxsLvrRghtPstvPsStts signal from can frame
@@ -47764,7 +47764,7 @@ impl Ejm2 {
     #[allow(dead_code)]
     pub fn joystick2_theta_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 38) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 38) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck2ThtAxsClckwsPstvPsStatus signal from can frame
@@ -47808,7 +47808,7 @@ impl Ejm2 {
     #[allow(dead_code)]
     pub fn joystick2_grip_y_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 22) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 22) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck2GrpYAxsLvrFrwrdPstvPsStts signal from can frame
@@ -47852,7 +47852,7 @@ impl Ejm2 {
     #[allow(dead_code)]
     pub fn joystick2_grip_x_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 6) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 6) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck2GrpXAxsLvrRghtPstvPsStts signal from can frame
@@ -47956,7 +47956,7 @@ impl Ejm1 {
     #[allow(dead_code)]
     pub fn joystick1_theta_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 38) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 38) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck1ThtAxsClckwsPstvPsStatus signal from can frame
@@ -48000,7 +48000,7 @@ impl Ejm1 {
     #[allow(dead_code)]
     pub fn joystick1_grip_y_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 22) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 22) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck1GrpYAxsLvrFrwrdPstvPsStts signal from can frame
@@ -48044,7 +48044,7 @@ impl Ejm1 {
     #[allow(dead_code)]
     pub fn joystick1_grip_x_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 6) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 6) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck1GrpXAxsLvrRghtPstvPsStts signal from can frame
@@ -48112,7 +48112,7 @@ impl Ei {
     #[allow(dead_code)]
     pub fn eng_fuel_rack_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Estimate of the power developed by the engine.
@@ -48120,7 +48120,7 @@ impl Ei {
     #[allow(dead_code)]
     pub fn instantaneous_est_brake_power_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.500000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 
     /// Mass flow of natural gas to the engine.
@@ -48128,7 +48128,7 @@ impl Ei {
     #[allow(dead_code)]
     pub fn eng_mass_flow_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Gage pressure of the exhaust gasses as measured at the turbine inlet of the turbocharger.
@@ -48136,7 +48136,7 @@ impl Ei {
     #[allow(dead_code)]
     pub fn eng_exhaust_gas_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 
     /// Gage pressure of the engine oil before the oil reaches the oil filter.
@@ -48144,7 +48144,7 @@ impl Ei {
     #[allow(dead_code)]
     pub fn eng_prefilter_oil_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 4.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 4.000000).round() as u8
     }
 }
 
@@ -48176,7 +48176,7 @@ impl Eh {
     #[allow(dead_code)]
     pub fn total_ecu_run_time_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.050000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.050000).round() as u32
     }
 
     /// Total distance accumulated over the life of the ECU.
@@ -48184,7 +48184,7 @@ impl Eh {
     #[allow(dead_code)]
     pub fn total_ecu_distance_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.125000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.125000).round() as u32
     }
 }
 
@@ -48216,7 +48216,7 @@ impl Egf1 {
     #[allow(dead_code)]
     pub fn eng_inlet_air_mass_flow_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Flow rate of gas through the EGR system.
@@ -48224,7 +48224,7 @@ impl Egf1 {
     #[allow(dead_code)]
     pub fn eng_exhst_gs_rcrcltion_mass_flow_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 }
 
@@ -48256,7 +48256,7 @@ impl Efs {
     #[allow(dead_code)]
     pub fn eng_fuel_filter_suc_side_diff_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Absolute pressure of fuel at the fuel supply pump inlet.
@@ -48264,7 +48264,7 @@ impl Efs {
     #[allow(dead_code)]
     pub fn eng_fuel_supply_pump_inlet_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Ratio of current volume of engine oil in a remote reservoir to the maximum required volume.
@@ -48272,7 +48272,7 @@ impl Efs {
     #[allow(dead_code)]
     pub fn eng_oil_level_remote_reservoir_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Level of crankcase blowby emulsion collected by a container.
@@ -48280,7 +48280,7 @@ impl Efs {
     #[allow(dead_code)]
     pub fn eng_waste_oil_reservoir_level_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     #[allow(dead_code)]
@@ -48341,7 +48341,7 @@ impl Efs {
     #[allow(dead_code)]
     pub fn eng_oil_filter_outlet_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 4.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 4.000000).round() as u8
     }
 
     /// Indicates whether the engine coolant is pre-heated sufficiently for starting purposes.
@@ -48385,7 +48385,7 @@ impl EflP3 {
     #[allow(dead_code)]
     pub fn eng_exhst_gs_rcrculation_inlet_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Read EngIntkVlvActtionSystemOilPress signal from can frame
@@ -48393,7 +48393,7 @@ impl EflP3 {
     #[allow(dead_code)]
     pub fn eng_intk_vlv_acttion_system_oil_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.003906).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 }
 
@@ -48425,7 +48425,7 @@ impl EflP2 {
     #[allow(dead_code)]
     pub fn eng_injector_metering_rail2_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// The gage pressure of fuel in the timing rail delivered from the supply pump to the injector timing inlet.
@@ -48433,7 +48433,7 @@ impl EflP2 {
     #[allow(dead_code)]
     pub fn eng_injector_timing_rail1_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// The gage pressure of fuel in the primary, or first, metering rail as delivered from the supply pump to the injector metering inlet.
@@ -48441,7 +48441,7 @@ impl EflP2 {
     #[allow(dead_code)]
     pub fn eng_injector_metering_rail1_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// The gage pressure of the engine oil in the hydraulic accumulator that powers an intensifier used for fuel injection.
@@ -48449,7 +48449,7 @@ impl EflP2 {
     #[allow(dead_code)]
     pub fn eng_injection_ctrl_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.003906).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 }
 
@@ -48481,7 +48481,7 @@ impl EflP1 {
     #[allow(dead_code)]
     pub fn eng_coolant_level_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Gage pressure of liquid found in engine cooling system.
@@ -48489,7 +48489,7 @@ impl EflP1 {
     #[allow(dead_code)]
     pub fn eng_coolant_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Gage pressure inside engine crankcase.
@@ -48497,7 +48497,7 @@ impl EflP1 {
     #[allow(dead_code)]
     pub fn eng_crankcase_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 
     /// Gage pressure of oil in engine lubrication system as provided by oil pump.
@@ -48505,7 +48505,7 @@ impl EflP1 {
     #[allow(dead_code)]
     pub fn eng_oil_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 4.000000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 4.000000).round() as u8
     }
 
     /// Ratio of current volume of engine sump oil to maximum required volume.
@@ -48513,7 +48513,7 @@ impl EflP1 {
     #[allow(dead_code)]
     pub fn eng_oil_level_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Differential crankcase blow-by pressure as measured through a tube with a venturi.
@@ -48521,7 +48521,7 @@ impl EflP1 {
     #[allow(dead_code)]
     pub fn eng_ex_crankcase_blowby_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.050000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.050000).round() as u8
     }
 
     /// Gage pressure of fuel in system as delivered from supply pump to the injection pump.
@@ -48529,7 +48529,7 @@ impl EflP1 {
     #[allow(dead_code)]
     pub fn eng_fuel_delivery_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 4.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 4.000000).round() as u8
     }
 }
 
@@ -48585,7 +48585,7 @@ impl Ees {
     #[allow(dead_code)]
     pub fn electrical_load_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.500000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 }
 
@@ -48617,7 +48617,7 @@ impl Eec5 {
     #[allow(dead_code)]
     pub fn eng_vrbl_gometry_turbo1_actuator_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Isolates vehicle brake air from the Variable Geometry Turbocharger (VGT) system when engine is not running.
@@ -48637,7 +48637,7 @@ impl Eec5 {
     #[allow(dead_code)]
     pub fn eng_exhst_gs_rcirculation_valve_ctrl_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.002500).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.002500).round() as u16
     }
 
     /// Calculated value of turbocharger compressor outlet air temperature.
@@ -48645,7 +48645,7 @@ impl Eec5 {
     #[allow(dead_code)]
     pub fn eng_trb1_clclted_turbine_outlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read EngTrb1ClclatedTurbineInletTemp signal from can frame
@@ -48653,7 +48653,7 @@ impl Eec5 {
     #[allow(dead_code)]
     pub fn eng_trb1_clclated_turbine_inlet_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -48704,7 +48704,7 @@ impl Eec4 {
     #[allow(dead_code)]
     pub fn eng_rated_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Net brake power that the engine will deliver continuously, specified for a given application at a rated speed.
@@ -48712,7 +48712,7 @@ impl Eec4 {
     #[allow(dead_code)]
     pub fn eng_rated_power_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.500000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 }
 
@@ -48744,7 +48744,7 @@ impl Eec3 {
     #[allow(dead_code)]
     pub fn exhaust_gas_mass_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFFFF) as f64 * 2.000000).round() as u16
+        (((frame_payload >> 40) & 0xFFFF) as f32 * 2.000000).round() as u16
     }
 
     /// Read AftrTrtmntIntakeDewPointMessage signal from can frame
@@ -48766,7 +48766,7 @@ impl Eec3 {
     #[allow(dead_code)]
     pub fn est_eng_prstic_losses_percent_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF)) as u8
+        (((frame_payload >> 32) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read EngsDsrdOprtngSpdAsymmtryAdjstmn signal from can frame
@@ -48781,7 +48781,7 @@ impl Eec3 {
     #[allow(dead_code)]
     pub fn engs_desired_operating_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Read NominalFrictionPercentTorque signal from can frame
@@ -48789,7 +48789,7 @@ impl Eec3 {
     #[allow(dead_code)]
     pub fn nominal_friction_percent_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -125f32) as u8
     }
 }
 
@@ -48821,7 +48821,7 @@ impl Eec2 {
     #[allow(dead_code)]
     pub fn act_max_avail_eng_percent_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read AccelPedalPos2 signal from can frame
@@ -48829,7 +48829,7 @@ impl Eec2 {
     #[allow(dead_code)]
     pub fn accel_pedal_pos2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Status (active or not active) of the system used to limit maximum forward vehicle acceleration.
@@ -48905,7 +48905,7 @@ impl Eec2 {
     #[allow(dead_code)]
     pub fn remote_accel_pedal_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read AccelPedalPos1 signal from can frame
@@ -48913,7 +48913,7 @@ impl Eec2 {
     #[allow(dead_code)]
     pub fn accel_pedal_pos1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -48945,7 +48945,7 @@ impl Eec1 {
     #[allow(dead_code)]
     pub fn eng_demand_percent_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF)) as u8
+        (((frame_payload >> 56) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// There are several phases in a starting action and different reasons why a start cannot take place.
@@ -48972,7 +48972,7 @@ impl Eec1 {
     #[allow(dead_code)]
     pub fn eng_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// The calculated output torque of the engine.
@@ -48980,7 +48980,7 @@ impl Eec1 {
     #[allow(dead_code)]
     pub fn actual_eng_percent_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The requested torque output of the engine by the driver.
@@ -48988,7 +48988,7 @@ impl Eec1 {
     #[allow(dead_code)]
     pub fn drivers_demand_eng_percent_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// State signal which indicates which engine torque mode is currently generating, limiting, or controlling the torque.
@@ -49056,7 +49056,7 @@ impl Ect1 {
     #[allow(dead_code)]
     pub fn eng_min_continuous_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF)) as u8
+        (((frame_payload >> 56) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Applied limit for maximum continuous engine torque.
@@ -49064,7 +49064,7 @@ impl Ect1 {
     #[allow(dead_code)]
     pub fn eng_max_continuous_torque_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF)) as u8
+        (((frame_payload >> 48) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read EngMinContinuousRPM signal from can frame
@@ -49072,7 +49072,7 @@ impl Ect1 {
     #[allow(dead_code)]
     pub fn eng_min_continuous_rpm_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 32.000000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 32.000000).round() as u8
     }
 
     /// Read EngMaxContinuousRPM signal from can frame
@@ -49080,7 +49080,7 @@ impl Ect1 {
     #[allow(dead_code)]
     pub fn eng_max_continuous_rpm_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 32.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 32.000000).round() as u8
     }
 
     /// Maximum allowable value for minimum continuous torque.
@@ -49088,7 +49088,7 @@ impl Ect1 {
     #[allow(dead_code)]
     pub fn eng_hgh_lmt_thrshhld_fr_mn_cntns_trq_frm_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Minimum allowable value for maximum continuous torque.
@@ -49096,7 +49096,7 @@ impl Ect1 {
     #[allow(dead_code)]
     pub fn eng_lw_lmt_thrshld_fr_mx_trque_from_eng_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read EngHghLmtThrshhldFrMnCntnsEngRPM signal from can frame
@@ -49104,7 +49104,7 @@ impl Ect1 {
     #[allow(dead_code)]
     pub fn eng_hgh_lmt_thrshhld_fr_mn_cntns_eng_rpm_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 32.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 32.000000).round() as u8
     }
 
     /// Read EngLwLmtThrshhldFrMaxRPMFromEng signal from can frame
@@ -49112,7 +49112,7 @@ impl Ect1 {
     #[allow(dead_code)]
     pub fn eng_lw_lmt_thrshhld_fr_max_rpm_from_eng_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 32.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 32.000000).round() as u8
     }
 }
 
@@ -49212,7 +49212,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_moment_of_inertia_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 240) & 0xFFFF) as f64 * 0.004000).round() as u16
+        (((frame_payload >> 240) & 0xFFFF) as f32 * 0.004000).round() as u16
     }
 
     /// Read EngExRngRqdSpdCtrlRngUpperLimit signal from can frame
@@ -49220,7 +49220,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_ex_rng_rqd_spd_ctrl_rng_upper_limit_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 224) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 224) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// The maximum engine torque that the engine will allow when operating in a torque control/limit mode.
@@ -49228,7 +49228,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_rqd_torque_ctrl_range_upper_limit_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 216) & 0xFF)) as u8
+        (((frame_payload >> 216) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The minimum engine torque that the engine will allow when operating in a torque control/limit mode.
@@ -49236,7 +49236,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_rqd_torque_ctrl_range_lower_limit_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 208) & 0xFF)) as u8
+        (((frame_payload >> 208) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read EngRqedSpeedCtrlRangeUpperLimit signal from can frame
@@ -49244,7 +49244,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_rqed_speed_ctrl_range_upper_limit_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 200) & 0xFF) as f64 * 10.000000).round() as u8
+        (((frame_payload >> 200) & 0xFF) as f32 * 10.000000).round() as u8
     }
 
     /// The minimum engine speed that the engine will allow when operating in a speed control/limit mode.
@@ -49252,7 +49252,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_rqed_speed_ctrl_range_lower_limit_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 192) & 0xFF) as f64 * 10.000000).round() as u8
+        (((frame_payload >> 192) & 0xFF) as f32 * 10.000000).round() as u8
     }
 
     /// The maximum time limit allowed to override the engine's high idle speed.
@@ -49260,7 +49260,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_mx_momentary_override_time_limit_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 184) & 0xFF) as f64 * 0.100000).round() as u8
+        (((frame_payload >> 184) & 0xFF) as f32 * 0.100000).round() as u8
     }
 
     /// The maximum engine speed above high idle allowed by the engine control during a momentary high idle override.
@@ -49268,7 +49268,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_mx_mmntary_override_speed_point7_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 168) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 168) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// This parameter is the 100% reference value for all defined indicated engine torque parameters.
@@ -49284,7 +49284,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_speed_at_high_idle_point6_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 120) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 120) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Read EngGainOfEndspeedGovernor signal from can frame
@@ -49292,7 +49292,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_gain_of_endspeed_governor_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 136) & 0xFFFF) as f64 * 0.000781).round() as u16
+        (((frame_payload >> 136) & 0xFFFF) as f32 * 0.000781).round() as u16
     }
 
     /// Read EngPercentTorqueAtPoint5 signal from can frame
@@ -49300,7 +49300,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_percent_torque_at_point5_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 112) & 0xFF)) as u8
+        (((frame_payload >> 112) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Engine speed of point 3, 4, and 5 of the engine torque map (see PGN 65251 and supporting document).
@@ -49308,7 +49308,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_speed_at_point5_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 96) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 96) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Read EngPercentTorqueAtPoint4 signal from can frame
@@ -49316,7 +49316,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_percent_torque_at_point4_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 88) & 0xFF)) as u8
+        (((frame_payload >> 88) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Engine speed of point 3, 4, and 5 of the engine torque map (see PGN 65251 and supporting document).
@@ -49324,7 +49324,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_speed_at_point4_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 72) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 72) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Read EngPercentTorqueAtPoint3 signal from can frame
@@ -49332,7 +49332,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_percent_torque_at_point3_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 64) & 0xFF)) as u8
+        (((frame_payload >> 64) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Engine speed of point 3, 4, and 5 of the engine torque map (see PGN 65251 and supporting document).
@@ -49340,7 +49340,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_speed_at_point3_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// Read EngPercentTorqueAtPoint2 signal from can frame
@@ -49348,7 +49348,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_percent_torque_at_point2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF)) as u8
+        (((frame_payload >> 40) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Engine speed of point 2 of the engine torque map (see PGN 65251 and supporting document).
@@ -49356,7 +49356,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_speed_at_point2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// The torque limit that indicates the available engine torque which can be provided by the engine at idle speed.
@@ -49364,7 +49364,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_percent_torque_at_idle_point1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read EngSpeedAtIdlePoint1 signal from can frame
@@ -49372,7 +49372,7 @@ impl Ec1 {
     #[allow(dead_code)]
     pub fn eng_speed_at_idle_point1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.125000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 }
 
@@ -49416,7 +49416,7 @@ impl Ebc5 {
     #[allow(dead_code)]
     pub fn xbr_acceleration_limit_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.100000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.100000 as f32 + -12.5f32).round() as u8
     }
 
     /// This parameter indicates which XBR Control Mode is executed by the brake system.
@@ -49508,7 +49508,7 @@ impl Ebc4 {
     #[allow(dead_code)]
     pub fn brk_lnng_rmnng_rear_axle3_right_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The percentage of brake lining which can still be measured for the left wheel on the rear axle #3.
@@ -49516,7 +49516,7 @@ impl Ebc4 {
     #[allow(dead_code)]
     pub fn brk_lnng_rmning_rear_axle3_left_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The percentage of brake lining which can still be measured for the right wheel on the rear axle #2.
@@ -49524,7 +49524,7 @@ impl Ebc4 {
     #[allow(dead_code)]
     pub fn brk_lnng_rmnng_rear_axle2_right_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The percentage of brake lining which can still be measured for the left wheel on the rear axle #2.
@@ -49532,7 +49532,7 @@ impl Ebc4 {
     #[allow(dead_code)]
     pub fn brk_lnng_rmning_rear_axle2_left_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The percentage of brake lining which can still be measured for the right wheel on the rear axle #1.
@@ -49540,7 +49540,7 @@ impl Ebc4 {
     #[allow(dead_code)]
     pub fn brk_lnng_rmnng_rear_axle1_right_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The percentage of brake lining which can still be measured for the left wheel on the rear axle #1.
@@ -49548,7 +49548,7 @@ impl Ebc4 {
     #[allow(dead_code)]
     pub fn brk_lnng_rmning_rear_axle1_left_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The percentage of brake lining which can still be measured for the right wheel on the front axle.
@@ -49556,7 +49556,7 @@ impl Ebc4 {
     #[allow(dead_code)]
     pub fn brk_lnng_rmnng_front_axle_right_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// The percentage of brake lining which can still be measured for the left wheel on the front axle.
@@ -49564,7 +49564,7 @@ impl Ebc4 {
     #[allow(dead_code)]
     pub fn brk_lnng_rmning_front_axle_left_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -49596,7 +49596,7 @@ impl Ebc3 {
     #[allow(dead_code)]
     pub fn brk_app_prss_hgh_rng_rr_axl3_rght_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 5.000000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 5.000000).round() as u8
     }
 
     /// The brake application pressure for the left wheel on the rear axle #3.
@@ -49604,7 +49604,7 @@ impl Ebc3 {
     #[allow(dead_code)]
     pub fn brk_app_prss_hgh_rng_rr_axl3_left_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 5.000000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 5.000000).round() as u8
     }
 
     /// The brake application pressure for the right wheel on the rear axle #2.
@@ -49612,7 +49612,7 @@ impl Ebc3 {
     #[allow(dead_code)]
     pub fn brk_app_prss_hgh_rng_rr_axl2_rght_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 5.000000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 5.000000).round() as u8
     }
 
     /// The brake application pressure for the left wheel on the rear axle #2.
@@ -49620,7 +49620,7 @@ impl Ebc3 {
     #[allow(dead_code)]
     pub fn brk_app_prss_hgh_rng_rr_axl2_left_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 5.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 5.000000).round() as u8
     }
 
     /// The brake application pressure for the right wheel on the rear axle #1.
@@ -49628,7 +49628,7 @@ impl Ebc3 {
     #[allow(dead_code)]
     pub fn brk_app_prss_hgh_rng_rr_axl1_rght_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 5.000000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 5.000000).round() as u8
     }
 
     /// The brake application pressure for the left wheel on the rear axle #1.
@@ -49636,7 +49636,7 @@ impl Ebc3 {
     #[allow(dead_code)]
     pub fn brk_app_prss_hgh_rng_rr_axl1_left_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 5.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 5.000000).round() as u8
     }
 
     /// The brake application pressure for the right wheel on the front axle.
@@ -49644,7 +49644,7 @@ impl Ebc3 {
     #[allow(dead_code)]
     pub fn brk_app_prss_hgh_rng_frnt_axl_rght_whel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 5.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 5.000000).round() as u8
     }
 
     /// The brake application pressure for the left wheel on the front axle.
@@ -49652,7 +49652,7 @@ impl Ebc3 {
     #[allow(dead_code)]
     pub fn brk_app_prss_hgh_rng_frnt_axl_lft_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 5.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 5.000000).round() as u8
     }
 }
 
@@ -49684,7 +49684,7 @@ impl Ebc2 {
     #[allow(dead_code)]
     pub fn rlative_speed_rear_axle2_right_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.062500).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.062500 as f32 + -7.8125f32).round() as u8
     }
 
     /// The speed of the rear axle #2, left wheel relative to the front axle speed, SPN 904.
@@ -49692,7 +49692,7 @@ impl Ebc2 {
     #[allow(dead_code)]
     pub fn relative_speed_rear_axle2_left_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.062500).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.062500 as f32 + -7.8125f32).round() as u8
     }
 
     /// The speed of the rear axle #1, right wheel relative to the front axle speed, SPN 904.
@@ -49700,7 +49700,7 @@ impl Ebc2 {
     #[allow(dead_code)]
     pub fn rlative_speed_rear_axle1_right_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 0.062500).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 0.062500 as f32 + -7.8125f32).round() as u8
     }
 
     /// The speed of the rear axle #1, left wheel relative to the front axle speed, SPN 904.
@@ -49708,7 +49708,7 @@ impl Ebc2 {
     #[allow(dead_code)]
     pub fn relative_speed_rear_axle1_left_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.062500).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.062500 as f32 + -7.8125f32).round() as u8
     }
 
     /// The speed of the front axle, right wheel relative to the front axle speed, SPN 904.
@@ -49716,7 +49716,7 @@ impl Ebc2 {
     #[allow(dead_code)]
     pub fn rlative_speed_front_axle_right_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.062500).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.062500 as f32 + -7.8125f32).round() as u8
     }
 
     /// The speed of the front axle, left wheel relative to the front axle speed, SPN 904.
@@ -49724,7 +49724,7 @@ impl Ebc2 {
     #[allow(dead_code)]
     pub fn relative_speed_front_axle_left_wheel_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.062500).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.062500 as f32 + -7.8125f32).round() as u8
     }
 
     /// The average speed of the two front wheels.
@@ -49732,7 +49732,7 @@ impl Ebc2 {
     #[allow(dead_code)]
     pub fn front_axle_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.003906).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 }
 
@@ -49771,7 +49771,7 @@ impl Ebc1 {
     #[allow(dead_code)]
     pub fn brake_pedal_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// This parameter commands the tractor-mounted trailer ABS optical warning signal.
@@ -49863,7 +49863,7 @@ impl Ebc1 {
     #[allow(dead_code)]
     pub fn eng_retarder_selection_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Switch signal which indicates that the remote accelerator has been enabled and controls the engine.
@@ -50178,7 +50178,7 @@ impl Eac {
     #[allow(dead_code)]
     pub fn sea_water_pump_outlet_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Temperature of coolant found in the intercooler which is located after the turbocharger.
@@ -50186,7 +50186,7 @@ impl Eac {
     #[allow(dead_code)]
     pub fn eng_aux_coolant_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Gage pressure of coolant found in the intercooler which is located after the turbocharger.
@@ -50194,7 +50194,7 @@ impl Eac {
     #[allow(dead_code)]
     pub fn eng_aux_coolant_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 4.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 4.000000).round() as u8
     }
 }
 
@@ -50250,7 +50250,7 @@ impl Dd {
     #[allow(dead_code)]
     pub fn cargo_ambient_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read EngOilFilterDiffPress signal from can frame
@@ -50258,7 +50258,7 @@ impl Dd {
     #[allow(dead_code)]
     pub fn eng_oil_filter_diff_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.500000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.500000).round() as u8
     }
 
     /// Differential pressure measured across the fuel filter located between the fuel tank and the supply pump.
@@ -50266,7 +50266,7 @@ impl Dd {
     #[allow(dead_code)]
     pub fn eng_fuel_filter_diff_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Ratio of volume of fuel to the total volume of fuel storage container.
@@ -50274,7 +50274,7 @@ impl Dd {
     #[allow(dead_code)]
     pub fn fuel_level_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Ratio of volume of liquid to total container volume of fluid reservoir in windshield wash system.
@@ -50282,7 +50282,7 @@ impl Dd {
     #[allow(dead_code)]
     pub fn washer_fluid_level_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -50386,7 +50386,7 @@ impl Cvw {
     #[allow(dead_code)]
     pub fn powered_vehicle_weight_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 10.000000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 10.000000).round() as u16
     }
 
     /// The total weight of the truck and all attached trailers.
@@ -50394,7 +50394,7 @@ impl Cvw {
     #[allow(dead_code)]
     pub fn gross_combination_vehicle_weight_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 10.000000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 10.000000).round() as u16
     }
 }
 
@@ -50426,7 +50426,7 @@ impl Ctl {
     #[allow(dead_code)]
     pub fn mx_cntnuous_retarder_torque_limit_rq_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF)) as u8
+        (((frame_payload >> 56) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read MnCntnuousRetarderTorqueLimitRq signal from can frame
@@ -50434,7 +50434,7 @@ impl Ctl {
     #[allow(dead_code)]
     pub fn mn_cntnuous_retarder_torque_limit_rq_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF)) as u8
+        (((frame_payload >> 48) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read MxCntinuousRetarderSpeedLimitRq signal from can frame
@@ -50442,7 +50442,7 @@ impl Ctl {
     #[allow(dead_code)]
     pub fn mx_cntinuous_retarder_speed_limit_rq_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 32.000000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 32.000000).round() as u8
     }
 
     /// Read MnCntinuousRetarderSpeedLimitRq signal from can frame
@@ -50450,7 +50450,7 @@ impl Ctl {
     #[allow(dead_code)]
     pub fn mn_cntinuous_retarder_speed_limit_rq_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 32.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 32.000000).round() as u8
     }
 
     /// Read EngTorqueLimitRqMaxContinuous signal from can frame
@@ -50458,7 +50458,7 @@ impl Ctl {
     #[allow(dead_code)]
     pub fn eng_torque_limit_rq_max_continuous_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read EngTorqueLimitRqMinContinuous signal from can frame
@@ -50466,7 +50466,7 @@ impl Ctl {
     #[allow(dead_code)]
     pub fn eng_torque_limit_rq_min_continuous_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// Read EngSpeedLimitRqMaxContinuous signal from can frame
@@ -50474,7 +50474,7 @@ impl Ctl {
     #[allow(dead_code)]
     pub fn eng_speed_limit_rq_max_continuous_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 32.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 32.000000).round() as u8
     }
 
     /// Read EngSpeedLimitRqMinContinuous signal from can frame
@@ -50482,7 +50482,7 @@ impl Ctl {
     #[allow(dead_code)]
     pub fn eng_speed_limit_rq_min_continuous_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 32.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 32.000000).round() as u8
     }
 }
 
@@ -50514,7 +50514,7 @@ impl Ct6 {
     #[allow(dead_code)]
     pub fn eng_average_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The desired combustion time based upon engine load and speed lookup maps.
@@ -50522,7 +50522,7 @@ impl Ct6 {
     #[allow(dead_code)]
     pub fn eng_desired_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.010000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 }
 
@@ -50554,7 +50554,7 @@ impl Ct5 {
     #[allow(dead_code)]
     pub fn eng_cyl20_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50562,7 +50562,7 @@ impl Ct5 {
     #[allow(dead_code)]
     pub fn eng_cyl19_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50570,7 +50570,7 @@ impl Ct5 {
     #[allow(dead_code)]
     pub fn eng_cyl18_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50578,7 +50578,7 @@ impl Ct5 {
     #[allow(dead_code)]
     pub fn eng_cyl17_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.010000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 }
 
@@ -50610,7 +50610,7 @@ impl Ct4 {
     #[allow(dead_code)]
     pub fn eng_cyl16_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50618,7 +50618,7 @@ impl Ct4 {
     #[allow(dead_code)]
     pub fn eng_cyl15_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50626,7 +50626,7 @@ impl Ct4 {
     #[allow(dead_code)]
     pub fn eng_cyl14_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50634,7 +50634,7 @@ impl Ct4 {
     #[allow(dead_code)]
     pub fn eng_cyl13_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.010000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 }
 
@@ -50666,7 +50666,7 @@ impl Ct3 {
     #[allow(dead_code)]
     pub fn eng_cyl12_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50674,7 +50674,7 @@ impl Ct3 {
     #[allow(dead_code)]
     pub fn eng_cyl11_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50682,7 +50682,7 @@ impl Ct3 {
     #[allow(dead_code)]
     pub fn eng_cyl10_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50690,7 +50690,7 @@ impl Ct3 {
     #[allow(dead_code)]
     pub fn eng_cyl9_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.010000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 }
 
@@ -50722,7 +50722,7 @@ impl Ct2 {
     #[allow(dead_code)]
     pub fn eng_cyl8_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50730,7 +50730,7 @@ impl Ct2 {
     #[allow(dead_code)]
     pub fn eng_cyl7_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50738,7 +50738,7 @@ impl Ct2 {
     #[allow(dead_code)]
     pub fn eng_cyl6_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50746,7 +50746,7 @@ impl Ct2 {
     #[allow(dead_code)]
     pub fn eng_cyl5_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.010000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 }
 
@@ -50778,7 +50778,7 @@ impl Ct1 {
     #[allow(dead_code)]
     pub fn eng_cyl4_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50786,7 +50786,7 @@ impl Ct1 {
     #[allow(dead_code)]
     pub fn eng_cyl3_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50794,7 +50794,7 @@ impl Ct1 {
     #[allow(dead_code)]
     pub fn eng_cyl2_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.010000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 
     /// The amount of time from when the ignition of the fuel is initiated to when the fuel is completely ignited (i.
@@ -50802,7 +50802,7 @@ impl Ct1 {
     #[allow(dead_code)]
     pub fn eng_cyl1_combustion_time_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.010000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.010000).round() as u16
     }
 }
 
@@ -51064,7 +51064,7 @@ impl Cm1 {
     #[allow(dead_code)]
     pub fn cab_interior_temp_cmd_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Fan speed as a ratio of the actual fan drive (current speed) to the fully engaged fan drive (maximum fan speed).
@@ -51072,7 +51072,7 @@ impl Cm1 {
     #[allow(dead_code)]
     pub fn rqed_percent_fan_speed_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -51104,7 +51104,7 @@ impl Cl {
     #[allow(dead_code)]
     pub fn illumination_brightness_percent_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -51338,7 +51338,7 @@ impl Ccvs {
     #[allow(dead_code)]
     pub fn wheel_based_vehicle_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// Switch signal which indicates the position of the Cruise Control Pause Switch used on Remote Cruise Control applications.
@@ -51454,7 +51454,7 @@ impl Ccc {
     #[allow(dead_code)]
     pub fn aux_heater_max_output_power_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 2.000000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 2.000000).round() as u16
     }
 }
 
@@ -51493,7 +51493,7 @@ impl Cbi {
     #[allow(dead_code)]
     pub fn trip_service_brake_distance_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 64) & 0xFFFFFFFF) as f64 * 0.125000).round() as u32
+        (((frame_payload >> 64) & 0xFFFFFFFF) as f32 * 0.125000).round() as u32
     }
 
     /// Total distance over which the compression brakes have been active since the last trip reset.
@@ -51501,7 +51501,7 @@ impl Cbi {
     #[allow(dead_code)]
     pub fn trip_compression_brake_distance_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF) as f64 * 0.125000).round() as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 * 0.125000).round() as u32
     }
 
     /// Total distance over which the compression brakes have been active for the life of the engine.
@@ -51509,7 +51509,7 @@ impl Cbi {
     #[allow(dead_code)]
     pub fn total_compression_brake_distance_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.125000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.125000).round() as u32
     }
 }
 
@@ -51541,7 +51541,7 @@ impl Caci {
     #[allow(dead_code)]
     pub fn cb_a_c_rfrgrnt_cmprssor_outlet_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 16.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 16.000000).round() as u8
     }
 }
 
@@ -51573,7 +51573,7 @@ impl Bt1 {
     #[allow(dead_code)]
     pub fn battery2_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of the battery 1.
@@ -51581,7 +51581,7 @@ impl Bt1 {
     #[allow(dead_code)]
     pub fn battery1_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -40f32) as u8
     }
 }
 
@@ -51721,7 +51721,7 @@ impl Bjm3 {
     #[allow(dead_code)]
     pub fn joystick3_y_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 22) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 22) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck3YAxsLvrFrwrdPstvPsStatus signal from can frame
@@ -51765,7 +51765,7 @@ impl Bjm3 {
     #[allow(dead_code)]
     pub fn joystick3_x_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 6) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 6) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck3XAxsLvrRghtPstvPosStatus signal from can frame
@@ -51953,7 +51953,7 @@ impl Bjm2 {
     #[allow(dead_code)]
     pub fn joystick2_y_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 22) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 22) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck2YAxsLvrFrwrdPstvPsStatus signal from can frame
@@ -51997,7 +51997,7 @@ impl Bjm2 {
     #[allow(dead_code)]
     pub fn joystick2_x_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 6) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 6) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck2XAxsLvrRghtPstvPosStatus signal from can frame
@@ -52233,7 +52233,7 @@ impl Bjm1 {
     #[allow(dead_code)]
     pub fn joystick1_y_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 22) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 22) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Jystck1YAxsLvrFrwrdPstvPsStatus signal from can frame
@@ -52277,7 +52277,7 @@ impl Bjm1 {
     #[allow(dead_code)]
     pub fn joystick1_x_axis_pos_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 6) & 0x3FF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 6) & 0x3FF) as f32 * 0.100000).round() as u16
     }
 
     /// Reports when the joystick button has been pressed.
@@ -52525,7 +52525,7 @@ impl B {
     #[allow(dead_code)]
     pub fn brake_second_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 4.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 4.000000).round() as u8
     }
 
     /// Gage pressure of air in the primary, or supply side, of the air brake system.
@@ -52533,7 +52533,7 @@ impl B {
     #[allow(dead_code)]
     pub fn brake_primary_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 4.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 4.000000).round() as u8
     }
 
     /// Read BrakeAppPress signal from can frame
@@ -52541,7 +52541,7 @@ impl B {
     #[allow(dead_code)]
     pub fn brake_app_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 4.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 4.000000).round() as u8
     }
 }
 
@@ -52573,7 +52573,7 @@ impl Awpp {
     #[allow(dead_code)]
     pub fn aux_pump_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 16.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 16.000000).round() as u8
     }
 }
 
@@ -52751,7 +52751,7 @@ impl At {
     #[allow(dead_code)]
     pub fn eng_alt_winding3_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF)) as u8
+        (((frame_payload >> 32) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of the windings inside the alternator.
@@ -52759,7 +52759,7 @@ impl At {
     #[allow(dead_code)]
     pub fn eng_alt_winding2_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of the windings inside the alternator.
@@ -52767,7 +52767,7 @@ impl At {
     #[allow(dead_code)]
     pub fn eng_alt_winding1_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF)) as u8
+        (((frame_payload >> 16) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of the bearing inside the alternator.
@@ -52775,7 +52775,7 @@ impl At {
     #[allow(dead_code)]
     pub fn eng_alt_bearing2_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of the bearing inside the alternator.
@@ -52783,7 +52783,7 @@ impl At {
     #[allow(dead_code)]
     pub fn eng_alt_bearing1_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -40f32) as u8
     }
 }
 
@@ -52815,7 +52815,7 @@ impl Asc6 {
     #[allow(dead_code)]
     pub fn level_preset_rear_axle_right_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 
     /// Set value for nominal level 'preset level' at the left side of the rear axle.
@@ -52823,7 +52823,7 @@ impl Asc6 {
     #[allow(dead_code)]
     pub fn level_preset_rear_axle_left_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 
     /// Set value for nominal level 'preset level' at the right side of the front axle.
@@ -52831,7 +52831,7 @@ impl Asc6 {
     #[allow(dead_code)]
     pub fn level_preset_front_axle_right_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 
     /// Set value for nominal level 'preset level' at the left side of the front axle.
@@ -52839,7 +52839,7 @@ impl Asc6 {
     #[allow(dead_code)]
     pub fn level_preset_front_axle_left_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 }
 
@@ -52907,7 +52907,7 @@ impl Asc5 {
     #[allow(dead_code)]
     pub fn damper_stiffness_lift_tag_axle_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read DamperStiffnessRearAxle signal from can frame
@@ -52915,7 +52915,7 @@ impl Asc5 {
     #[allow(dead_code)]
     pub fn damper_stiffness_rear_axle_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read DamperStiffnessFrontAxle signal from can frame
@@ -52923,7 +52923,7 @@ impl Asc5 {
     #[allow(dead_code)]
     pub fn damper_stiffness_front_axle_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -52955,7 +52955,7 @@ impl Asc4 {
     #[allow(dead_code)]
     pub fn bellow_press_rear_axle_right_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Read BellowPressRearAxleLeft signal from can frame
@@ -52963,7 +52963,7 @@ impl Asc4 {
     #[allow(dead_code)]
     pub fn bellow_press_rear_axle_left_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Read BellowPressFrontAxleRight signal from can frame
@@ -52971,7 +52971,7 @@ impl Asc4 {
     #[allow(dead_code)]
     pub fn bellow_press_front_axle_right_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Read BellowPressFrontAxleLeft signal from can frame
@@ -52979,7 +52979,7 @@ impl Asc4 {
     #[allow(dead_code)]
     pub fn bellow_press_front_axle_left_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -53011,7 +53011,7 @@ impl Asc3 {
     #[allow(dead_code)]
     pub fn relative_level_rear_axle_right_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 
     /// Information of the height at the left side of the rear axle referred to normal level 1.
@@ -53019,7 +53019,7 @@ impl Asc3 {
     #[allow(dead_code)]
     pub fn relative_level_rear_axle_left_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 
     /// Information of the height at the right side of the front axle referred to normal level 1.
@@ -53027,7 +53027,7 @@ impl Asc3 {
     #[allow(dead_code)]
     pub fn relative_level_front_axle_right_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 
     /// Information of the height at the left side of the front axle referred to normal level 1.
@@ -53035,7 +53035,7 @@ impl Asc3 {
     #[allow(dead_code)]
     pub fn relative_level_front_axle_left_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000 as f32 + -3200f32).round() as u16
     }
 }
 
@@ -53103,7 +53103,7 @@ impl Asc2 {
     #[allow(dead_code)]
     pub fn damper_stiffness_rq_lift_tag_axle_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Demand value for the shock absorber control at the rear axle.
@@ -53111,7 +53111,7 @@ impl Asc2 {
     #[allow(dead_code)]
     pub fn damper_stiffness_rq_rear_axle_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Demand value for the shock absorber control at the front axle.
@@ -53119,7 +53119,7 @@ impl Asc2 {
     #[allow(dead_code)]
     pub fn damper_stiffness_rq_front_axle_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read LevelCtrlModeRq signal from can frame
@@ -53595,7 +53595,7 @@ impl As {
     #[allow(dead_code)]
     pub fn alt_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.500000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 }
 
@@ -53627,7 +53627,7 @@ impl Ap {
     #[allow(dead_code)]
     pub fn aux_abs_press_reading_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.500000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 
     /// Identifies the current gage pressure (relative to atmosphere) that is configured uniquely per application.
@@ -53635,7 +53635,7 @@ impl Ap {
     #[allow(dead_code)]
     pub fn aux_gage_press_reading1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.500000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 
     /// Identifies the current vacuum pressure (relative to atmosphere) that is configured uniquely per application.
@@ -53643,7 +53643,7 @@ impl Ap {
     #[allow(dead_code)]
     pub fn aux_vacuum_press_reading_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.500000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 }
 
@@ -53675,7 +53675,7 @@ impl Amb2 {
     #[allow(dead_code)]
     pub fn solar_sensor_max_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// This is the solar radiation (power density) falling on the vehicle in percent of the maximum sensor value (SPN 2611).
@@ -53683,7 +53683,7 @@ impl Amb2 {
     #[allow(dead_code)]
     pub fn solar_intensity_percent_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 }
 
@@ -54607,7 +54607,7 @@ impl Dm4 {
     #[allow(dead_code)]
     pub fn eng_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFFFF) as f64 * 0.125000).round() as u16
+        (((frame_payload >> 56) & 0xFFFF) as f32 * 0.125000).round() as u16
     }
 
     /// State signal which indicates which engine torque mode is currently generating, limiting, or controlling the torque.
@@ -54627,7 +54627,7 @@ impl Dm4 {
     #[allow(dead_code)]
     pub fn eng_turbo_boost_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Speed of the vehicle as calculated from wheel or tailshaft speed.
@@ -54635,7 +54635,7 @@ impl Dm4 {
     #[allow(dead_code)]
     pub fn wheel_based_vehicle_speed_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 88) & 0xFFFF) as f64 * 0.003906).round() as u16
+        (((frame_payload >> 88) & 0xFFFF) as f32 * 0.003906).round() as u16
     }
 
     /// Read EngPercentLoadAtCurrentSpeed signal from can frame
@@ -54651,7 +54651,7 @@ impl Dm4 {
     #[allow(dead_code)]
     pub fn engine_coolant_temperature_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 80) & 0xFF)) as u8
+        (((frame_payload >> 80) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// SPN #1 (Conversion Version 4)
@@ -56968,7 +56968,7 @@ impl Utacr {
     #[allow(dead_code)]
     pub fn utility_overall_power_factor_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF)) as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 + -1f32) as u16
     }
 
     /// The total reactive power delivered by the utility incomer
@@ -56976,7 +56976,7 @@ impl Utacr {
     #[allow(dead_code)]
     pub fn utility_total_reactive_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57008,7 +57008,7 @@ impl Utacp {
     #[allow(dead_code)]
     pub fn utility_total_apparent_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF)) as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 
     /// Total real power delivered by the utility incomer.
@@ -57016,7 +57016,7 @@ impl Utacp {
     #[allow(dead_code)]
     pub fn utility_total_real_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57094,7 +57094,7 @@ impl Upcacr {
     #[allow(dead_code)]
     pub fn utility_phase_c_power_factor_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF)) as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 + -1f32) as u16
     }
 
     /// The reactive power delivered by phase C of the utility incomer
@@ -57102,7 +57102,7 @@ impl Upcacr {
     #[allow(dead_code)]
     pub fn utility_phase_c_reactive_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57134,7 +57134,7 @@ impl Upcacp {
     #[allow(dead_code)]
     pub fn utility_phase_c_apparent_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF)) as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 
     /// The real power delivered by phase C of the utility incomer.
@@ -57142,7 +57142,7 @@ impl Upcacp {
     #[allow(dead_code)]
     pub fn utility_phase_c_real_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57236,7 +57236,7 @@ impl Upbacr {
     #[allow(dead_code)]
     pub fn utility_phase_b_power_factor_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF)) as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 + -1f32) as u16
     }
 
     /// The reactive power delivered by phase B of the utility incomer
@@ -57244,7 +57244,7 @@ impl Upbacr {
     #[allow(dead_code)]
     pub fn utility_phase_b_reactive_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57276,7 +57276,7 @@ impl Upbacp {
     #[allow(dead_code)]
     pub fn utility_phase_b_apparent_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF)) as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 
     /// The real power delivered by phase B of the utility incomer.
@@ -57284,7 +57284,7 @@ impl Upbacp {
     #[allow(dead_code)]
     pub fn utility_phase_b_real_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57378,7 +57378,7 @@ impl Upaccr {
     #[allow(dead_code)]
     pub fn utility_phase_a_power_factor_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF)) as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 + -1f32) as u16
     }
 
     /// The reactive power delivered by phase A of the utility incomer
@@ -57386,7 +57386,7 @@ impl Upaccr {
     #[allow(dead_code)]
     pub fn utility_phase_a_reactive_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57418,7 +57418,7 @@ impl Upaacp {
     #[allow(dead_code)]
     pub fn utility_phase_a_apparent_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF)) as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 
     /// The real power delivered by phase A of the utility incomer.
@@ -57426,7 +57426,7 @@ impl Upaacp {
     #[allow(dead_code)]
     pub fn utility_phase_a_real_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57576,7 +57576,7 @@ impl Gtacr {
     #[allow(dead_code)]
     pub fn generator_overall_power_factor_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF)) as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 + -1f32) as u16
     }
 
     /// The total reactive power delivered by the generator
@@ -57584,7 +57584,7 @@ impl Gtacr {
     #[allow(dead_code)]
     pub fn generator_total_reactive_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57616,7 +57616,7 @@ impl Gtacp {
     #[allow(dead_code)]
     pub fn generator_total_apparent_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF)) as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 
     /// Total real power delivered by the generator.
@@ -57624,7 +57624,7 @@ impl Gtacp {
     #[allow(dead_code)]
     pub fn generator_total_real_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57702,7 +57702,7 @@ impl Gpcacr {
     #[allow(dead_code)]
     pub fn generator_phase_c_power_factor_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF)) as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 + -1f32) as u16
     }
 
     /// The reactive power delivered by phase C of the generator
@@ -57710,7 +57710,7 @@ impl Gpcacr {
     #[allow(dead_code)]
     pub fn generator_phase_c_reactive_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57742,7 +57742,7 @@ impl Gpcacp {
     #[allow(dead_code)]
     pub fn generator_phase_c_apparent_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF)) as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 
     /// The real power delivered by phase C of the generator.
@@ -57750,7 +57750,7 @@ impl Gpcacp {
     #[allow(dead_code)]
     pub fn generator_phase_c_real_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57844,7 +57844,7 @@ impl Gpbacrp {
     #[allow(dead_code)]
     pub fn generator_phase_b_power_factor_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF)) as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 + -1f32) as u16
     }
 
     /// The reactive power delivered by phase B of the generator
@@ -57852,7 +57852,7 @@ impl Gpbacrp {
     #[allow(dead_code)]
     pub fn generator_phase_b_reactive_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57884,7 +57884,7 @@ impl Gpbacp {
     #[allow(dead_code)]
     pub fn generator_phase_b_apparent_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF)) as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 
     /// The real power delivered by phase B of the generator.
@@ -57892,7 +57892,7 @@ impl Gpbacp {
     #[allow(dead_code)]
     pub fn generator_phase_b_real_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -57986,7 +57986,7 @@ impl Gpaacr {
     #[allow(dead_code)]
     pub fn generator_phase_a_power_factor_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF)) as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 + -1f32) as u16
     }
 
     /// The reactive power delivered by phase A of the generator
@@ -57994,7 +57994,7 @@ impl Gpaacr {
     #[allow(dead_code)]
     pub fn generator_phase_a_reactive_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -58026,7 +58026,7 @@ impl Gpaacp {
     #[allow(dead_code)]
     pub fn generator_phase_a_apparent_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFFFFFF)) as u32
+        (((frame_payload >> 32) & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 
     /// The real power delivered by phase A of the generator.
@@ -58034,7 +58034,7 @@ impl Gpaacp {
     #[allow(dead_code)]
     pub fn generator_phase_a_real_power_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF)) as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 + -2000000000f32) as u32
     }
 }
 
@@ -58178,7 +58178,7 @@ impl Busc {
     #[allow(dead_code)]
     pub fn bus1_utility_ac_phase_difference_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF)) as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 + -200f32) as u16
     }
 
     /// Indicator of whether Bus #1 and Utility are properly synchronized for paralleling. This indicator will be based on parameters such as Voltage Match, Frequency Match, and Phase Match.
@@ -58389,7 +58389,7 @@ impl Bgsc {
     #[allow(dead_code)]
     pub fn bus1_generator_ac_phase_difference_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF)) as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 + -200f32) as u16
     }
 
     /// Indicator of whether Bus #1 and Generator are properly synchronized for paralleling. This indicator will be based on parameters such as Voltage Match, Frequency Match, and Phase Match.
@@ -59680,7 +59680,7 @@ impl Ati2 {
     #[allow(dead_code)]
     pub fn aftertreatment2_trip_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Total amount of time that aftertreatment 2 regeneration has been manually disabled during the current trip period.
@@ -59768,7 +59768,7 @@ impl Ati1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_trip_fuel_used_raw_value(&self) -> u32 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFFFFFF) as f64 * 0.500000).round() as u32
+        ((frame_payload & 0xFFFFFFFF) as f32 * 0.500000).round() as u32
     }
 
     /// Total amount of time that aftertreatment 1 regeneration has been manually disabled during the current trip period.
@@ -59808,7 +59808,7 @@ impl Aac3 {
     #[allow(dead_code)]
     pub fn aftertreatment1_second_air_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Indicates the secondary air mass flow for aftertreatment 1.
@@ -59816,7 +59816,7 @@ impl Aac3 {
     #[allow(dead_code)]
     pub fn aftrtreatment1_second_air_mass_flow_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.200000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.200000).round() as u16
     }
 
     /// Indicates the secondary air temperature for aftertreatment 1.
@@ -59824,7 +59824,7 @@ impl Aac3 {
     #[allow(dead_code)]
     pub fn aftertreatment1_second_air_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Indicates the secondary air differential pressure for aftertreatment 1.
@@ -59832,7 +59832,7 @@ impl Aac3 {
     #[allow(dead_code)]
     pub fn aftrtratment1_second_air_diff_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 }
 
@@ -59864,7 +59864,7 @@ impl Aac4 {
     #[allow(dead_code)]
     pub fn aftertreatment2_second_air_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Indicates the secondary air mass flow for aftertreatment 2.
@@ -59872,7 +59872,7 @@ impl Aac4 {
     #[allow(dead_code)]
     pub fn aftrtreatment2_second_air_mass_flow_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.200000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.200000).round() as u16
     }
 
     /// Indicates the secondary air temperature for aftertreatment 2.
@@ -59880,7 +59880,7 @@ impl Aac4 {
     #[allow(dead_code)]
     pub fn aftertreatment2_second_air_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Indicates the secondary air differential pressure for aftertreatment 2.
@@ -59888,7 +59888,7 @@ impl Aac4 {
     #[allow(dead_code)]
     pub fn aftrtratment2_second_air_diff_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.007812).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 }
 
@@ -60111,7 +60111,7 @@ impl At1i1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_intake_o2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.000514).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.000514 as f32 + -12f32).round() as u16
     }
 
     /// Read Aftertreatment1IntakeNOx signal from can frame
@@ -60119,7 +60119,7 @@ impl At1i1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_intake_n_ox_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000 as f32 + -200f32).round() as u16
     }
 }
 
@@ -60165,7 +60165,7 @@ impl At1i2 {
     #[allow(dead_code)]
     pub fn aftrtrtmnt1_prtclt_trp_intk_gas_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// The reading from the exhaust gas temperature sensor located farthest upstream in the aftertreatment system in exhaust bank 1.
@@ -60173,7 +60173,7 @@ impl At1i2 {
     #[allow(dead_code)]
     pub fn aftertreatment1_exhaust_gas_temp1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -60286,7 +60286,7 @@ impl At1o1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_outlet_o2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.000514).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.000514 as f32 + -12f32).round() as u16
     }
 
     /// Read Aftertreatment1OutletNOx signal from can frame
@@ -60294,7 +60294,7 @@ impl At1o1 {
     #[allow(dead_code)]
     pub fn aftertreatment1_outlet_n_ox_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000 as f32 + -200f32).round() as u16
     }
 }
 
@@ -60340,7 +60340,7 @@ impl At1o2 {
     #[allow(dead_code)]
     pub fn aftrtrtmnt1_prtclt_trp_otlt_gas_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read Aftertreatment1ExhaustGasTemp3 signal from can frame
@@ -60348,7 +60348,7 @@ impl At1o2 {
     #[allow(dead_code)]
     pub fn aftertreatment1_exhaust_gas_temp3_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -60461,7 +60461,7 @@ impl At2i1 {
     #[allow(dead_code)]
     pub fn aftertreatment2_intake_o2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.000514).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.000514 as f32 + -12f32).round() as u16
     }
 
     /// Read Aftertreatment2IntakeNOx signal from can frame
@@ -60469,7 +60469,7 @@ impl At2i1 {
     #[allow(dead_code)]
     pub fn aftertreatment2_intake_n_ox_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000 as f32 + -200f32).round() as u16
     }
 }
 
@@ -60515,7 +60515,7 @@ impl At2i2 {
     #[allow(dead_code)]
     pub fn aftrtrtmnt2_prtclt_trp_intk_gas_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// The reading from the exhaust gas temperature sensor located farthest upstream in the aftertreatment system in exhaust bank 2.
@@ -60523,7 +60523,7 @@ impl At2i2 {
     #[allow(dead_code)]
     pub fn aftertreatment2_exhaust_gas_temp1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -60636,7 +60636,7 @@ impl At2o1 {
     #[allow(dead_code)]
     pub fn aftertreatment2_outlet_o2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.000514).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.000514 as f32 + -12f32).round() as u16
     }
 
     /// Read Aftertreatment2OutletNOx signal from can frame
@@ -60644,7 +60644,7 @@ impl At2o1 {
     #[allow(dead_code)]
     pub fn aftertreatment2_outlet_n_ox_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000 as f32 + -200f32).round() as u16
     }
 }
 
@@ -60690,7 +60690,7 @@ impl At2o2 {
     #[allow(dead_code)]
     pub fn aftrtrtmnt2_prtclt_trp_otlt_gas_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read Aftertreatment2ExhaustGasTemp3 signal from can frame
@@ -60698,7 +60698,7 @@ impl At2o2 {
     #[allow(dead_code)]
     pub fn aftertreatment2_exhaust_gas_temp3_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -60730,7 +60730,7 @@ impl Atgp1 {
     #[allow(dead_code)]
     pub fn particulate_trap_outlet_press1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Read ParticulateTrapIntakePress1 signal from can frame
@@ -60738,7 +60738,7 @@ impl Atgp1 {
     #[allow(dead_code)]
     pub fn particulate_trap_intake_press1_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -60770,7 +60770,7 @@ impl Atgp2 {
     #[allow(dead_code)]
     pub fn particulate_trap_outlet_press2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Read ParticulateTrapIntakePress2 signal from can frame
@@ -60778,7 +60778,7 @@ impl Atgp2 {
     #[allow(dead_code)]
     pub fn particulate_trap_intake_press2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.100000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 }
 
@@ -60824,7 +60824,7 @@ impl Atm2 {
     #[allow(dead_code)]
     pub fn aftrtrtmnt2_prtclte_trap_diff_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Read Aftrtrtmnt2PrtcltTrpIntrmdtGsTmp signal from can frame
@@ -60832,7 +60832,7 @@ impl Atm2 {
     #[allow(dead_code)]
     pub fn aftrtrtmnt2_prtclt_trp_intrmdt_gs_tmp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read Aftertreatment2ExhaustGasTemp2 signal from can frame
@@ -60840,7 +60840,7 @@ impl Atm2 {
     #[allow(dead_code)]
     pub fn aftertreatment2_exhaust_gas_temp2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -62516,7 +62516,7 @@ impl Amb {
     #[allow(dead_code)]
     pub fn road_surface_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of air entering vehicle air induction system.
@@ -62524,7 +62524,7 @@ impl Amb {
     #[allow(dead_code)]
     pub fn eng_air_inlet_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF)) as u8
+        (((frame_payload >> 40) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature of air surrounding vehicle.
@@ -62532,7 +62532,7 @@ impl Amb {
     #[allow(dead_code)]
     pub fn ambient_air_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 24) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Temperature of air inside the part of the vehicle that encloses the driver and vehicle operating controls.
@@ -62540,7 +62540,7 @@ impl Amb {
     #[allow(dead_code)]
     pub fn cab_interior_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Absolute air pressure of the atmosphere.
@@ -62548,7 +62548,7 @@ impl Amb {
     #[allow(dead_code)]
     pub fn barometric_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.500000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.500000).round() as u8
     }
 }
 
@@ -62580,7 +62580,7 @@ impl Air2 {
     #[allow(dead_code)]
     pub fn eng_air_start_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 4.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 4.000000).round() as u8
     }
 }
 
@@ -62624,7 +62624,7 @@ impl Air1 {
     #[allow(dead_code)]
     pub fn air_suspension_supply_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 40) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 40) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// The pneumatic pressure in the auxiliary circuit.
@@ -62632,7 +62632,7 @@ impl Air1 {
     #[allow(dead_code)]
     pub fn aux_equipment_supply_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// The pneumatic pressure in the service brake circuit or reservoir #2.
@@ -62640,7 +62640,7 @@ impl Air1 {
     #[allow(dead_code)]
     pub fn service_brake_air_press_circuit2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// The pneumatic pressure in the service brake circuit or reservoir #1.
@@ -62648,7 +62648,7 @@ impl Air1 {
     #[allow(dead_code)]
     pub fn service_brake_air_press_circuit1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// The pneumatic pressure in the circuit or reservoir for the parking brake and/or the trailer supply.
@@ -62656,7 +62656,7 @@ impl Air1 {
     #[allow(dead_code)]
     pub fn parking_and_or_trailer_air_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 8.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 8.000000).round() as u8
     }
 
     /// The pneumatic pressure in the main reservoir, sometimes referred to as the wet tank.
@@ -62664,7 +62664,7 @@ impl Air1 {
     #[allow(dead_code)]
     pub fn pneumatic_supply_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 8.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 8.000000).round() as u8
     }
 }
 
@@ -62696,7 +62696,7 @@ impl Ai {
     #[allow(dead_code)]
     pub fn steer_axle_lube_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 4.000000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 4.000000).round() as u8
     }
 
     /// Temperature of lubricant in steering axle.
@@ -62704,7 +62704,7 @@ impl Ai {
     #[allow(dead_code)]
     pub fn steer_axle_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -40f32) as u8
     }
 
     /// The drive axle lubricant pressure with location determined by Drive Axle Location (SPN 930).
@@ -62712,7 +62712,7 @@ impl Ai {
     #[allow(dead_code)]
     pub fn drive_axle_lube_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF) as f64 * 4.000000).round() as u8
+        (((frame_payload >> 32) & 0xFF) as f32 * 4.000000).round() as u8
     }
 
     /// Temperature of axle lubricant in drive axle.
@@ -62720,7 +62720,7 @@ impl Ai {
     #[allow(dead_code)]
     pub fn drive_axle_temp_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF)) as u8
+        (((frame_payload >> 24) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Gage pressure of air in system that utilizes compressed air to provide force between axle and frame.
@@ -62728,7 +62728,7 @@ impl Ai {
     #[allow(dead_code)]
     pub fn drive_axle_lift_air_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 4.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 4.000000).round() as u8
     }
 
     /// To identify to which of several similar devices (such as tires or fuel tanks) the information applies.
@@ -62767,7 +62767,7 @@ impl Af2 {
     #[allow(dead_code)]
     pub fn eng_turbo_wastegate_valve_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read EngGsMssFlwSnsrFelingCorrection signal from can frame
@@ -62775,7 +62775,7 @@ impl Af2 {
     #[allow(dead_code)]
     pub fn eng_gs_mss_flw_snsr_feling_correction_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFF)) as u8
+        (((frame_payload >> 32) & 0xFF) as f32 + -125f32) as u8
     }
 
     /// The desired absolute intake manifold pressure of the engine.
@@ -62783,7 +62783,7 @@ impl Af2 {
     #[allow(dead_code)]
     pub fn eng_dsired_abs_intake_manifold_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// A correction to a predefined gaseous fuel energy (expressed in energy per unit volume) represented as a percentage.
@@ -62895,7 +62895,7 @@ impl Acc1 {
     #[allow(dead_code)]
     pub fn road_curvature_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.007812).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.007812 as f32 + -250f32).round() as u16
     }
 
     /// Selected distance mode for adaptive cruise control.
@@ -62975,7 +62975,7 @@ impl Ac {
     #[allow(dead_code)]
     pub fn articulation_angle_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -125f32) as u8
     }
 }
 
@@ -63007,7 +63007,7 @@ impl Aai {
     #[allow(dead_code)]
     pub fn aux_level_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Pressure measured by auxiliary pressure sensor #2.
@@ -63015,7 +63015,7 @@ impl Aai {
     #[allow(dead_code)]
     pub fn aux_press2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 16.000000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 16.000000).round() as u8
     }
 
     /// Pressure measured by auxiliary pressure sensor #1.
@@ -63023,7 +63023,7 @@ impl Aai {
     #[allow(dead_code)]
     pub fn aux_press1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 16.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 16.000000).round() as u8
     }
 
     /// Temperature measured by auxiliary temperature sensor #2.
@@ -63031,7 +63031,7 @@ impl Aai {
     #[allow(dead_code)]
     pub fn aux_temp2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF)) as u8
+        (((frame_payload >> 8) & 0xFF) as f32 + -40f32) as u8
     }
 
     /// Temperature measured by auxiliary temperature sensor #1.
@@ -63039,7 +63039,7 @@ impl Aai {
     #[allow(dead_code)]
     pub fn aux_temp1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -40f32) as u8
     }
 }
 
@@ -63071,7 +63071,7 @@ impl A1 {
     #[allow(dead_code)]
     pub fn eng_blower_bypass_valve_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 0.400000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Gage pressure of gas supply to fuel metering device.
@@ -63079,7 +63079,7 @@ impl A1 {
     #[allow(dead_code)]
     pub fn eng_gas_supply_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFFFF) as f64 * 0.500000).round() as u16
+        (((frame_payload >> 8) & 0xFFFF) as f32 * 0.500000).round() as u16
     }
 }
 
@@ -63170,7 +63170,7 @@ impl Atm1 {
     #[allow(dead_code)]
     pub fn particulate_trap_diff_press_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000).round() as u16
     }
 
     /// Temperature of engine combustion byproducts at a mid-point in the particulate trap.
@@ -63178,7 +63178,7 @@ impl Atm1 {
     #[allow(dead_code)]
     pub fn prtclate_trap_intermediate_gas_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Read ExhaustGasTemp2 signal from can frame
@@ -63186,7 +63186,7 @@ impl Atm1 {
     #[allow(dead_code)]
     pub fn exhaust_gas_temp2_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.031250).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 }
 
@@ -63290,7 +63290,7 @@ impl Fwss1 {
     #[allow(dead_code)]
     pub fn fifth_wheel_roll_moment_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 10.000000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 10.000000 as f32 + -320000f32).round() as u16
     }
 
     /// Fifth wheel drawbar force.
@@ -63298,7 +63298,7 @@ impl Fwss1 {
     #[allow(dead_code)]
     pub fn fifth_wheel_drawbar_force_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 10.000000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 10.000000 as f32 + -320000f32).round() as u16
     }
 
     /// Fifth wheel vertical force.
@@ -63306,7 +63306,7 @@ impl Fwss1 {
     #[allow(dead_code)]
     pub fn fifth_wheel_vertical_force_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 5.000000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 5.000000).round() as u16
     }
 }
 
@@ -63350,7 +63350,7 @@ impl Fwss2 {
     #[allow(dead_code)]
     pub fn fifth_wheel_slider_pos_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 10.000000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 10.000000).round() as u8
     }
 
     /// Indicates results of coupling operation to the vehicle operator.
@@ -63418,7 +63418,7 @@ impl Ssi {
     #[allow(dead_code)]
     pub fn roll_and_pitch_measurement_latency_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 56) & 0xFF) as f64 * 0.500000).round() as u8
+        (((frame_payload >> 56) & 0xFF) as f32 * 0.500000).round() as u8
     }
 
     /// Compensated mode for the pitch and roll measurements.
@@ -63474,7 +63474,7 @@ impl Ssi {
     #[allow(dead_code)]
     pub fn pitch_rate_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.002000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.002000 as f32 + -64f32).round() as u16
     }
 
     /// The angle between the vehicle y-axis and the ground plane.
@@ -63482,7 +63482,7 @@ impl Ssi {
     #[allow(dead_code)]
     pub fn roll_angle_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.002000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.002000 as f32 + -64f32).round() as u16
     }
 
     /// The angle between the vehicle x-axis and the ground plane.
@@ -63490,7 +63490,7 @@ impl Ssi {
     #[allow(dead_code)]
     pub fn pitch_angle_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.002000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.002000 as f32 + -64f32).round() as u16
     }
 }
 
@@ -63546,7 +63546,7 @@ impl Trf1 {
     #[allow(dead_code)]
     pub fn trans_oil_level_high_low_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFF) as f64 * 0.500000).round() as u8
+        (((frame_payload >> 48) & 0xFF) as f32 * 0.500000 as f32 + -62.5f32).round() as u8
     }
 
     /// Temperature of the transmission lubricant.
@@ -63554,7 +63554,7 @@ impl Trf1 {
     #[allow(dead_code)]
     pub fn trans_oil_temp_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.031250).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.031250 as f32 + -273f32).round() as u16
     }
 
     /// Gage pressure of lubrication fluid in transmission, measured after pump.
@@ -63562,7 +63562,7 @@ impl Trf1 {
     #[allow(dead_code)]
     pub fn trans_oil_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 16.000000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 16.000000).round() as u8
     }
 
     /// Read TransFilterDiffPress signal from can frame
@@ -63570,7 +63570,7 @@ impl Trf1 {
     #[allow(dead_code)]
     pub fn trans_filter_diff_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFF) as f64 * 2.000000).round() as u8
+        (((frame_payload >> 16) & 0xFF) as f32 * 2.000000).round() as u8
     }
 
     /// Ratio of volume of transmission sump oil to recommended volume.
@@ -63578,7 +63578,7 @@ impl Trf1 {
     #[allow(dead_code)]
     pub fn trans_oil_level_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 8) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 8) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Gage pressure of oil within a wet clutch.
@@ -63586,7 +63586,7 @@ impl Trf1 {
     #[allow(dead_code)]
     pub fn clutch_press_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF) as f64 * 16.000000).round() as u8
+        ((frame_payload & 0xFF) as f32 * 16.000000).round() as u8
     }
 }
 
@@ -63618,7 +63618,7 @@ impl Vep1 {
     #[allow(dead_code)]
     pub fn battery_potential_switched_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 48) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 48) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Measured electrical potential of the battery.
@@ -63626,7 +63626,7 @@ impl Vep1 {
     #[allow(dead_code)]
     pub fn electrical_potential_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Electrical potential measured at the charging system output.
@@ -63634,7 +63634,7 @@ impl Vep1 {
     #[allow(dead_code)]
     pub fn charging_system_potential_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Measure of electrical current flow from the alternator.
@@ -63650,7 +63650,7 @@ impl Vep1 {
     #[allow(dead_code)]
     pub fn net_battery_current_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFF)) as u8
+        ((frame_payload & 0xFF) as f32 + -125f32) as u8
     }
 }
 
@@ -63694,7 +63694,7 @@ impl Wcm2 {
     #[allow(dead_code)]
     pub fn network_signal_strength2_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read NetworkAntennaStatus2 signal from can frame
@@ -63774,7 +63774,7 @@ impl Wcm1 {
     #[allow(dead_code)]
     pub fn network_signal_strength1_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 24) & 0xFF) as f64 * 0.400000).round() as u8
+        (((frame_payload >> 24) & 0xFF) as f32 * 0.400000).round() as u8
     }
 
     /// Read NetworkAntennaStatus1 signal from can frame
@@ -63926,7 +63926,7 @@ impl Vrep {
     #[allow(dead_code)]
     pub fn gnrtr_otput_voltage_bias_percentage_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 32) & 0xFFFF) as f64 * 0.100000).round() as u16
+        (((frame_payload >> 32) & 0xFFFF) as f32 * 0.100000 as f32 + -100f32).round() as u16
     }
 
     /// Measured signal that represents the generator excitation field current.
@@ -63934,7 +63934,7 @@ impl Vrep {
     #[allow(dead_code)]
     pub fn generator_excitation_field_current_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        (((frame_payload >> 16) & 0xFFFF) as f64 * 0.050000).round() as u16
+        (((frame_payload >> 16) & 0xFFFF) as f32 * 0.050000).round() as u16
     }
 
     /// Measured signal that represents the generator excitation field voltage.
@@ -63942,6 +63942,6 @@ impl Vrep {
     #[allow(dead_code)]
     pub fn generator_excitation_field_voltage_raw_value(&self) -> u16 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
-        ((frame_payload & 0xFFFF) as f64 * 0.050000).round() as u16
+        ((frame_payload & 0xFFFF) as f32 * 0.050000 as f32 + -1605.625f32).round() as u16
     }
 }
