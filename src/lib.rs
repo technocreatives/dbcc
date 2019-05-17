@@ -240,11 +240,21 @@ fn calc_raw(
     write!(&mut calc, "({} & {:#X})", shift, bit_msk_const)?;
 
     if *signal.signal_size() != 1 && *signal.factor() != 1.0 {
-        write!(&mut calc, " as f64")?;
+        if *signal.signal_size() <= 32 {
+            write!(&mut calc, " as f32")?;
+        } else {
+            write!(&mut calc, " as f64")?;
+        }
     }
 
     if *signal.factor() != 1.0 {
         write!(&mut calc, " * {:.6}", signal.factor())?;
+    }
+
+    if *signal.offset() != 0.0 && *signal.signal_size() <= 32 {
+        write!(&mut calc, " as f32 + {}f32", signal.offset())?;
+    } else if *signal.offset() != 0.0 {
+        write!(&mut calc, " as f64 + {}f64", signal.offset())?;
     }
 
     if *signal.signal_size() != 1 {
