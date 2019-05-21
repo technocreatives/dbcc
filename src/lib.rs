@@ -93,7 +93,7 @@ fn to_enum_name(message_id: &MessageId, signal_name: &str) -> String {
     format!("{}{}", &signal_name.to_camel_case(), message_id.0)
 }
 
-pub fn signal_enum(val_desc: &ValueDescription) -> Option<Enum> {
+pub fn signal_enum(dbc: &DBC, val_desc: &ValueDescription) -> Option<Enum> {
     if let ValueDescription::Signal {
         ref message_id,
         ref signal_name,
@@ -108,34 +108,45 @@ pub fn signal_enum(val_desc: &ValueDescription) -> Option<Enum> {
         sig_enum.derive("Clone");
         sig_enum.derive("Copy");
         sig_enum.derive("PartialEq");
-        sig_enum.derive("Eq");
         for desc in value_descriptions {
             sig_enum.new_variant(&desc.b().to_camel_case().to_type_name());
         }
-        sig_enum.new_variant("XValue(u64)");
+
+        if let Some(signal) = dbc.signal_by_name(*message_id, signal_name) {
+            let decoded_type = signal_decoded_type(dbc, message_id, signal);
+            sig_enum.new_variant(&format!("XValue({})", decoded_type));
+        } else {
+            sig_enum.new_variant("XValue(u64)");
+        }
         return Some(sig_enum);
     }
     None
 }
 
-pub fn signal_enum_impl_from(val_desc: &ValueDescription) -> Option<Impl> {
+pub fn signal_enum_impl_from(dbc: &DBC, val_desc: &ValueDescription) -> Option<Impl> {
     if let ValueDescription::Signal {
         ref message_id,
         ref signal_name,
         ref value_descriptions,
     } = val_desc
     {
+        let signal_type = if let Some(signal) = dbc.signal_by_name(*message_id, signal_name) {
+            signal_decoded_type(dbc, message_id, signal)
+        } else {
+            "u64".to_string()
+        };
+
         let enum_name = to_enum_name(message_id, signal_name);
         let mut enum_impl = Impl::new(codegen::Type::new(&enum_name));
-        enum_impl.impl_trait("From<u64>");
+        enum_impl.impl_trait(format!("From<{}>", signal_type));
 
         let from_fn = enum_impl.new_fn("from");
         from_fn.allow("dead_code");
-        from_fn.arg("val", codegen::Type::new("u64"));
+        from_fn.arg("val", codegen::Type::new(&signal_type));
         from_fn.ret(codegen::Type::new("Self"));
 
         let mut matching = String::new();
-        write!(&mut matching, "match val {{\n").unwrap();
+        write!(&mut matching, "match val as u64 {{\n").unwrap();
         for value_description in value_descriptions {
             write!(
                 &mut matching,
@@ -146,9 +157,9 @@ pub fn signal_enum_impl_from(val_desc: &ValueDescription) -> Option<Impl> {
             )
             .unwrap();
         }
-        write!(
+         write!(
             &mut matching,
-            "    value => {}::XValue(value),\n",
+            "    _ => {}::XValue(val),\n",
             enum_name
         )
         .unwrap();
@@ -215,7 +226,7 @@ pub fn signal_fn_enum(signal: &Signal, enum_type: String) -> Result<Function> {
     let raw_fn_name = format!("{}_{}", signal.name().to_snake_case(), RAW_FN_SUFFIX);
 
     signal_fn.line(format!(
-        "{}::from(self.{}() as u64)",
+        "{}::from(self.{}())",
         enum_type, raw_fn_name
     ));
 
@@ -431,11 +442,11 @@ pub fn can_code_gen(opt: &DbccOpt, dbc: &DBC) -> Result<Scope> {
     }
 
     for value_description in dbc.value_descriptions() {
-        if let Some(signal_enum) = signal_enum(value_description) {
+        if let Some(signal_enum) = signal_enum(dbc, value_description) {
             scope.push_enum(signal_enum);
         }
 
-        if let Some(enum_impl) = signal_enum_impl_from(value_description) {
+        if let Some(enum_impl) = signal_enum_impl_from(dbc, value_description) {
             scope.push_impl(enum_impl);
         }
     }
