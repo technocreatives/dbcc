@@ -169,8 +169,8 @@ pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Resu
     signal_fn.vis("pub");
     signal_fn.arg_ref_self();
 
-    let signal_return_type = signal_return_type(dbc, message_id, signal);
-    signal_fn.ret(codegen::Type::new(&signal_return_type));
+    let signal_decoded_type = signal_decoded_type(dbc, message_id, signal);
+    signal_fn.ret(codegen::Type::new(&signal_decoded_type));
 
     let default_signal_comment = format!("Read {} signal from can frame", signal.name());
     let signal_comment = dbc
@@ -198,7 +198,7 @@ pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Resu
         *signal.signal_size(),
     );
 
-    let calc = calc_raw(signal, signal_return_type, signal_shift, bit_msk_const)?;
+    let calc = calc_raw(dbc, message_id, signal, signal_shift, bit_msk_const)?;
     signal_fn.line(calc);
 
     Ok(signal_fn)
@@ -223,57 +223,43 @@ pub fn signal_fn_enum(signal: &Signal, enum_type: String) -> Result<Function> {
 }
 
 fn calc_raw(
+    dbc: &DBC,
+    message_id: &MessageId,
     signal: &Signal,
-    signal_return_type: String,
     signal_shift: u64,
     bit_msk_const: u64,
 ) -> Result<String> {
+
+    let signal_decoded_type = signal_decoded_type(dbc, message_id, signal);
+    let boolean_signal = *signal.signal_size() == 1 && *signal.factor() == 1.0 && *signal.offset() == 0.0;
+
     let mut calc = String::new();
 
     // No shift required if start_bit == 0
     let shift = if signal_shift != 0 {
-        format!("((frame_payload >> {})", signal_shift)
+        format!("(frame_payload >> {})", signal_shift)
     } else {
-        format!("(frame_payload")
+        format!("frame_payload")
     };
 
     write!(&mut calc, "({} & {:#X})", shift, bit_msk_const)?;
 
-    if *signal.signal_size() != 1 && *signal.factor() != 1.0 {
-        if *signal.signal_size() <= 32 {
-            write!(&mut calc, " as f32")?;
-        } else {
-            write!(&mut calc, " as f64")?;
-        }
+    if !boolean_signal {
+       write!(&mut calc, " as {}", signal_decoded_type)?;
     }
 
     if *signal.factor() != 1.0 {
         write!(&mut calc, " * {:.6}", signal.factor())?;
     }
 
-    if *signal.offset() != 0.0 && *signal.signal_size() <= 32 {
-        write!(&mut calc, " as f32 + {}f32", signal.offset())?;
-    } else if *signal.offset() != 0.0 {
-        write!(&mut calc, " as f64 + {}f64", signal.offset())?;
-    }
-
-    if *signal.signal_size() != 1 {
-        if signal_return_type != "f32" && signal_return_type != "f64" && *signal.factor() != 1.0 {
-            write!(&mut calc, ").round() as {}", signal_return_type)?;
-        } else {
-            write!(&mut calc, ") as {}", signal_return_type)?;
-        }
-    }
-
-    // boolean signal
-    if *signal.signal_size() == 1 {
-        write!(&mut calc, " == 1)")?;
+    if boolean_signal {
+         write!(&mut calc, " == 1")?;
     }
 
     Ok(calc)
 }
 
-fn signal_return_type(dbc: &DBC, message_id: &MessageId, signal: &Signal) -> String {
+fn signal_decoded_type(dbc: &DBC, message_id: &MessageId, signal: &Signal) -> String {
     if let Some(extended_value_type) = dbc.extended_value_type_for_signal(message_id, signal.name())
     {
         match extended_value_type {
@@ -281,6 +267,10 @@ fn signal_return_type(dbc: &DBC, message_id: &MessageId, signal: &Signal) -> Str
             SignalExtendedValueType::IEEEdouble64bit => return "f64".to_string(),
             SignalExtendedValueType::SignedOrUnsignedInteger => (), // Handled below, also part of the Signal itself
         }
+    }
+
+    if !(*signal.offset() == 0.0 && *signal.factor() == 1.0 ) {
+        return "f64".to_string();
     }
 
     let prefix_int_sign = match *signal.value_type() {
