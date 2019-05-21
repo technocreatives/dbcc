@@ -263,6 +263,10 @@ fn calc_raw(
         write!(&mut calc, " * {:.6}", signal.factor())?;
     }
 
+    if *signal.offset() != 0.0 {
+        write!(&mut calc, " + {}{}", signal.offset(), signal_decoded_type)?;
+    }
+
     if boolean_signal {
          write!(&mut calc, " == 1")?;
     }
