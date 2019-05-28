@@ -24,6 +24,7 @@ script:
 - cargo clean
 - cargo build
 - cargo test
+- cargo run -- --with-tokio -i ./examples/j1939.dbc > ./examples/gen/j1939.rs && cargo +nightly test
 
 after_success: |
   if [[ "$TRAVIS_RUST_VERSION" == nightly ]]; then
