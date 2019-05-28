@@ -9,9 +9,9 @@ use typenum::U64;
 
 use std::cmp;
 use std::fs::File;
-use std::{fs, io};
 use std::io::prelude::*;
 use std::path::{Path, PathBuf};
+use std::{fs, io};
 
 #[derive(StructOpt, Debug)]
 #[structopt(name = "dbcc", about = "DBC to rust code compiler")]

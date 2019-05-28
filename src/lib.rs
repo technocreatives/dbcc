@@ -2,17 +2,17 @@
 
 extern crate test;
 
-use typenum::U64;
-use generic_array::GenericArray;
 use blake2::{Blake2b, Digest};
 use can_dbc::{
     ByteOrder, Message, MessageId, MultiplexIndicator, Signal, SignalExtendedValueType,
     ValueDescription, ValueType, DBC,
 };
 use codegen::{Enum, Function, Impl, Scope, Struct};
+use generic_array::GenericArray;
 use heck::{CamelCase, ShoutySnakeCase, SnakeCase};
 use log::warn;
 use socketcan::{EFF_MASK, SFF_MASK};
+use typenum::U64;
 
 use std::fmt::Write;
 
@@ -160,12 +160,7 @@ pub fn signal_enum_impl_from(dbc: &DBC, val_desc: &ValueDescription) -> Option<I
             )
             .unwrap();
         }
-         write!(
-            &mut matching,
-            "    _ => {}::XValue(val),\n",
-            enum_name
-        )
-        .unwrap();
+        write!(&mut matching, "    _ => {}::XValue(val),\n", enum_name).unwrap();
         write!(&mut matching, "}}").unwrap();
 
         from_fn.line(matching);
@@ -228,10 +223,7 @@ pub fn signal_fn_enum(signal: &Signal, enum_type: String) -> Result<Function> {
 
     let raw_fn_name = format!("{}_{}", signal.name().to_snake_case(), RAW_FN_SUFFIX);
 
-    signal_fn.line(format!(
-        "{}::from(self.{}())",
-        enum_type, raw_fn_name
-    ));
+    signal_fn.line(format!("{}::from(self.{}())", enum_type, raw_fn_name));
 
     Ok(signal_fn)
 }
@@ -243,9 +235,9 @@ fn calc_raw(
     signal_shift: u64,
     bit_msk_const: u64,
 ) -> Result<String> {
-
     let signal_decoded_type = signal_decoded_type(dbc, message_id, signal);
-    let boolean_signal = *signal.signal_size() == 1 && *signal.factor() == 1.0 && *signal.offset() == 0.0;
+    let boolean_signal =
+        *signal.signal_size() == 1 && *signal.factor() == 1.0 && *signal.offset() == 0.0;
 
     let mut calc = String::new();
 
@@ -259,7 +251,7 @@ fn calc_raw(
     write!(&mut calc, "({} & {:#X})", shift, bit_msk_const)?;
 
     if !boolean_signal {
-       write!(&mut calc, " as {}", signal_decoded_type)?;
+        write!(&mut calc, " as {}", signal_decoded_type)?;
     }
 
     if *signal.factor() != 1.0 {
@@ -271,7 +263,7 @@ fn calc_raw(
     }
 
     if boolean_signal {
-         write!(&mut calc, " == 1")?;
+        write!(&mut calc, " == 1")?;
     }
 
     Ok(calc)
@@ -287,7 +279,7 @@ fn signal_decoded_type(dbc: &DBC, message_id: &MessageId, signal: &Signal) -> St
         }
     }
 
-    if !(*signal.offset() == 0.0 && *signal.factor() == 1.0 ) {
+    if !(*signal.offset() == 0.0 && *signal.factor() == 1.0) {
         return "f64".to_string();
     }
 
@@ -300,13 +292,13 @@ fn signal_decoded_type(dbc: &DBC, message_id: &MessageId, signal: &Signal) -> St
         _ if *signal.signal_size() == 1 => "bool".to_string(),
         _ if *signal.signal_size() > 1 && *signal.signal_size() <= 8 => {
             format!("{}8", prefix_int_sign).to_string()
-        },
+        }
         _ if *signal.signal_size() > 8 && *signal.signal_size() <= 16 => {
             format!("{}16", prefix_int_sign).to_string()
-        },
+        }
         _ if *signal.signal_size() > 16 && *signal.signal_size() <= 32 => {
             format!("{}32", prefix_int_sign).to_string()
-        },
+        }
         _ => format!("{}64", prefix_int_sign).to_string(),
     }
 }
@@ -452,14 +444,18 @@ fn message_stream(message: &Message) -> Function {
 pub fn can_code_gen(opt: &DbccOpt, dbc: &DBC, file_hash: GenericArray<u8, U64>) -> Result<Scope> {
     let mut scope = Scope::new();
 
-    scope.raw(&format!("// Generated based on\n// DBC Version: {}\n// BLAKE2b: {:X}", dbc.version().0, file_hash));
-    scope.import("byteorder", "{ByteOrder, LE, BE}");
+    scope.raw(&format!(
+        "// Generated based on\n// DBC Version: {}\n// BLAKE2b: {:X}",
+        dbc.version().0,
+        file_hash
+    ));
+    scope.import("byteorder", "{ByteOrder, BE, LE}");
 
     if opt.with_tokio {
-        scope.import("tokio_socketcan_bcm", "{CANMessageId, BCMSocket}");
         scope.import("futures::stream", "Stream");
         scope.import("futures_util::compat", "Stream01CompatExt");
         scope.import("futures_util::stream", "StreamExt");
+        scope.import("tokio_socketcan_bcm", "{CANMessageId, BCMSocket}");
     }
 
     for message in dbc.messages() {
