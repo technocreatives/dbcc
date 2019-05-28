@@ -2,6 +2,9 @@
 
 extern crate test;
 
+use typenum::U64;
+use generic_array::GenericArray;
+use blake2::{Blake2b, Digest};
 use can_dbc::{
     ByteOrder, Message, MessageId, MultiplexIndicator, Signal, SignalExtendedValueType,
     ValueDescription, ValueType, DBC,
@@ -418,20 +421,38 @@ fn message_stream(message: &Message) -> Function {
 ///
 /// Example:
 /// ```
+/// use blake2::{Blake2b, Digest};
 /// use dbcc::{can_code_gen, DbccOpt};
-/// use std::fs::File;
-/// use std::io::prelude::*;
-/// use std::path::PathBuf;
-/// let mut f = File::open("./examples/j1939.dbc").expect("Failed to open input file");
-/// let mut buffer = Vec::new();
-/// f.read_to_end(&mut buffer).expect("Failed to read file");
-/// let dbc_content = can_dbc::DBC::from_slice(&buffer).expect("Failed to parse DBC file");
-/// let opt = DbccOpt { with_tokio: true };
-/// let code = can_code_gen(&opt, &dbc_content).expect("Failed to generate rust code");
-/// println!("{}", code.to_string());
+/// use generic_array::GenericArray;
+/// use typenum::U64;
+///
+/// use std::fs;
+/// use std::io::{self, prelude::*};
+/// use std::path::{Path, PathBuf};
+///
+/// fn dbc_file_hash(dbc_path: &Path) -> io::Result<GenericArray<u8, U64>> {
+///     let mut file = fs::File::open(&dbc_path)?;
+///     let mut hasher = Blake2b::new();
+///     let _n = io::copy(&mut file, &mut hasher)?;
+///     Ok(hasher.result())
+/// }
+///
+/// fn main() -> io::Result<()> {
+///    let file_hash = dbc_file_hash(PathBuf::from("./examples/j1939.dbc").as_path())?;
+///    let mut f = fs::File::open("./examples/j1939.dbc").expect("Failed to open input file");
+///    let mut buffer = Vec::new();
+///    f.read_to_end(&mut buffer).expect("Failed to read file");
+///    let dbc_content = can_dbc::DBC::from_slice(&buffer).expect("Failed to parse DBC file");
+///    let opt = DbccOpt { with_tokio: true };
+///    let code = can_code_gen(&opt, &dbc_content, file_hash).expect("Failed to generate rust code");
+///    println!("{}", code.to_string());
+///    Ok(())
+/// }
 ///```
-pub fn can_code_gen(opt: &DbccOpt, dbc: &DBC) -> Result<Scope> {
+pub fn can_code_gen(opt: &DbccOpt, dbc: &DBC, file_hash: GenericArray<u8, U64>) -> Result<Scope> {
     let mut scope = Scope::new();
+
+    scope.raw(&format!("// Generated based on\n// DBC Version: {}\n// BLAKE2b: {:X}", dbc.version().0, file_hash));
     scope.import("byteorder", "{ByteOrder, LE, BE}");
 
     if opt.with_tokio {

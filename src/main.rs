@@ -1,14 +1,17 @@
+use blake2::{Blake2b, Digest};
 use dbcc::{can_code_gen, DbccOpt};
+use generic_array::GenericArray;
 use nom;
 use nom::verbose_errors;
-
 use pretty_env_logger;
 use structopt::StructOpt;
+use typenum::U64;
 
 use std::cmp;
 use std::fs::File;
+use std::{fs, io};
 use std::io::prelude::*;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 #[derive(StructOpt, Debug)]
 #[structopt(name = "dbcc", about = "DBC to rust code compiler")]
@@ -23,17 +26,25 @@ pub struct Opt {
     pub with_tokio: bool,
 }
 
-fn main() {
+fn dbc_file_hash(dbc_path: &Path) -> io::Result<GenericArray<u8, U64>> {
+    let mut file = fs::File::open(&dbc_path)?;
+    let mut hasher = Blake2b::new();
+    let _n = io::copy(&mut file, &mut hasher)?;
+    Ok(hasher.result())
+}
+
+fn main() -> io::Result<()> {
     pretty_env_logger::init();
     let opt = Opt::from_args();
 
+    let file_hash = dbc_file_hash(opt.input.as_path())?;
     let mut f = File::open(opt.input.clone()).expect("Failed to open input file");
     let mut buffer = Vec::new();
     f.read_to_end(&mut buffer).expect("Failed to read file");
     match can_dbc::DBC::from_slice(&buffer) {
         Ok(dbc_content) => {
             let opt = DbccOpt { with_tokio: opt.with_tokio };
-            let code = can_code_gen(&opt, &dbc_content).expect("Failed to generate rust code");
+            let code = can_code_gen(&opt, &dbc_content, file_hash).expect("Failed to generate rust code");
             println!("{}", code.to_string());
         },
         Err(e) => {
@@ -50,4 +61,5 @@ fn main() {
             }
         }
     }
+    Ok(())
 }

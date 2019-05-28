@@ -20,13 +20,16 @@ name = "dbcc"
 travis-ci = { repository = "marcelbuesing/dbcc", branch = "dev" }
 
 [dependencies]
-can-dbc = "2.1.0"
+blake2 = "0.8"
+can-dbc = "2.1.1"
 codegen = "0.1.1"
+generic-array = "0.12"
 heck = "0.3"
 log = "0.4"
 pretty_env_logger = "0.3"
 structopt = "0.2"
 socketcan = "1.7"
+typenum = "1.10"
 
 [dependencies.nom]
 version = "4.2"

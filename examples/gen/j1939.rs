@@ -4,6 +4,10 @@ use futures::stream::Stream;
 use futures_util::compat::Stream01CompatExt;
 use futures_util::stream::StreamExt;
 
+// Generated based on
+// DBC Version: xyz
+// BLAKE2b: 6B285187C2BFF6B100EC48A5404DD97A1181D1D39BD755AEC78F5B4007A59A46088BCC34AAEB59BE2C95096E2BA151EF94F74D8C0F38EC0384C57062AD667462
+
 #[allow(dead_code)]
 pub const MESSAGE_ID_DISP1: u32 = 2561212158;
 
