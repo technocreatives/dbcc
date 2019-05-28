@@ -37,14 +37,16 @@ fn main() -> io::Result<()> {
     pretty_env_logger::init();
     let opt = Opt::from_args();
 
+    let file_name = opt.input.as_path().file_name().and_then(|f| f.to_str()).unwrap_or_else(|| "N/A");
     let file_hash = dbc_file_hash(opt.input.as_path())?;
+    let file_hash = format!("Blake2b: {:X}", file_hash);
     let mut f = File::open(opt.input.clone()).expect("Failed to open input file");
     let mut buffer = Vec::new();
     f.read_to_end(&mut buffer).expect("Failed to read file");
     match can_dbc::DBC::from_slice(&buffer) {
         Ok(dbc_content) => {
             let opt = DbccOpt { with_tokio: opt.with_tokio };
-            let code = can_code_gen(&opt, &dbc_content, file_hash).expect("Failed to generate rust code");
+            let code = can_code_gen(&opt, &dbc_content, file_name, &file_hash).expect("Failed to generate rust code");
             println!("{}", code.to_string());
         },
         Err(e) => {

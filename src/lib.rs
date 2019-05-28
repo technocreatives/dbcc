@@ -8,11 +8,9 @@ use can_dbc::{
     ValueDescription, ValueType, DBC,
 };
 use codegen::{Enum, Function, Impl, Scope, Struct};
-use generic_array::GenericArray;
 use heck::{CamelCase, ShoutySnakeCase, SnakeCase};
 use log::warn;
 use socketcan::{EFF_MASK, SFF_MASK};
-use typenum::U64;
 
 use std::fmt::Write;
 
@@ -24,12 +22,12 @@ mod tests {
 
     #[bench]
     fn bench_read_signal(b: &mut Bencher) {
-        const byte_payload: &[u8] = &[
+        const BYTE_PAYLOAD: &[u8] = &[
             0x4, 0x2, 0xA, 0xA, 0xF, 0xF, 0xE, 0xE, 0xD, 0xD, 0xA, 0xA, 0xF, 0xF, 0xD, 0xD,
         ];
 
         b.iter(|| {
-            let frame_payload: u64 = LE::read_u64(byte_payload);
+            let frame_payload: u64 = LE::read_u64(BYTE_PAYLOAD);
             let bit_msk_const = 2u64.saturating_pow(8 as u32) - 1;
             let factor: f64 = test::black_box(2.0);
             let start_bit: u64 = test::black_box(8);
@@ -430,22 +428,26 @@ fn message_stream(message: &Message) -> Function {
 /// }
 ///
 /// fn main() -> io::Result<()> {
-///    let file_hash = dbc_file_hash(PathBuf::from("./examples/j1939.dbc").as_path())?;
+///    let file_path_buf = PathBuf::from("./examples/j1939.dbc");
+///    let file_path = file_path_buf.as_path();
+///    let file_name = file_path.file_name().and_then(|f| f.to_str()).unwrap_or_else(|| "N/A");
+///    let file_hash = dbc_file_hash(file_path)?;
+///    let file_hash = format!("Blake2b: {:X}", file_hash);
 ///    let mut f = fs::File::open("./examples/j1939.dbc").expect("Failed to open input file");
 ///    let mut buffer = Vec::new();
 ///    f.read_to_end(&mut buffer).expect("Failed to read file");
 ///    let dbc_content = can_dbc::DBC::from_slice(&buffer).expect("Failed to parse DBC file");
 ///    let opt = DbccOpt { with_tokio: true };
-///    let code = can_code_gen(&opt, &dbc_content, file_hash).expect("Failed to generate rust code");
+///    let code = can_code_gen(&opt, &dbc_content, file_name, &file_hash).expect("Failed to generate rust code");
 ///    println!("{}", code.to_string());
 ///    Ok(())
 /// }
 ///```
-pub fn can_code_gen(opt: &DbccOpt, dbc: &DBC, file_hash: GenericArray<u8, U64>) -> Result<Scope> {
+pub fn can_code_gen(opt: &DbccOpt, dbc: &DBC, file_name: &str, file_hash: &str) -> Result<Scope> {
     let mut scope = Scope::new();
 
-    scope.raw(&format!(
-        "// Generated based on\n// DBC Version: {}\n// BLAKE2b: {:X}",
+    scope.raw(&format!("// Generated based on\n// File Name: {}\n// DBC Version: {}\n// {}",
+        file_name,
         dbc.version().0,
         file_hash
     ));
