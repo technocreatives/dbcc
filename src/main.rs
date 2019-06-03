@@ -37,7 +37,12 @@ fn main() -> io::Result<()> {
     pretty_env_logger::init();
     let opt = Opt::from_args();
 
-    let file_name = opt.input.as_path().file_name().and_then(|f| f.to_str()).unwrap_or_else(|| "N/A");
+    let file_name = opt
+        .input
+        .as_path()
+        .file_name()
+        .and_then(|f| f.to_str())
+        .unwrap_or_else(|| "N/A");
     let file_hash = dbc_file_hash(opt.input.as_path())?;
     let file_hash = format!("Blake2b: {:X}", file_hash);
     let mut f = File::open(opt.input.clone()).expect("Failed to open input file");

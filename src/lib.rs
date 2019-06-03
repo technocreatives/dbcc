@@ -131,11 +131,10 @@ pub fn signal_enum_impl_from(dbc: &DBC, val_desc: &ValueDescription) -> Option<I
         ref value_descriptions,
     } = val_desc
     {
-        let signal_type = if let Some(signal) = dbc.signal_by_name(*message_id, signal_name) {
-            signal_decoded_type(dbc, message_id, signal)
-        } else {
-            "u64".to_string()
-        };
+        let signal = dbc
+            .signal_by_name(*message_id, signal_name)
+            .expect(&format!("Value description missing signal {:#?}", val_desc));
+        let signal_type = signal_decoded_type(dbc, message_id, signal);
 
         let enum_name = to_enum_name(message_id, signal_name);
         let mut enum_impl = Impl::new(codegen::Type::new(&enum_name));
@@ -177,6 +176,7 @@ pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Resu
     signal_fn.arg_ref_self();
 
     let signal_decoded_type = signal_decoded_type(dbc, message_id, signal);
+    let signal_decoded_type = wrap_multiplex_indicator_type(signal, signal_decoded_type);
     signal_fn.ret(codegen::Type::new(&signal_decoded_type));
 
     let default_signal_comment = format!("Read {} signal from can frame", signal.name());
@@ -192,6 +192,29 @@ pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Resu
 
     signal_fn.doc(&format!("{}{}", signal_comment, signal_unit));
 
+    // Multiplexed signals are only available when the multiplexer switch value matches
+    // the multiplexed indicator value defined in the DBC.
+    match signal.multiplexer_indicator() {
+        MultiplexIndicator::MultiplexedSignal(switch_value) => {
+            let multiplexor_switch = dbc.message_multiplexor_switch(*message_id).expect(&format!(
+                "Multiplexed signal missing multiplex signal switch in message: {:#?}",
+                signal
+            ));
+            let multiplexor_switch_fn = format!(
+                "self.{}_{}()",
+                multiplexor_switch.name().to_snake_case(),
+                RAW_FN_SUFFIX
+            );
+            signal_fn.line(format!(
+                "if {} != {} {{",
+                multiplexor_switch_fn, switch_value
+            ));
+            signal_fn.line("    return None;");
+            signal_fn.line("}");
+        }
+        _ => (),
+    };
+
     let read_byte_order = match signal.byte_order() {
         ByteOrder::LittleEndian => "let frame_payload: u64 = LE::read_u64(&self.frame_payload);",
         ByteOrder::BigEndian => "let  frame_payload: u64 = BE::read_u64(&self.frame_payload);",
@@ -206,7 +229,8 @@ pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Resu
     );
 
     let calc = calc_raw(dbc, message_id, signal, signal_shift, bit_msk_const)?;
-    signal_fn.line(calc);
+    let wrapped_calc = wrap_multiplex_indicator_value(signal, calc);
+    signal_fn.line(wrapped_calc);
 
     Ok(signal_fn)
 }
@@ -217,11 +241,18 @@ pub fn signal_fn_enum(signal: &Signal, enum_type: String) -> Result<Function> {
     signal_fn.vis("pub");
     signal_fn.arg_ref_self();
 
-    signal_fn.ret(enum_type.clone());
+    signal_fn.ret(wrap_multiplex_indicator_type(signal, enum_type.clone()));
 
     let raw_fn_name = format!("{}_{}", signal.name().to_snake_case(), RAW_FN_SUFFIX);
 
-    signal_fn.line(format!("{}::from(self.{}())", enum_type, raw_fn_name));
+    // Multiplexed signals are only available when the multiplexer switch value matches
+    // the multiplexed indicator value defined in the DBC.
+    let _ = match signal.multiplexer_indicator() {
+        MultiplexIndicator::MultiplexedSignal(_) => {
+            signal_fn.line(format!("self.{}().map({}::from)", raw_fn_name, enum_type))
+        }
+        _ => signal_fn.line(format!("{}::from(self.{}())", enum_type, raw_fn_name)),
+    };
 
     Ok(signal_fn)
 }
@@ -265,6 +296,26 @@ fn calc_raw(
     }
 
     Ok(calc)
+}
+
+/// This wraps multiplex indicators in  Option types.
+/// Multiplexed signals are only available when the multiplexer switch value matches
+/// the multiplexed indicator value defined in the DBC.
+fn wrap_multiplex_indicator_type(signal: &Signal, signal_type: String) -> String {
+    match signal.multiplexer_indicator() {
+        MultiplexIndicator::MultiplexedSignal(_) => format!("Option<{}>", signal_type).to_string(),
+        _ => signal_type,
+    }
+}
+
+/// This wraps multiplex indicators in  Option types.
+/// Multiplexed signals are only available when the multiplexer switch value matches
+/// the multiplexed indicator value defined in the DBC.
+fn wrap_multiplex_indicator_value(signal: &Signal, signal_value: String) -> String {
+    match signal.multiplexer_indicator() {
+        MultiplexIndicator::MultiplexedSignal(_) => format!("Some({})", signal_value).to_string(),
+        _ => signal_value,
+    }
 }
 
 fn signal_decoded_type(dbc: &DBC, message_id: &MessageId, signal: &Signal) -> String {
@@ -347,11 +398,6 @@ fn message_impl(opt: &DbccOpt, dbc: &DBC, message: &Message) -> Result<Impl> {
     }
 
     for signal in message.signals() {
-        if *signal.multiplexer_indicator() != MultiplexIndicator::Plain {
-            warn!("Multiplexed signals are currently not supported, the message `{}` signal `{}` will be skipped", message.message_name(), signal.name());
-            continue;
-        }
-
         msg_impl.push_fn(signal_fn_raw(dbc, signal, message.message_id())?);
 
         // Check if this signal can be turned into an enum
@@ -446,7 +492,8 @@ fn message_stream(message: &Message) -> Function {
 pub fn can_code_gen(opt: &DbccOpt, dbc: &DBC, file_name: &str, file_hash: &str) -> Result<Scope> {
     let mut scope = Scope::new();
 
-    scope.raw(&format!("// Generated based on\n// File Name: {}\n// DBC Version: {}\n// {}",
+    scope.raw(&format!(
+        "// Generated based on\n// File Name: {}\n// DBC Version: {}\n// {}",
         file_name,
         dbc.version().0,
         file_hash
