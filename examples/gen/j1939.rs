@@ -38448,6 +38448,86 @@ impl Iso15765Funct {
         let f = frame_stream.map(|frame| frame.map(|frame| Iso15765Funct::new(frame.data().to_vec())));
         Ok(f)
     }
+
+    /// Read SN signal from can frame
+    #[allow(dead_code)]
+    pub fn sn_raw_value(&self) -> Option<u8> {
+        if self.protocol_ctrl_information_raw_value() != 2 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some((frame_payload & 0xF) as u8)
+    }
+
+    /// Read SeparationTime signal from can frame
+    /// Unit: ms
+    #[allow(dead_code)]
+    pub fn separation_time_raw_value(&self) -> Option<u8> {
+        if self.protocol_ctrl_information_raw_value() != 3 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 16) & 0xFF) as u8)
+    }
+
+    /// Read BlockSize signal from can frame
+    #[allow(dead_code)]
+    pub fn block_size_raw_value(&self) -> Option<u8> {
+        if self.protocol_ctrl_information_raw_value() != 3 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 8) & 0xFF) as u8)
+    }
+
+    /// Read FlowStatus signal from can frame
+    #[allow(dead_code)]
+    pub fn flow_status_raw_value(&self) -> Option<u8> {
+        if self.protocol_ctrl_information_raw_value() != 3 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some((frame_payload & 0xF) as u8)
+    }
+
+    #[allow(dead_code)]
+    pub fn flow_status(&self) -> Option<FlowStatus2564554494> {
+        self.flow_status_raw_value().map(FlowStatus2564554494::from)
+    }
+
+    /// Read FirstFrameDataLength signal from can frame
+    /// Unit: Byte
+    #[allow(dead_code)]
+    pub fn first_frame_data_length_raw_value(&self) -> Option<u16> {
+        if self.protocol_ctrl_information_raw_value() != 1 {
+            return None;
+        }
+        let  frame_payload: u64 = BE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 48) & 0xFFF) as u16)
+    }
+
+    /// Read SingleFrameDataLength signal from can frame
+    /// Unit: Byte
+    #[allow(dead_code)]
+    pub fn single_frame_data_length_raw_value(&self) -> Option<u8> {
+        if self.protocol_ctrl_information_raw_value() != 0 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some((frame_payload & 0xF) as u8)
+    }
+
+    /// Part of Network Protocol Control Information (N_PCI) of a ISO 15765 message.
+    #[allow(dead_code)]
+    pub fn protocol_ctrl_information_raw_value(&self) -> u8 {
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        ((frame_payload >> 4) & 0xF) as u8
+    }
+
+    #[allow(dead_code)]
+    pub fn protocol_ctrl_information(&self) -> ProtocolCtrlInformation2564554494 {
+        ProtocolCtrlInformation2564554494::from(self.protocol_ctrl_information_raw_value())
+    }
 }
 
 /// Reserved for ISO 15765
@@ -38471,6 +38551,86 @@ impl Iso15765Phys {
         let frame_stream = socket.filter_id_incoming_frames(message_id, ival1.clone(), ival2.clone())?.compat();
         let f = frame_stream.map(|frame| frame.map(|frame| Iso15765Phys::new(frame.data().to_vec())));
         Ok(f)
+    }
+
+    /// Read SN signal from can frame
+    #[allow(dead_code)]
+    pub fn sn_raw_value(&self) -> Option<u8> {
+        if self.protocol_ctrl_information_raw_value() != 2 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some((frame_payload & 0xF) as u8)
+    }
+
+    /// Read SeparationTime signal from can frame
+    /// Unit: ms
+    #[allow(dead_code)]
+    pub fn separation_time_raw_value(&self) -> Option<u8> {
+        if self.protocol_ctrl_information_raw_value() != 3 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 16) & 0xFF) as u8)
+    }
+
+    /// Read BlockSize signal from can frame
+    #[allow(dead_code)]
+    pub fn block_size_raw_value(&self) -> Option<u8> {
+        if self.protocol_ctrl_information_raw_value() != 3 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 8) & 0xFF) as u8)
+    }
+
+    /// Read FlowStatus signal from can frame
+    #[allow(dead_code)]
+    pub fn flow_status_raw_value(&self) -> Option<u8> {
+        if self.protocol_ctrl_information_raw_value() != 3 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some((frame_payload & 0xF) as u8)
+    }
+
+    #[allow(dead_code)]
+    pub fn flow_status(&self) -> Option<FlowStatus2564488958> {
+        self.flow_status_raw_value().map(FlowStatus2564488958::from)
+    }
+
+    /// Read FirstFrameDataLength signal from can frame
+    /// Unit: Byte
+    #[allow(dead_code)]
+    pub fn first_frame_data_length_raw_value(&self) -> Option<u16> {
+        if self.protocol_ctrl_information_raw_value() != 1 {
+            return None;
+        }
+        let  frame_payload: u64 = BE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 48) & 0xFFF) as u16)
+    }
+
+    /// Read SingleFrameDataLength signal from can frame
+    /// Unit: Byte
+    #[allow(dead_code)]
+    pub fn single_frame_data_length_raw_value(&self) -> Option<u8> {
+        if self.protocol_ctrl_information_raw_value() != 0 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some((frame_payload & 0xF) as u8)
+    }
+
+    /// Part of Network Protocol Control Information (N_PCI) of a ISO 15765 message.
+    #[allow(dead_code)]
+    pub fn protocol_ctrl_information_raw_value(&self) -> u8 {
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        ((frame_payload >> 4) & 0xF) as u8
+    }
+
+    #[allow(dead_code)]
+    pub fn protocol_ctrl_information(&self) -> ProtocolCtrlInformation2564488958 {
+        ProtocolCtrlInformation2564488958::from(self.protocol_ctrl_information_raw_value())
     }
 }
 
@@ -58819,6 +58979,78 @@ impl Tpcm {
         Ok(f)
     }
 
+    /// Total number of packets for BAM message.Total number of packets received for RTS/CTS message.Total number of packets for RTS/CTS message.
+    #[allow(dead_code)]
+    pub fn total_number_of_packets_eo_ma_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 19 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 24) & 0xFF) as u8)
+    }
+
+    /// Total message size (in bytes) for BAM message.Total message size (in bytes) for RTS/CTS message.Total message size (in bytes) for RTS/CTS message.
+    /// Unit: counts
+    #[allow(dead_code)]
+    pub fn total_message_size_eo_ma_raw_value(&self) -> Option<u16> {
+        if self.control_byte_raw_value() != 19 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 8) & 0xFFFF) as u16)
+    }
+
+    /// Total message size (in bytes) for BAM message.Total message size (in bytes) for RTS/CTS message.Total message size (in bytes) for RTS/CTS message.
+    /// Unit: counts
+    #[allow(dead_code)]
+    pub fn total_message_size_bam_raw_value(&self) -> Option<u16> {
+        if self.control_byte_raw_value() != 32 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 8) & 0xFFFF) as u16)
+    }
+
+    /// Total number of packets for BAM message.Total number of packets received for RTS/CTS message.Total number of packets for RTS/CTS message.
+    #[allow(dead_code)]
+    pub fn total_number_of_packets_bam_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 32 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 24) & 0xFF) as u8)
+    }
+
+    /// Reason for connection abort message.
+    #[allow(dead_code)]
+    pub fn connection_abort_reason_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 255 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 8) & 0xFF) as u8)
+    }
+
+    /// Next Packet Number to be sent (TP.CM_CTS)
+    #[allow(dead_code)]
+    pub fn next_packet_number_to_be_sent_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 17 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 16) & 0xFF) as u8)
+    }
+
+    /// Number of Packets that can be sent (TP.CM_CTS)
+    #[allow(dead_code)]
+    pub fn number_of_packets_that_can_be_sent_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 17 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 8) & 0xFF) as u8)
+    }
+
     /// Read PGNumber signal from can frame
     #[allow(dead_code)]
     pub fn pg_number_raw_value(&self) -> u32 {
@@ -58829,6 +59061,49 @@ impl Tpcm {
     #[allow(dead_code)]
     pub fn pg_number(&self) -> PgNumber2565668606 {
         PgNumber2565668606::from(self.pg_number_raw_value())
+    }
+
+    /// Maximum number of packets for RTS/CTS message.
+    #[allow(dead_code)]
+    pub fn maximum_number_of_packets_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 16 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 32) & 0xFF) as u8)
+    }
+
+    /// Total number of packets for BAM message.Total number of packets received for RTS/CTS message.Total number of packets for RTS/CTS message.
+    #[allow(dead_code)]
+    pub fn total_number_of_packets_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 16 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 24) & 0xFF) as u8)
+    }
+
+    /// Total message size (in bytes) for BAM message.Total message size (in bytes) for RTS/CTS message.Total message size (in bytes) for RTS/CTS message.
+    /// Unit: counts
+    #[allow(dead_code)]
+    pub fn total_message_size_raw_value(&self) -> Option<u16> {
+        if self.control_byte_raw_value() != 16 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 8) & 0xFFFF) as u16)
+    }
+
+    /// Read ControlByte signal from can frame
+    #[allow(dead_code)]
+    pub fn control_byte_raw_value(&self) -> u8 {
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        (frame_payload & 0xFF) as u8
+    }
+
+    #[allow(dead_code)]
+    pub fn control_byte(&self) -> ControlByte2565668606 {
+        ControlByte2565668606::from(self.control_byte_raw_value())
     }
 }
 
@@ -63111,6 +63386,28 @@ impl Ackm {
         Ok(f)
     }
 
+    /// Read AddressBusy signal from can frame
+    #[allow(dead_code)]
+    pub fn address_busy_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 3 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 32) & 0xFF) as u8)
+    }
+
+    /// Read ControlByte signal from can frame
+    #[allow(dead_code)]
+    pub fn control_byte_raw_value(&self) -> u8 {
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        (frame_payload & 0xFF) as u8
+    }
+
+    #[allow(dead_code)]
+    pub fn control_byte(&self) -> ControlByte2565406462 {
+        ControlByte2565406462::from(self.control_byte_raw_value())
+    }
+
     /// PGN which is requested by Request2 message
     #[allow(dead_code)]
     pub fn parameter_group_number_raw_value(&self) -> u32 {
@@ -63123,6 +63420,36 @@ impl Ackm {
     pub fn group_function_value_raw_value(&self) -> u8 {
         let frame_payload: u64 = LE::read_u64(&self.frame_payload);
         ((frame_payload >> 8) & 0xFF) as u8
+    }
+
+    /// Read AddressAccessDenied signal from can frame
+    #[allow(dead_code)]
+    pub fn address_access_denied_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 2 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 32) & 0xFF) as u8)
+    }
+
+    /// Read AddressNegativeAcknowledgement signal from can frame
+    #[allow(dead_code)]
+    pub fn address_negative_acknowledgement_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 1 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 32) & 0xFF) as u8)
+    }
+
+    /// Read AddressAcknowledged signal from can frame
+    #[allow(dead_code)]
+    pub fn address_acknowledged_raw_value(&self) -> Option<u8> {
+        if self.control_byte_raw_value() != 0 {
+            return None;
+        }
+        let frame_payload: u64 = LE::read_u64(&self.frame_payload);
+        Some(((frame_payload >> 32) & 0xFF) as u8)
     }
 }
 
