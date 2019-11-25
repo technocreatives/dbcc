@@ -45,7 +45,7 @@ impl TypeName for str {
             out.push(first);
         }
 
-        while let Some(chr) = chars.next() {
+        for chr in chars {
             if chr.is_digit(10) || chr.is_alphabetic() || chr == '_' {
                 out.push(chr);
             } else {
@@ -61,7 +61,7 @@ impl TypeName for str {
     }
 }
 
-fn to_enum_name(message_id: &MessageId, signal_name: &str) -> String {
+fn to_enum_name(message_id: MessageId, signal_name: &str) -> String {
     format!("{}{}", &signal_name.to_camel_case(), message_id.0)
 }
 
@@ -72,7 +72,7 @@ pub fn signal_enum(dbc: &DBC, val_desc: &ValueDescription) -> Option<Enum> {
         ref value_descriptions,
     } = val_desc
     {
-        let mut sig_enum = Enum::new(&to_enum_name(message_id, signal_name));
+        let mut sig_enum = Enum::new(&to_enum_name(*message_id, signal_name));
         sig_enum.allow("dead_code");
         sig_enum.vis("pub");
         sig_enum.repr("u64");
@@ -85,7 +85,7 @@ pub fn signal_enum(dbc: &DBC, val_desc: &ValueDescription) -> Option<Enum> {
         }
 
         if let Some(signal) = dbc.signal_by_name(*message_id, signal_name) {
-            let decoded_type = signal_decoded_type(dbc, message_id, signal);
+            let decoded_type = signal_decoded_type(dbc, *message_id, signal);
             sig_enum.new_variant(&format!("XValue({})", decoded_type));
         } else {
             sig_enum.new_variant("XValue(u64)");
@@ -105,9 +105,9 @@ pub fn signal_enum_impl_from(dbc: &DBC, val_desc: &ValueDescription) -> Option<I
         let signal = dbc
             .signal_by_name(*message_id, signal_name)
             .expect(&format!("Value description missing signal {:#?}", val_desc));
-        let signal_type = signal_decoded_type(dbc, message_id, signal);
+        let signal_type = signal_decoded_type(dbc, *message_id, signal);
 
-        let enum_name = to_enum_name(message_id, signal_name);
+        let enum_name = to_enum_name(*message_id, signal_name);
         let mut enum_impl = Impl::new(codegen::Type::new(&enum_name));
         enum_impl.impl_trait(format!("From<{}>", signal_type));
 
@@ -117,18 +117,18 @@ pub fn signal_enum_impl_from(dbc: &DBC, val_desc: &ValueDescription) -> Option<I
         from_fn.ret(codegen::Type::new("Self"));
 
         let mut matching = String::new();
-        write!(&mut matching, "match val as u64 {{\n").unwrap();
+        writeln!(&mut matching, "match val as u64 {{").unwrap();
         for value_description in value_descriptions {
-            write!(
+            writeln!(
                 &mut matching,
-                "    {} => {}::{},\n",
+                "    {} => {}::{},",
                 value_description.a(),
                 enum_name,
                 value_description.b().to_camel_case().to_type_name()
             )
             .unwrap();
         }
-        write!(&mut matching, "    _ => {}::XValue(val),\n", enum_name).unwrap();
+        writeln!(&mut matching, "    _ => {}::XValue(val),", enum_name).unwrap();
         write!(&mut matching, "}}").unwrap();
 
         from_fn.line(matching);
@@ -138,7 +138,7 @@ pub fn signal_enum_impl_from(dbc: &DBC, val_desc: &ValueDescription) -> Option<I
     None
 }
 
-pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Result<Function> {
+pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: MessageId) -> Result<Function> {
     let raw_fn_name = format!("{}_{}", signal.name().to_snake_case(), RAW_FN_SUFFIX);
 
     let mut signal_fn = codegen::Function::new(&raw_fn_name);
@@ -155,36 +155,33 @@ pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Resu
         .signal_comment(message_id, signal.name())
         .unwrap_or(&default_signal_comment);
 
-    let signal_unit = if !signal.unit().is_empty() {
-        format!("\nUnit: {}", signal.unit())
-    } else {
+    let signal_unit = if signal.unit().is_empty() {
         String::default()
+    } else {
+        format!("\nUnit: {}", signal.unit())
     };
 
     signal_fn.doc(&format!("{}{}", signal_comment, signal_unit));
 
     // Multiplexed signals are only available when the multiplexer switch value matches
     // the multiplexed indicator value defined in the DBC.
-    match signal.multiplexer_indicator() {
-        MultiplexIndicator::MultiplexedSignal(switch_value) => {
-            let multiplexor_switch = dbc.message_multiplexor_switch(*message_id).expect(&format!(
-                "Multiplexed signal missing multiplex signal switch in message: {:#?}",
-                signal
-            ));
-            let multiplexor_switch_fn = format!(
-                "self.{}_{}()",
-                multiplexor_switch.name().to_snake_case(),
-                RAW_FN_SUFFIX
-            );
-            signal_fn.line(format!(
-                "if {} != {} {{",
-                multiplexor_switch_fn, switch_value
-            ));
-            signal_fn.line("    return None;");
-            signal_fn.line("}");
-        }
-        _ => (),
-    };
+    if let MultiplexIndicator::MultiplexedSignal(switch_value) = signal.multiplexer_indicator() {
+        let multiplexor_switch = dbc.message_multiplexor_switch(message_id).expect(&format!(
+            "Multiplexed signal missing multiplex signal switch in message: {:#?}",
+            signal
+        ));
+        let multiplexor_switch_fn = format!(
+            "self.{}_{}()",
+            multiplexor_switch.name().to_snake_case(),
+            RAW_FN_SUFFIX
+        );
+        signal_fn.line(format!(
+            "if {} != {} {{",
+            multiplexor_switch_fn, switch_value
+        ));
+        signal_fn.line("    return None;");
+        signal_fn.line("}");
+    }
 
     let read_byte_order = match signal.byte_order() {
         ByteOrder::LittleEndian => "let frame_payload: u64 = LE::read_u64(&self.frame_payload);",
@@ -192,7 +189,7 @@ pub fn signal_fn_raw(dbc: &DBC, signal: &Signal, message_id: &MessageId) -> Resu
     };
     signal_fn.line(read_byte_order);
 
-    let bit_msk_const = 2u64.saturating_pow(*signal.signal_size() as u32) - 1;
+    let bit_msk_const = 2_u64.saturating_pow(*signal.signal_size() as u32) - 1;
     let signal_shift = shift_amount(
         *signal.byte_order(),
         *signal.start_bit(),
@@ -230,7 +227,7 @@ pub fn signal_fn_enum(signal: &Signal, enum_type: String) -> Result<Function> {
 
 fn calc_raw(
     dbc: &DBC,
-    message_id: &MessageId,
+    message_id: MessageId,
     signal: &Signal,
     signal_shift: u64,
     bit_msk_const: u64,
@@ -242,10 +239,10 @@ fn calc_raw(
     let mut calc = String::new();
 
     // No shift required if start_bit == 0
-    let shift = if signal_shift != 0 {
-        format!("(frame_payload >> {})", signal_shift)
+    let shift = if signal_shift == 0 {
+        "frame_payload".to_string()
     } else {
-        format!("frame_payload")
+        format!("(frame_payload >> {})", signal_shift)
     };
 
     write!(&mut calc, "({} & {:#X})", shift, bit_msk_const)?;
@@ -289,7 +286,7 @@ fn wrap_multiplex_indicator_value(signal: &Signal, signal_value: String) -> Stri
     }
 }
 
-fn signal_decoded_type(dbc: &DBC, message_id: &MessageId, signal: &Signal) -> String {
+fn signal_decoded_type(dbc: &DBC, message_id: MessageId, signal: &Signal) -> String {
     if let Some(extended_value_type) = dbc.extended_value_type_for_signal(message_id, signal.name())
     {
         match extended_value_type {
@@ -340,7 +337,7 @@ fn message_const(message: &Message) -> String {
 
 fn message_struct(dbc: &DBC, message: &Message) -> Struct {
     let mut message_struct = Struct::new(&message.message_name().to_camel_case());
-    if let Some(message_comment) = dbc.message_comment(message.message_id()) {
+    if let Some(message_comment) = dbc.message_comment(*message.message_id()) {
         message_struct.doc(message_comment);
     }
     message_struct.allow("dead_code");
@@ -369,12 +366,12 @@ fn message_impl(opt: &DbccOpt, dbc: &DBC, message: &Message) -> Result<Impl> {
     }
 
     for signal in message.signals() {
-        msg_impl.push_fn(signal_fn_raw(dbc, signal, message.message_id())?);
+        msg_impl.push_fn(signal_fn_raw(dbc, signal, *message.message_id())?);
 
         // Check if this signal can be turned into an enum
         let enum_type = dbc
-            .value_descriptions_for_signal(message.message_id(), signal.name())
-            .map(|_| to_enum_name(message.message_id(), signal.name()));
+            .value_descriptions_for_signal(*message.message_id(), signal.name())
+            .map(|_| to_enum_name(*message.message_id(), signal.name()));
         if let Some(enum_type) = enum_type {
             msg_impl.push_fn(signal_fn_enum(signal, enum_type)?);
         }
@@ -402,11 +399,11 @@ fn message_stream(message: &Message) -> Function {
     stream_fn.line("let socket = BCMSocket::open_nb(&can_interface)?;");
 
     let message_id = match message.message_id().0 & EFF_MASK {
-        0...SFF_MASK => format!(
+        0..=SFF_MASK => format!(
             "let message_id = CANMessageId::SFF({} as u16);",
             (message.message_id().0 & SFF_MASK).to_string()
         ),
-        SFF_MASK...EFF_MASK => format!(
+        SFF_MASK..=EFF_MASK => format!(
             "let message_id = CANMessageId::EFF({});",
             (message.message_id().0 & EFF_MASK).to_string()
         ),
