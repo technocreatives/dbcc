@@ -1,8 +1,3 @@
-#![feature(test)]
-
-extern crate test;
-
-use blake2::{Blake2b, Digest};
 use can_dbc::{
     ByteOrder, Message, MessageId, MultiplexIndicator, Signal, SignalExtendedValueType,
     ValueDescription, ValueType, DBC,
@@ -13,30 +8,6 @@ use log::warn;
 use socketcan::{EFF_MASK, SFF_MASK};
 
 use std::fmt::Write;
-
-#[cfg(test)]
-mod tests {
-    use byteorder;
-    use byteorder::{ByteOrder, LE};
-    use test::{black_box, Bencher};
-
-    #[bench]
-    fn bench_read_signal(b: &mut Bencher) {
-        const BYTE_PAYLOAD: &[u8] = &[
-            0x4, 0x2, 0xA, 0xA, 0xF, 0xF, 0xE, 0xE, 0xD, 0xD, 0xA, 0xA, 0xF, 0xF, 0xD, 0xD,
-        ];
-
-        b.iter(|| {
-            let frame_payload: u64 = LE::read_u64(BYTE_PAYLOAD);
-            let bit_msk_const = 2u64.saturating_pow(8 as u32) - 1;
-            let factor: f64 = test::black_box(2.0);
-            let start_bit: u64 = test::black_box(8);
-            let offset: f64 = test::black_box(10.0);
-
-            (((frame_payload >> start_bit) & bit_msk_const) as f64) * factor + offset
-        });
-    }
-}
 
 /// Character that is prefixed before type names that are
 /// are not starting with an alphabetic char.

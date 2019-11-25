@@ -21,23 +21,23 @@ travis-ci = { repository = "marcelbuesing/dbcc", branch = "dev" }
 
 [dependencies]
 blake2 = "0.8"
-can-dbc = "2.2.0"
+can-dbc = "2.2.1"
 codegen = "0.1.1"
 generic-array = "0.12"
 heck = "0.3"
 log = "0.4"
 pretty_env_logger = "0.3"
-structopt = "0.2"
+structopt = "0.3"
 socketcan = "1.7"
-typenum = "1.10"
+typenum = "1.11"
 
 [dependencies.nom]
 version = "4.2"
 features = ["verbose-errors"]
 
 [dev-dependencies]
+async-std = { version = "1.1", features = ["attributes"] }
 byteorder = "1.3"
-futures-preview = { version = "0.3.0-alpha.16", features = ["compat"] }
-futures-util-preview =  { version = "0.3.0-alpha.16", features = ["compat"] }
-runtime = "0.3.0-alpha.2"
+futures = { version = "0.3", features = ["compat"] }
+futures-util=  { version = "0.3", features = ["compat"] }
 tokio-socketcan-bcm = "0.2"
