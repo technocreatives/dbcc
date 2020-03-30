@@ -365,6 +365,40 @@ fn message_impl(opt: &DbccOpt, dbc: &DBC, message: &Message) -> Result<Impl> {
         msg_impl.push_fn(message_stream(message));
     }
 
+    // send function
+    // This is a quick and dirty proof of concept
+    let send_fn = msg_impl.new_fn("send");
+    send_fn.allow("dead_code");
+    send_fn.vis("pub");
+    send_fn.arg("can_interface", codegen::Type::new("&str"));
+    send_fn.line("let mut payload = 0u64;");
+
+    for signal in message.signals() {
+        let signal_decoded_type = signal_decoded_type(dbc, *message.message_id(), signal);
+        let signal_decoded_type = wrap_multiplex_indicator_type(signal, signal_decoded_type);
+        send_fn.arg(&signal.name().to_snake_case(), codegen::Type::new(&signal_decoded_type));
+        
+        let signal_shift = shift_amount(
+            *signal.byte_order(),
+            *signal.start_bit(),
+            *signal.signal_size(),
+        );
+        let divider_string = if signal.factor != 1f64 { format!(" / {}", signal.factor) } else { String::from("") };
+
+        send_fn.line(format!("payload |= (({}{}) as u64) << {};", &signal.name().to_snake_case(), divider_string, signal_shift));
+    }
+    send_fn.line("let mut frame_payload: [u8; 8] = [0;8];");
+    // TODO figure out bit order of message
+    // let write_byte_order = match signal.byte_order() {
+    //     ByteOrder::LittleEndian => "LE::write_u64_into(&[payload], &mut frame_payload);",
+    //     ByteOrder::BigEndian => "BE::write_u64_into(&[payload], &mut frame_payload);",
+    // };
+    send_fn.line("BE::write_u64_into(&[payload], &mut frame_payload);");
+    send_fn.line("let socket_tx = CANSocket::open(&can_interface).unwrap();");
+    send_fn.line(format!("let can_frame = CANFrame::new({}, &frame_payload, false, false).unwrap();", message.message_id().0));
+    send_fn.line("let _write = socket_tx.write_frame(&can_frame);");
+    // End send function
+
     for signal in message.signals() {
         msg_impl.push_fn(signal_fn_raw(dbc, signal, *message.message_id())?);
 
@@ -467,7 +501,7 @@ pub fn can_code_gen(opt: &DbccOpt, dbc: &DBC, file_name: &str, file_hash: &str) 
         file_hash
     ));
     scope.import("byteorder", "{ByteOrder, BE, LE}");
-
+    scope.import("socketcan", "{CANSocket, CANFrame}");
     if opt.with_tokio {
         scope.import("futures::stream", "Stream");
         scope.import("futures_util::compat", "Stream01CompatExt");
