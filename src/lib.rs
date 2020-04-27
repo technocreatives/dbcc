@@ -387,7 +387,7 @@ fn message_impl(opt: &DbccOpt, dbc: &DBC, message: &Message) -> Result<Impl> {
             *signal.start_bit(),
             *signal.signal_size(),
         );
-        let divider_string = if signal.factor != 1f64 { format!(" / {}", signal.factor) } else { String::from("") };
+        let divider_string = if signal.factor != 1f64 { format!(" / {}_f64", signal.factor) } else { String::from("") };
 
         send_fn.line(format!("payload |= (({}{}) as u64) << {};", &signal.name().to_snake_case(), divider_string, signal_shift));
     }
