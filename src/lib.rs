@@ -80,8 +80,12 @@ pub fn signal_enum(dbc: &DBC, val_desc: &ValueDescription) -> Option<Enum> {
         sig_enum.derive("Clone");
         sig_enum.derive("Copy");
         sig_enum.derive("PartialEq");
-        for desc in value_descriptions {
-            sig_enum.new_variant(&desc.b().to_camel_case().to_type_name());
+        let uniq_descs = value_descriptions
+            .iter()
+            .map(|desc| desc.b().to_camel_case().to_type_name())
+            .collect::<std::collections::BTreeSet<_>>();
+        for desc in uniq_descs {
+            sig_enum.new_variant(&desc);
         }
 
         if let Some(signal) = dbc.signal_by_name(*message_id, signal_name) {
